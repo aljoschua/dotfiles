@@ -1,0 +1,54 @@
+[user]
+	name = Aljoscha Frey
+	#email = apswjf@gmail.com # If there is no default, you'll be asked for every repo you clone
+	useConfigOnly = true
+[url "git@git.imp.fu-berlin.de:"]
+	insteadOf = fub:
+[url "git@github.com:"]
+	insteadOf = hub:
+[url "github-apswjf:apswjf/"]
+	insteadOf = my:
+[url "git@gitlab.tu-berlin.de:"]
+	insteadOf = tubold:
+[url "git@git.tu-berlin.de:"]
+	insteadOf = tub:
+[url "sshgate.tu-berlin.de:x/"]
+	insteadOf = gate:
+[url "git://git.suckless.org/"]
+	insteadOf = sl:
+# MCS SS20
+[url "git@gitlab.tu-berlin.de:MCS_SS20-Group_13/"]
+	insteadOf = mcs:
+[alias]
+	a = config --get-regexp 'alias.*'
+	ap = add -p
+	b = branch -avv
+	c = commit -v
+	c-an = commit --amend --no-edit
+	ca = commit -av
+	co = checkout
+	cp = commit -vp
+	dc = diff --cached
+	f = fetch --all --tags --prune
+	fm = !git f && git merge
+	fr = !git f && git rebase
+	lf = log --format=fuller --date=iso8601 --show-signature --parents --left-right
+	lg = !git lo --graph
+	lo = log --oneline
+	rf = checkout HEAD --
+	s = status -sbu --show-stash
+	t = tag -as
+	hub = !git clone hub:$1 && cd $(basename $1)
+	cl = config --show-origin --includes -l
+	c-a = commit -v --amend
+[core]
+	autocrlf = input
+[log]
+	date = short
+[format]
+  #pretty = format:%C(auto,yellow)%h %C(auto,reset)%>(10,trunc)%ad%C(auto,magenta)%G?%C(auto,green)%<(7,mtrunc)%aN%C(auto,reset)%s%C(auto,yellow)% gD% D
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

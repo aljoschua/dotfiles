@@ -1,0 +1,14 @@
+[Unit]
+Description=Automatic ticket retrieval from TUB kerberos server
+After=home.mount
+Requires=home.mount
+
+[Timer]
+Persistent=true
+OnBootSec=5min
+#OnUnitActiveSec=1day
+OnCalendar=0/7:0
+
+
+[Install]
+WantedBy=multi-user.target

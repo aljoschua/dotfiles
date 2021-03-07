@@ -1,0 +1,11 @@
+[Unit]
+Description=Compress all chrome configs every day
+
+[Timer]
+Persistent=true
+#OnUnitActiveSec=1day
+OnCalendar=00:00:00
+
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+cd ${XDG_CONFIG_HOME:-$HOME/.config}/libinput-gestures
+
+filename=$(find . -name "*.conf" -not -name "running.conf" -printf '%P\n'| \
+    zenity --list --hide-header --height=300 --window-icon=info \
+    --column "Configuration Files" --title "Switch Configuration" \
+    --text "Select a configuration file to switch to.")
+
+if [ -f "$filename" ]; then
+    rm running.conf
+    ln -s "$filename" running.conf
+
+    libinput-gestures-setup restart || \
+        notify-send Gestures "Failed switching to $filename !"
+fi

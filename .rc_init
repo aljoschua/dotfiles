@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+function rc_init() {
+    local local_user=${1:-aljoschua}
+    if [ "$SUDO_USER" = "$local_user" ]; then
+        local oldHOME="$HOME"
+        HOME=$(eval echo "~$local_user")
+    fi
+
+    for f in ~/.bashrc.d/*; do
+        source "$f"
+    done
+
+    [ "$oldHOME" ] && HOME="$oldHOME"
+    return 0
+}
+
+if [ "$BASH" ] && [ "$LC_REMOTE_USER" = aljoschua ] && [[ $- =~ i ]]; then
+    rc_init $1
+fi

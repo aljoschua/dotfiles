@@ -1,0 +1,43 @@
+#!/usr/bin/env zsh
+
+function prepend-sudo {
+    [[ -z $BUFFER ]] && BUFFER=$(fc -ln -1)
+
+    [[ $BUFFER == sudo\ * ]] && return
+
+    BUFFER="sudo $BUFFER"
+    zle accept-line
+}
+zle -N prepend-sudo
+bindkey '\es' prepend-sudo
+
+function edit-command {
+    zle -U "$BUFFER"
+    [[ -z "$BUFFER" ]] && BUFFER=$(fc -ln -1)
+
+    if zle expand-cmd-path; then
+        BUFFER="${EDITOR:-vim} ${BUFFER%% *}"
+        zle accept-line
+    fi
+}
+zle -N edit-command
+bindkey '\ee' edit-command
+
+function splitting {
+    echo $1
+    echo $2
+}
+
+function launch-command {
+    BUFFER="a$BUFFER"
+    #return
+    gnome-terminal -- $BUFFER
+}
+zle -N launch-command
+bindkey '\et' launch-command
+
+function continue-1 {
+    fg %1
+}
+zle -N continue-1
+bindkey '^1' continue-1

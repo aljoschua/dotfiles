@@ -1,0 +1,11 @@
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+
+function _rc() {
+    local -a files
+    files=($(ls ~/.zshrc.d))
+    _describe rc files
+}
+
+compdef _rc rc

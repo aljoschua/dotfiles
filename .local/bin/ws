@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+
+WS_dotfiles() {
+google-chrome-stable --user-data-dir=$HOME/.config/google-chrome.d/dotfiles --restore-last-session --password-store=gnome &
+gnome-terminal -- tmux new-session -As dotfiles &
+#gnome-terminal --working-directory ~/.bashrc.d -- bash --init-file <(echo "echo vim init.portable") -l
+}
+
+WS_uni() {
+    google-chrome-stable --user-data-dir=$HOME/.config/google-chrome.d/uni --restore-last-session --password-store=gnome &
+    feh ~/Documents/TUB/Uni-Schedule.png &
+    gnome-terminal --working-directory=$HOME/Documents/TUB/ \
+        -- tmux new-session -As uni &
+}
+
+WS_main() {
+    google-chrome-stable --user-data-dir=$HOME/.config/google-chrome.d/main --restore-last-session --password-store=gnome &
+}
+
+WS_bkits() {
+    cd ~/tubCloud/w20/bkits
+    gnome-terminal -- tmux new-session -As bkits &
+    google-chrome-stable --user-data-dir=$HOME/.config/google-chrome.d/bkits --restore-last-session --password-store=gnome &
+}
+
+WS_netsec() {
+    cd ~/tubCloud/w20/netsec
+    #virtualbox --startvm netsecvm &
+    gnome-terminal -- tmux new-session -As netsec &
+    google-chrome-stable --user-data-dir=$HOME/.config/google-chrome.d/netsec --restore-last-session --password-store=gnome &
+}
+
+WS_bci() {
+    cd ~/tubCloud/w20/bci
+    signal-desktop &
+    google-chrome-stable --user-data-dir=$HOME/.config/google-chrome.d/bci --restore-last-session --password-store=gnome &
+    cd ~/connecthomer
+    gnome-terminal -- tmux new-session -As bci &
+}
+
+WS_cd() {
+    cd ~/tubCloud/w20/cd
+    gnome-terminal -- tmux new-session -As cd &
+    google-chrome-stable --user-data-dir=$HOME/.config/google-chrome.d/cd --restore-last-session --password-store=gnome &
+}
+
+WS_statistik() {
+    cd ~/tubCloud/w20/statistik
+    gnome-terminal -- tmux new-session -As statistik &
+    google-chrome-stable --user-data-dir=$HOME/.config/google-chrome.d/statistik --restore-last-session --password-store=gnome &
+}
+
+close() {
+    workspace=$(wmctrl -d | grep -e '[0-9]\+ \+\*' | cut -d' ' -f1)
+    windowIds=$(wmctrl -l | grep -e '^0x[0-9a-f]\+ \+'$workspace | cut -d' ' -f1)
+
+    for win in $windowIds; do
+        wmctrl -ic $win
+    done
+}
+
+case $1 in
+    \.files)
+        WS_dotfiles
+        ;;
+    uni)
+        WS_uni
+        ;;
+    main)
+        WS_main
+        ;;
+    bkits)
+        WS_bkits
+        ;;
+    netsec)
+        WS_netsec
+        ;;
+    bci)
+        WS_bci
+        ;;
+    cd)
+        WS_cd
+        ;;
+    statistik)
+        WS_statistik
+        ;;
+    -c)
+        close
+        ;;
+    *)
+        exit 1
+        ;;
+esac

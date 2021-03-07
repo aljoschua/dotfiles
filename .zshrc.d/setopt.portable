@@ -1,0 +1,6 @@
+unsetopt menu_complete
+set auto_menu
+
+
+setopt prompt_subst
+

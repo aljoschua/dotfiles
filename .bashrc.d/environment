@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if xhost >& /dev/null; then
+    #export EDITOR="xed -w"
+    echo -n
+fi
+export EDITOR=vim
+
+export TEXMFHOME=~/.texmf
+
+# TUB
+export KRB5_CLIENT_KTNAME=FILE:~/.local/share/kerberos/client_keytab

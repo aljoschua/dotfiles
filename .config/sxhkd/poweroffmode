@@ -1,0 +1,20 @@
+Escape
+    .config/sxhkd/switch default
+
+# Default action
+{super + s,XF86PowerOff}
+    systemctl -i reboot & .config/sxhkd/switch default
+{shift +,_} r
+    systemctl -i reboot & .config/sxhkd/switch default
+p
+    systemctl -i poweroff & .config/sxhkd/switch default
+s
+    systemctl -i suspend & .config/sxhkd/switch default
+h
+    systemctl -i hibernate & .config/sxhkd/switch default
+y
+    systemctl -i hybrid-sleep & .config/sxhkd/switch default
+l
+    i3-msg exit & .config/sxhkd/switch default
+i
+    i3-msg restart & .config/sxhkd/switch default

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+
+alias rm="gio trash"
+alias nmr="sudo systemctl restart NetworkManager.service" # It shouldn't have come this far..
+alias soundrestart="pulseaudio -k && sudo alsa force-reload" #Doesn't occur anymore, right?
+alias vncmiri="remmina -c  ~/.local/share/remmina/1580655803090.remmina"
+alias alert='notify-send -u critical -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias scrcpy="scrcpy --window-borderless -tb1M -m1024"
+alias fixsystemd="scdr ; scr autokinit.timer x11vnc.service dot-files-git-backup.timer"
+alias arpmiri="sudo arp -i wlp2s0 -s miri-laptop 98:22:ef:fb:de:7b"
+alias ssh="ssh -F ~/.ssh/config_local_command"
+alias gf="git ls-files"
+alias o="xdg-open"
+
+# TU
+alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --passwd-on-stdin < ~/.local/share/secrets/tub-password"

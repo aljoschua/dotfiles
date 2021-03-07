@@ -1,0 +1,30 @@
+#!/bin/bash
+
+url="$1"
+cookie="$2"
+filter="$3"
+dir=${TMPDIR:-/tmp}
+initial="$dir/poll-url-$RANDOM"
+polling="$dir/poll-url-$RANDOM"
+
+function query() {
+    curl -s "$url" \
+        -H "$cookie" \
+        --compressed | tq "$filter" -t
+}
+query > "$initial"
+
+while true; do
+    if ping -qnc1 google.com >/dev/null 2>/dev/null; then
+        query > "$polling"
+        if ! diff -q "$initial" "$polling" >/dev/null; then
+            dunstify "URL changed content: $url"
+        fi
+        sleep 60s
+    else
+        sleep 5s
+    fi
+done
+
+
+

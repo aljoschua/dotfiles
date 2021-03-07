@@ -1,0 +1,65 @@
+%YAML 1.2
+---
+default:
+  requires: [todo, remote-access, graphical, systemd-units]
+  packages: [tmux, xclip, sxhkd]
+  after:
+    - echo "Left to do:
+    - set (same) x11vnc password
+    - compare \`apt list --installed | sed -e 's/\/.*//g'\`
+    - relogin
+    - log in to chrome, lastpass, spotify, mega, dropbox..."
+
+dotfiles:
+    before:
+        - git clone --bare https://git.tu-berlin.de/aljoschafrey/dotfiles .config/dotfiles
+        - echo setup the rest yourself
+todo:
+    before:
+        - echo vim_correctly ...
+        - exit 1
+graphical:
+  requires: [libinput-gestures, spotify, dmenu]
+  packages: [x11vnc, remmina, remmina-plugin-vnc, kdeconnect, i3]
+  after:
+      - sudo usermod -aG video $USER
+      - sudo usermod -aG plugdev $USER # are these needed? where to put them?
+      - sudo usermod -aG input $USER
+dmenu:
+  before: [echo need to set up dmenu install]
+remote-access:
+  packages: [openssh-server]
+systemd-units:
+    before:
+        - systemctl --user enable ~/.config/systemd/user/*
+libinput-gestures:
+  packages: [xdotool, wmctrl, libinput-tools, zenity]
+  after:
+    - sudo usermod -aG input $user
+    - sudo ln -sf "${XDG_CONFIG_HOME:-$HOME/.config}/libinput-gestures/running.conf" "/etc/libinput-gestures.conf"
+    - libinput-gestures-setup autostart
+  git:
+    url: hub:bulletmark/libinput-gestures
+    commands: [sudo make install]
+scrcpy:
+  before:
+    - pip3 install meson
+  packages: [ffmpeg, libsdl2-2.0-0, adb, gcc, pkg-config, meson, ninja-build, libavcodec-dev, libavformat-dev, libavutil-dev, libsdl2-dev]
+  git:
+    url: hub:Genymobile/scrcpy
+    commands:
+      - wget -0 https://github.com/Genymobile/scrcpy/releases/download/v1.14/scrcpy-server-v1.14 server # Needs testing
+      - meson x --buildtype release --strip -Db_lto=true -Dprebuilt_server=server
+      - ninja -Cx
+      - sudo ninja -Cx install
+tub:
+  packages: [kinit, kstart]
+spotify:
+  packages: [spotify-client]
+  after:
+    - sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4774BD5E130D1D45
+vim:
+  before: [mkdir ~/.vim/undo-history]
+  packages: [libncurses5-dev, libncursesw5-dev]
+  #after: [install https://ftp.gnu.org/pub/gnu/global/global-6.6.4.tar.gz] #gtags
+...

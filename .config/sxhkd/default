@@ -1,0 +1,99 @@
+### Applications ###
+super + d
+    dmenu_run
+
+super + shift + d
+    i3-dmenu-desktop
+
+super + Return
+    gnome-terminal
+
+super + e
+    gnome-terminal -- vifm
+
+super + {_,shift +} m
+    remmina -c ~/.local/share/remmina/{1580655803090,1592859553306}.remmina
+
+super + c
+    google-chrome-profile-picker
+
+#ctrl + F2
+    #xrandr --output eDP-1 --{off,auto}
+    #sleep 0.1 && xset dpms force off
+
+# start and stop xcompmgr before and after?
+Print
+    gnome-screenshot -Bi
+
+super + F5
+    st -g=80x1 -n shellex-clone
+
+super + F3
+    echo -n | dmenu -p "i3-msg" | xargs i3-msg
+
+super + F2
+    echo -n | dmenu -p "$" | sh
+
+super + F1
+    find ~ -printf '%P\n' | dmenu -i | xargs -r gnome-terminal -- vim
+
+### Windows ###
+super + {_,shift +} + {h,j-l}
+    i3-msg {focus,move} {left,down,up,right}
+
+super + q
+    wmctrl -c :ACTIVE:
+
+### Workspaces ###
+super + w ; {super +,_} {shift +,_} {0-9,a-f}
+    i3-msg {_,_} {move container to,_} workspace {0-9,A-F}
+
+super + w ; {super +,_} w
+    i3-msg workspace back_and_forth
+
+super + w ; q
+    ws -c
+
+### Monitors ###
+ctrl + shift + alt + {h,j-l}
+    i3-msg move workspace to output {left,down,up,right}
+
+mod5 + {ctrl,_,shift,mod1} + {h,j-l}
+    p={5,20,100,400}; xdotool mousemove_relative -- {-$p 0,0 $p,0 -$p,$p 0}
+
+mod5 + Return
+    xdotool click 1
+
+### Media Buttons ##
+XF86Audio{Raise,Lower}Volume
+    amixer -D pulse set Master 5%{+,-}
+
+XF86Audio{_,Mic}Mute
+    amixer -D pulse set {Master,Capture} toggle
+
+XF86MonBrightness{Down,Up}
+    xbacklight {-,+}10
+
+super + XF86MonBrightness{Down,Up}
+    xbacklight \={1,100}
+
+XF86Display
+    xrandr --output HDMI-1 --{auto,off} --output eDP-1 --{off,auto}
+
+super + XF86Display
+    xrandr --output $(xrandr --listmonitors | awk '/1:/ {print $4}') --{right-of,left-of,same-as} eDP-1
+
+### Misc ###
+alt + super + y
+    xkbset {_,-}sticky
+
+super + question
+    zenity --text-info --filename=.config/sxhkd/sxhkdrc --width=500 --height=1000
+
+
+{super + s,XF86PowerOff}
+    dunstify "Poweroff Mode: [R]estart | [p]oweroff | [s]uspend | [l]ogout | [h]ibernate | h[y]brid-sleep | restart [i]3"; .config/sxhkd/switch poweroffmode
+
+### Quit ###
+ctrl + alt + r
+    systemctl -i reboot

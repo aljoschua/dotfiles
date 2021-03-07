@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=Gmail
+Exec=/home/aljoschua/.local/share/scripts/gmail.py %u
+Comment=Launch the gmail web application
+Categories=Application;
+TryExec=nemo-autorun-software
+Icon=application-x-executable
+NoDisplay=true
+StartupNotify=false
+MimeType=x-content/unix-software;x-scheme-handler/mailto;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=nemo
+X-GNOME-Bugzilla-Component=general
+X-GNOME-Bugzilla-Version=4.0.6
+X-Desktop-File-Install-Version=0.23

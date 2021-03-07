@@ -1,0 +1,21 @@
+#!/bin/bash -eu
+
+case $1 in
+    tub)
+        git config user.email aljoschafrey@mail.tu-berlin.de
+        git config user.signingkey 94BC4B5288406E9E1BDC6C4B8C27FB435EB1C37D
+        ;;
+    fry)
+        git config user.email aljoscha.fry@gmail.com
+        git config user.signingkey 41643CE650B300FA679FCAFE9859B1564305FA0B
+        ;;
+    apswjf)
+        git config user.email apswjf@gmail.com
+        git config user.signingkey 4F2112CBD722A40B055C74E8CDAB3AA31215381A
+        ;;
+    *)
+        echo "no valid name. valid names are apswjf, tub, fry"
+        ;;
+esac
+
+git config commit.gpgsign true

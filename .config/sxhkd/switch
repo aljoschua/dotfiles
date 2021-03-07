@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+cd $(dirname "$0")
+ln -fs "$1" sxhkdrc
+systemctl --user reload sxhkd

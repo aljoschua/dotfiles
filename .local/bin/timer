@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Play sound always on speaker
+# Doesn't display when started on different workspace ? no, just when another xsession is started
+
+sound=$HOME/.config/misc/samsung_s8_tone.mp3
+
+alert_user() {
+    loop </dev/null >/dev/null 2>&1 &
+    pid=$!
+    zenity --info --title=Timers --text="Timer '$1' ran out." --width=300
+    kill -9 $pid
+}
+
+loop() {
+    while [ true ]; do
+        play "$sound"
+    done
+}
+
+if [ $# = "0" ]; then
+    systemctl --user --all --no-pager list-timers timers-*
+else
+    name=unnamed
+    [[ "$1" =~ ^[a-zA-Z].*$ ]] && name="$1" && shift
+    systemd-run --user --unit="timers-$name-$RANDOM" --on-active="$*" --timer-property=AccuracySec=1s \
+        bash -ic ". timer ; alert_user \"$name\"" # hacky
+fi
+
+case $1 in
+    create)
+        ;;
+    list)
+        ;;
+    remove)
+        ;; 
+    add) # Add time to a specific timer
+        ;;
+esac
+

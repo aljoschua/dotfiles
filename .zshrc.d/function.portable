@@ -1,0 +1,35 @@
+
+find_in_code() {
+    find . -type f -print0 | xargs -0 grep -l -- "$1"
+}
+
+find_pw() {
+    echo make sure to preceed with a whitespace
+    cd /
+    find_in_code $1 2>&-
+    # like find in code but search in /
+    # disable histappend ?
+    # with no args serach for 'pwhere' ?
+}
+
+function rc() {
+    local dir=$HOME/.zshrc.d
+    if [ "$1" ]; then
+        local filename=$dir/$1
+    else
+        local filename=~/.zshrc
+    fi
+
+    ${EDITOR:-vim} $filename
+
+    [ -f "$filename" ] && source $filename
+
+    local comp=$dir/completion comp_p=$dir/completion.portable
+    [ "$filename" != $comp_p ] && [ -e $comp_p ] && source $comp_p
+    [ "$filename" != $comp ] && [ -e $comp ] && source $comp
+}
+
+function mkd() {
+    mkdir -p "$1" &&
+    cd "$1"
+}

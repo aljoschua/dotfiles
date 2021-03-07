@@ -1,0 +1,96 @@
+#!/usr/bin/env zsh
+
+prompt_segment() {
+  local seperator=' '
+  if [ "$1" = -S ]; then
+    seperator=''
+    shift
+  fi
+  if [[ $(print -P "$3") = "$4" ]]; then
+    return
+  fi
+  echo -n "%K{${1:-default}}%F{${2:-default}}%B$3%k%f%b$seperator"
+}
+
+prompt_git() {
+  command git diff --quiet 2>/dev/null # Not very performant...
+  case $? in
+    0) color=green;;
+    1) color=red;;
+    128) ;; # In .git directory
+    129) return;;
+    *) echo "unknown git diff return code";;
+  esac
+
+  branch_name=$(command git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  case $branch_name in
+    HEAD)
+      commit_hash=$(command git rev-parse --short HEAD)
+      prompt_segment  '' $color d:$commit_hash
+      ;;
+    ^$)
+      prompt_segment  '' $color i:0000000
+      ;;
+    *)
+      prompt_segment  '' $color b:$branch_name
+      ;;
+  esac
+}
+
+prompt_jobs() {
+  jobs -dl |
+    sed -E '
+      /^\[/ s/^\[([0-9]+)\] +[+-]? +([0-9]+) +(\w+) +(\(tty output\))? +(.+)$/\1 \2 \3\n\5/;
+      /^\(/ s/^\(pwd : (.*)\)$/\1/
+    ' |
+    while read jobno pid state; do
+      read command
+      read pwd
+      case "$state" in
+        suspended) pidcolor=red;;
+        terminated) pidcolor=white;;
+        running) pidcolor=green;;
+        *) pidcolor=magenta;;
+      esac
+      prompt_segment -S '' $pidcolor $pid
+      prompt_segment -S '' '' "|"
+      prompt_segment -S '' '' "$pwd:" $(print -P %~:)
+      prompt_segment '' '' "$command;"
+    done
+}
+
+prompt_off() {
+  prompt_no_custom=
+}
+
+prompt_on() {
+  unset prompt_no_custom
+}
+
+prompt_battery() {
+  if (upower -d | grep -qe "state: \+discharging") 2>/dev/null; then
+    upower -d | awk '/percentage/ { print $2 "%"; exit }'
+  fi
+}
+
+## Main prompt
+local build_prompt() {
+  local RETVAL=$?
+  if [ -v prompt_no_custom ]; then
+    echo -n '%m%# '
+    return
+  fi
+  prompt_segment magenta white '%*'
+  prompt_segment magenta white $(prompt_battery)
+  prompt_segment cyan white '%n' aljoschua
+  prompt_segment cyan white '@%m' @430-G5
+  prompt_segment magenta white $RETVAL 0
+  prompt_segment cyan white $ZSH_VERSION
+  prompt_segment magenta white $(fc -LDlt '%T' -1 | awk '{ print $3 }')
+  prompt_jobs
+  prompt_git
+  prompt_segment blue white '%~' '~'
+  prompt_segment '' '' '%(!,#,$)'
+}
+
+PROMPT='%{%f%b%k%}$(build_prompt)'

@@ -1,0 +1,51 @@
+
+watchdir() {
+    inotifywait -qmr \
+        -e modify -e moved_to \
+        --format "%w%f" "$1" |
+        while read filePath; do
+            ${2:-echo} "$filePath"
+            #if [[ "$filePath" =~ $2 ]]
+            #then
+            #    eval "$3"
+            #fi
+        done
+}
+
+
+:<<END
+$ autotex
+su: must be run from a terminal
+END
+autotex() {
+    #watchdir ~/Dropbox autotex_help
+    DISPLAY=:0 watchdir $(realpath .) autotex_help
+}
+
+autotex_help() {
+    if [[ "$1" =~ .*\.tex ]]
+    then
+        error=$(mktx "$1" | grep -m 1 -A5 "!")
+        notify-send "Autotex Error:" "$error"
+        if [ "$error"  ]
+        then
+            su - aljoschua -c "notify-send \"Autotex Error:\" '$error'"
+        fi
+    fi
+}
+
+mktx() {
+    cd $(dirname "$1")
+    pdflatex --halt-on-error "$1"
+    path=$(realpath "$1")
+    prefix=${path:0:-4}
+    /bin/rm "$prefix.log" "$prefix.aux" "$prefix.out"
+}
+
+mktx2() {
+    cd $(dirname "$1")
+    xelatex --halt-on-error "$1"
+    path=$(realpath "$1")
+    prefix=${path:0:-4}
+    /bin/rm "$prefix.log" "$prefix.aux" "$prefix.out"
+}

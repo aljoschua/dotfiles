@@ -1,0 +1,11 @@
+[Unit]
+Description=Save apt-mark showmanual
+After=home.mount
+Requires=home.mount
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c "apt-mark showmanual > .config/install/aptmanual.lst"
+
+[Install]
+WantedBy=multi-user.target

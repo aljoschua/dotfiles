@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+filename=$(realpath ~/.config/libinput-gestures/running.conf)
+zenity --notification --text "`basename "$filename"`\n`cat "$filename"`"

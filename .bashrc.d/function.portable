@@ -1,0 +1,38 @@
+#!/bin/bash
+
+find_in_code() {
+    find . -type f -print0 | xargs -0 grep -l -- "$1"
+}
+
+find_pw() {
+    echo make sure to preceed with a whitespace
+    cd /
+    find_in_code $1 2>&-
+    # like find in code but search in /
+    # disable histappend ?
+    # with no args serach for 'pwhere' ?
+}
+
+function rc() {
+    if [ "$1" ]; then
+        local filename=~/.bashrc.d/$1
+    else
+        local filename=~/.bashrc
+    fi
+
+    if [ "$EDITOR" ]; then
+        $EDITOR $filename
+    else
+        nano $filename
+    fi
+
+    [ -f "$filename" ] && source $filename
+
+    [ "$filename" != ~/.bashrc.d/completion.portable ] && \
+        [ -e ~/.bashrc.d/completion.portable ] && \
+        source ~/.bashrc.d/completion.portable
+
+    [ "$filename" != ~/.bashrc.d/completion ] && \
+        [ -e ~/.bashrc.d/completion ] && \
+        source ~/.bashrc.d/completion
+}

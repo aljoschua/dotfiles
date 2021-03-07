@@ -1,0 +1,14 @@
+
+alias rm="gio trash"
+alias soundrestart="pulseaudio -k && sudo alsa force-reload" #Doesn't occur anymore, right?
+alias alert='notify-send -u critical -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias scrcpy="scrcpy --window-borderless -tb1M -m1024"
+alias ssh="ssh -F ~/.ssh/config_local_command"
+alias i3rc="vim ~/.config/i3/config && i3-msg reload"
+alias sxhkdrc="vim ~/.config/sxhkd/sxhkdrc && systemctl --user reload sxhkd.service"
+alias .n="vim ~/.notes"
+alias dot="git --git-dir=$HOME/.config/dotfiles-new --work-tree=$HOME"
+alias dots="git --git-dir=$HOME/.config/dotfiles-secure --work-tree=$HOME"
+
+# TU
+alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --passwd-on-stdin < ~/.local/share/secrets/tub-password"
