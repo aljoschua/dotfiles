@@ -3,7 +3,7 @@
 # Play sound always on speaker
 # Doesn't display when started on different workspace ? no, just when another xsession is started
 
-sound=$HOME/.config/misc/samsung_s8_tone.mp3
+sound=$HOME/.local/share/misc/samsung_s8_tone.mp3
 
 alert_user() {
     loop </dev/null >/dev/null 2>&1 &
