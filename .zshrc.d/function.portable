@@ -1,6 +1,6 @@
 
 find_in_code() {
-    find . -type f -print0 | xargs -0 grep -l -- "$1"
+    grep -HnR "$@"
 }
 
 find_pw() {
