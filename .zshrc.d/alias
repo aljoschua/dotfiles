@@ -7,8 +7,8 @@ alias ssh="ssh -F ~/.ssh/config_local_command"
 alias i3rc="vim ~/.config/i3/config && i3-msg reload"
 alias sxhkdrc="vim ~/.config/sxhkd/sxhkdrc && systemctl --user reload sxhkd.service"
 alias .n="vim ~/.notes"
-alias dot="git --git-dir=$HOME/.config/dotfiles-new --work-tree=$HOME"
-alias dots="git --git-dir=$HOME/.config/dotfiles-secure --work-tree=$HOME"
+alias dot="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
+alias dots="git --git-dir=$HOME/.config/secrets --work-tree=$HOME"
 
 # TU
 alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --passwd-on-stdin < ~/.local/share/secrets/tub-password"

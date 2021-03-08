@@ -12,3 +12,9 @@
 	signingkey = 41643CE650B300FA679FCAFE9859B1564305FA0B
 [commit]
 	gpgsign = true
+[remote "origin"]
+	url = hub:aljoschua/dotfiles
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
