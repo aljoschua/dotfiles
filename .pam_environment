@@ -13,3 +13,4 @@ LANG=en_US.UTF-8
 DCONF_PROFILE DEFAULT=${HOME}/.config/dconf/profile
 EDITOR=vim
 VISUAL=vim
+ZDOTDIR DEFAULT=${HOME}/.config/zsh
