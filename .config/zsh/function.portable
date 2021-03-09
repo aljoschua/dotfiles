@@ -13,7 +13,7 @@ find_pw() {
 }
 
 function rc() {
-    local dir=$HOME/.zshrc.d
+    local dir=$HOME/.config/zsh
     if [ "$1" ]; then
         local filename=$dir/$1
     else

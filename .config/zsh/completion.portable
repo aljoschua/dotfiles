@@ -4,7 +4,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 function _rc() {
     local -a files
-    files=($(ls ~/.zshrc.d))
+    files=($(ls ~/.config/zsh))
     _describe rc files
 }
 
