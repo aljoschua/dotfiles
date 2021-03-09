@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+arp -i wlp2s0 -s miri-laptop 98:22:ef:fb:de:7b
