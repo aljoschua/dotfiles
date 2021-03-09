@@ -9,6 +9,7 @@ alias sxhkdrc="vim ~/.config/sxhkd/sxhkdrc && systemctl --user reload sxhkd.serv
 alias .n="vim ~/.notes"
 alias dot="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
 alias dots="git --git-dir=$HOME/.config/secrets --work-tree=$HOME"
+alias vim=nvim
 
 # TU
 alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --passwd-on-stdin < ~/.local/share/secrets/tub-password"
