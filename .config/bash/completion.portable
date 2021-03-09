@@ -11,7 +11,6 @@ fi
 # https://gist.github.com/kopischke/2941621
 # Automatically add completion for all aliases to commands having completion functions
 function alias_completion {
-    local alias_start=$(date +%s%N)
     local namespace="alias_completion"
 
     # parse function based completion definitions, where capture group 2 => function and 3 => trigger
@@ -77,7 +76,5 @@ function alias_completion {
         echo "$new_completion" >> "$tmp_file"
     done < <(alias -p | sed -Ene "s/$alias_regex/\1 '\2' '\3'/p")
     source "$tmp_file" && /bin/rm -f "$tmp_file"
-    local alias_end=$(date +%s%N)
-    echo "(alias_completion took $(( alias_end - alias_start )) nanoseconds)"
 }
 alias_completion
