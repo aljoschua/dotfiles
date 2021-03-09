@@ -14,8 +14,9 @@ find_pw() {
 }
 
 function rc() {
+    local dir=$HOME/.config/bash
     if [ "$1" ]; then
-        local filename=~/.bashrc.d/$1
+        local filename=$dir/$1
     else
         local filename=~/.bashrc
     fi
@@ -28,11 +29,11 @@ function rc() {
 
     [ -f "$filename" ] && source $filename
 
-    [ "$filename" != ~/.bashrc.d/completion.portable ] && \
-        [ -e ~/.bashrc.d/completion.portable ] && \
-        source ~/.bashrc.d/completion.portable
+    [ "$filename" != $dir/completion.portable ] && \
+        [ -e $dir/completion.portable ] && \
+        source $dir/completion.portable
 
-    [ "$filename" != ~/.bashrc.d/completion ] && \
-        [ -e ~/.bashrc.d/completion ] && \
-        source ~/.bashrc.d/completion
+    [ "$filename" != $dir/completion ] && \
+        [ -e $dir/completion ] && \
+        source $dir/completion
 }

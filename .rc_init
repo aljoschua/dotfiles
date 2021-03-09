@@ -7,7 +7,7 @@ function rc_init() {
         HOME=$(eval echo "~$local_user")
     fi
 
-    for f in ~/.bashrc.d/*; do
+    for f in ~/.config/bash/*; do
         source "$f"
     done
 

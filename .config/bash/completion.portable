@@ -1,6 +1,6 @@
 #!/bin/bash
 
-complete -W "$(/bin/ls ~/.bashrc.d/)" rc
+complete -W "$(/bin/ls ~/.config/bash/)" rc
 
 
 if [ -r /etc/bash_completion ]; then
