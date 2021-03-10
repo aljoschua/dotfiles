@@ -9,11 +9,9 @@
 	email = aljoscha.fry@gmail.com
 [alias]
 	s = status -sb --show-stash
-[remote "aljoschua"]
-	url = /home/aljoschua/.config/dotfiles
-	fetch = +refs/heads/*:refs/remotes/aljoschua/*
-[branch "main"]
-	remote = aljoschua
+[remote "origin"]
+	url = hub:aljoschua/dotfiles
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "root"]
+	remote = origin
 	merge = refs/heads/root
-[push]
-	default = upstream
