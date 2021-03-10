@@ -1,5 +1,7 @@
 # Dotfiles - root
 These are my configuration files for the root user.
+These assume that dotfiles are correctly set up at `/home/aljoschua`.
+I hope this changes in the future.
 ## Setup
 As root, execute:
 ```bash
