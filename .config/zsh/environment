@@ -1,5 +1,5 @@
 
-export EDITOR=vim
+export EDITOR=nvim
 export TEXMFHOME=~/.texmf
 
 # TUB
