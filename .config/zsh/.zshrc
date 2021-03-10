@@ -1,3 +1,5 @@
-for file in ~/.config/zsh/*; do
+
+dir=$(dirname $(print -P "%N"))
+for file in $dir/*; do
     source "$file"
 done
