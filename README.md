@@ -1,9 +1,9 @@
 # Dotfiles - root
 These are my configuration files for the root user.
 ## Setup
-As root, execute (assuming you already cloned my user dotfiles):
+As root, execute:
 ```bash
-git clone --bare ~aljoschua/.config/dotfiles -b root ~/.config/dotfiles
+git clone --bare https://github.com/aljoschua/dotfiles -b root ~/.config/dotfiles
 alias dot="git --git-dir=$HOME/.config/dotfiles --work-tree=/"
 dot checkout @ -- /root/.config/dotfiles
 dot -c user.name=a -c user.email=a stash
