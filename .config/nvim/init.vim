@@ -1,28 +1,3 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2017 Sep 20
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-    finish
-endif
-
-if has("vms")
-    set nobackup		" do not keep a backup file, use versions instead
-else
-    set backup		" keep a backup file (restore to previous version)
-    if has('persistent_undo')
-        set undofile	" keep an undo file (undo changes after closing)
-    endif
-endif
-
 if &t_Co > 2 || has("gui_running")
     " Switch on highlighting the last used search pattern.
     set hlsearch
@@ -40,21 +15,12 @@ if has("autocmd")
 
     augroup END
 
-else
-
-    set autoindent		" always set autoindenting on
-
 endif " has("autocmd")
 
-" Add optional packages.
-"
 " My Stuff
 
 " File management
-set directory=~/.vim/swaps,/var/tmp,/tmp,.
 set nobackup
-set undodir=~/.vim/undo,/var/tmp,/tmp,.
-set tags=tags;/
 set path-=/usr/include
 set path+=**
 
@@ -66,8 +32,6 @@ set expandtab
 set number
 set relativenumber
 " set hlsearch
-set incsearch
-set ruler
 "set rulerformat=%55(%{strftime('%T')}\ %5l,%-6(%c%V%)\ %P%)
 set showbreak=↪\
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,eol:↲,conceal:␣
@@ -76,11 +40,6 @@ highlight SpecialKey ctermfg=red
 set colorcolumn=81
 set background=dark
 
-set wildmenu
-
-set nocompatible
-set showcmd
-" set autowrite
 
 nnoremap <C-J> :cn<CR>
 nnoremap <C-K> :cp<CR>
