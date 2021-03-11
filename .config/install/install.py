@@ -21,18 +21,18 @@ if args.list:
     print(conf.keys())
     exit()
 
-def execute_command(command):
+def execute_commands(commands):
+    command_string = "\n".join(commands)
     if args.echo:
-        print(f"$ {command}")
-    return_code = os.system(command) # doesn't work for cd
+        logging.info(f"$ {command_string}")
+    return_code = os.system(command_string)
     if return_code:
-        logging.error(f"{command} failed with exit code {return_code}")
+        logging.error(f"'{command_string}' failed with exit code {return_code}")
         exit()
 
 def module_commands(key, dict):
     if key in dict:
-        for command in dict[key]:
-            execute_command(command)
+        execute_commands(dict[key])
 
 def load_module(name):
     module = conf[name]
