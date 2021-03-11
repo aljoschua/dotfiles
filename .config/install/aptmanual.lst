@@ -415,6 +415,7 @@ gnupg
 gnupg-l10n
 gnupg-utils
 golang
+golang-1.10-go
 google-chrome-stable
 google-cloud-sdk
 gparted
