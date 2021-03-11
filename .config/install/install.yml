@@ -1,15 +1,15 @@
 %YAML 1.2
+# vim:ts=2:sw=2:sts=2:et:
 ---
 default:
   requires: [todo, remote-access, graphical, systemd-units]
   packages: [tmux, xclip, sxhkd]
   after:
-    - echo "Left to do:
-    - set (same) x11vnc password
-    - compare \`apt list --installed | sed -e 's/\/.*//g'\`
-    - relogin
-    - log in to chrome, lastpass, spotify, mega, dropbox..."
-
+    - 'echo "Left to do:"'
+    - 'echo "set (same) x11vnc password"'
+    - 'echo "compare \$(apt list --installed | sed -e ''s/\/.*//g\)''"'
+    - 'echo relogin'
+    - 'echo log in to chrome, lastpass, spotify, mega, dropbox...'
 dotfiles:
     before:
         - git clone --bare https://git.tu-berlin.de/aljoschafrey/dotfiles .config/dotfiles
