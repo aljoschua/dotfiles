@@ -2,8 +2,9 @@
 
 set -e
 
+sudo apt-get update
 sudo apt-get -y install git python3 python3-pip
-pip3 install setuptools pyyaml argparse coloredlogs logging
+pip3 install setuptools pyyaml argparse coloredlogs
 
 cd
 git clone --bare https://git.tu-berlin.de/aljoschafrey/dotfiles .config/dotfiles
