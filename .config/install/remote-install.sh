@@ -7,7 +7,7 @@ sudo apt-get -y install git python3 python3-pip
 pip3 install setuptools pyyaml argparse coloredlogs
 
 cd
-git clone --bare https://git.tu-berlin.de/aljoschafrey/dotfiles .config/dotfiles
+git clone --bare https://github.com/aljoschua/dotfiles .config/dotfiles
 dot="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
 $dot checkout @ -- .config/dotfiles
 $dot -c user.name=a -c user.email=a stash
