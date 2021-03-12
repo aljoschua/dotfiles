@@ -41,7 +41,7 @@ def load_module(name):
         logging.info(f"Installed requirements for {name}")
 
     if 'pkg' in module:
-        execute_command("sudo apt-get -y install " + " ".join(module['pkg']))
+        execute_command("sudo apt-get -qy install " + " ".join(module['pkg']))
 
     if 'cmd' in module:
         execute_command(module['cmd'])
