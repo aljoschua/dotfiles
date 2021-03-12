@@ -23,7 +23,9 @@ if args.list:
 def execute_command(command):
     if isinstance(command, list):
         command = "\n".join(command)
-    logging.info(f"$ {command}")
+    logging.info("executing {")
+    print(command)
+    logging.info("}")
     return_code = os.system(command)
     if return_code:
         logging.error(f"'{command}' failed with exit code {return_code}")
