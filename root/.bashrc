@@ -1,1 +1,1 @@
-source /home/aljoschua/.rc_init
+source ~/.portal/.rc_init
