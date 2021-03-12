@@ -3,7 +3,7 @@
 ---
 default:
   dep: [secrets, remote-access, graphical, systemd-units, root]
-  pkg: [tmux, xclip, sxhkd]
+  pkg: [tmux, xclip, sxhkd, neovim]
   snippets:
     git-pre: &git-pre |
       git clone --depth 1 "$url" tmp
@@ -14,9 +14,8 @@ default:
   cmd: |
     echo "TODO:"
     echo "set (same) x11vnc password"
-    echo "compare \$(apt list --installed | sed -e 's/\/.*//g\)'"
+    echo "compare \$(apt-mark showmanual | sed -e 's/\/.*//g\)'"
     echo relogin
-    echo vim correctly
     echo log in to chrome, lastpass, spotify, mega, dropbox...
 secrets:
   cmd: |
@@ -29,11 +28,16 @@ root:
   cmd: |
     sudo su -c "
     cd
-    git clone --bare -b root hub:aljoschua/dotfiles .config/dotfiles
-    dot='git --git-dir=\$HOME/.config --work-tree=\$HOME'
+    git clone --bare -b root ~$USER/.config/dotfiles .config/dotfiles
+    dot='git --git-dir=\$HOME/.config --work-tree=/'
     $dot checkout @ -- /root/.config/dotfiles
     $dot -c user.name=a -c user.email=a stash
-    ln -s ~$USER ~/.portal"
+    ln -s ~$USER ~/.portal
+    git clone --bare -b root ~$USER/.config/secrets .config/secrets
+    dots='git --git-dir=\$HOME/.config/secrets --work-tree=/'
+    $dots co @ -- /root/.config/secrets
+    $dots stash
+    $dots co"
 graphical:
   dep: [libinput-gestures, spotify, dmenu]
   pkg: [x11vnc, remmina, remmina-plugin-vnc, kdeconnect, i3]
@@ -75,10 +79,8 @@ scrcpy:
     - *git-post
 tub: {pkg: [kinit, kstart]}
 spotify:
-  pkg: [spotify-client]
   cmd: |
-    sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4774BD5E130D1D45
-vim:
-  pkg: [libncurses5-dev, libncursesw5-dev]
-  cmd: [mkdir ~/.vim/undo-history]
+    curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
+    echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+    sudo apt-get update && sudo apt-get install spotify-client
 ...

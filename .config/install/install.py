@@ -26,7 +26,7 @@ def execute_command(command):
     logging.info("executing {")
     print(command)
     logging.info("}")
-    return_code = os.system(command)
+    return_code = os.system(f"set -e\n{command}")
     if return_code:
         logging.error(f"'{command}' failed with exit code {return_code}")
         exit()
