@@ -23,12 +23,12 @@ if args.list:
 def execute_command(command):
     if isinstance(command, list):
         command = "\n".join(command)
-    logging.info("executing {")
+    logging.info("Executing {")
     print(command)
     logging.info("}")
     return_code = os.system(f"set -e\n{command}")
     if return_code:
-        logging.error(f"'{command}' failed with exit code {return_code}")
+        logging.error(f"Command failed with exit code {return_code}")
         exit()
 
 def load_module(name):

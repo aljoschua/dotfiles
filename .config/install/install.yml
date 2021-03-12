@@ -3,7 +3,7 @@
 ---
 default:
   dep: [secrets, remote-access, graphical, systemd-units, root]
-  pkg: [tmux, xclip, sxhkd, neovim]
+  pkg: [tmux, xclip, sxhkd, neovim, zsh]
   snippets:
     git-pre: &git-pre |
       git clone --depth 1 "$url" tmp
@@ -29,8 +29,8 @@ root:
     sudo su -c "set -e
     cd
     git clone --bare -b root ~$USER/.config/dotfiles .config/dotfiles
-    git --git-dir=\$HOME/.config --work-tree=/ checkout @ -- /root/.config/dotfiles
-    git --git-dir=\$HOME/.config --work-tree=/ -c user.name=a -c user.email=a stash
+    git --git-dir=\$HOME/.config/dotfiles --work-tree=/ checkout @ -- /root/.config/dotfiles
+    git --git-dir=\$HOME/.config/dotfiles --work-tree=/ -c user.name=a -c user.email=a stash
     ln -s ~$USER ~/.portal
     git clone --bare -b root ~$USER/.config/secrets .config/secrets
     git --git-dir=\$HOME/.config/secrets --work-tree=/ co @ -- /root/.config/secrets
@@ -71,6 +71,7 @@ scrcpy:
     - *git-post
 tub: {pkg: [kinit, kstart]}
 spotify:
+  pkg: [curl]
   cmd: |
     curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
     echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
