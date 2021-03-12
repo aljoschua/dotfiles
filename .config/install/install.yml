@@ -20,7 +20,7 @@ default:
     echo log in to chrome, lastpass, spotify, mega, dropbox...
 secrets:
   cmd: |-
-    git clone --bare https://aljoschua@github.com/aljoschua/secrets .config/secrets
+    git clone --bare https://aljoschua${GITHUB_PAT}@github.com/aljoschua/secrets .config/secrets
     dot() { git --git-dir=$HOME/.config/secrets --work-tree=$HOME "$@"; }
     dot co @ -- .config/secrets
     dot stash
@@ -65,4 +65,4 @@ spotify:
   cmd: |-
     curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
     echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-    sudo apt-get update && sudo apt-get install -y spotify-client
+    sudo apt-get update && sudo apt-get install -qy spotify-client

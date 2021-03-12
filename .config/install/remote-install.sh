@@ -3,7 +3,7 @@
 set -e
 
 sudo apt-get update
-sudo apt-get -y install git python3 python3-pip
+sudo apt-get -qy install git python3 python3-pip
 pip3 install setuptools pyyaml argparse coloredlogs
 
 cd
