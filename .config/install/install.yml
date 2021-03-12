@@ -19,7 +19,7 @@ default:
     echo log in to chrome, lastpass, spotify, mega, dropbox...
 secrets:
   cmd: |
-    git clone --bare https://github.com/aljoschua/secrets .config/secrets
+    git clone --bare https://aljoschua@github.com/aljoschua/secrets .config/secrets
     dot="git --git-dir=$HOME/.config/secrets --work-tree=$HOME"
     $dot co @ -- .config/secrets
     $dot stash
@@ -29,27 +29,21 @@ root:
     sudo su -c "
     cd
     git clone --bare -b root ~$USER/.config/dotfiles .config/dotfiles
-    dot='git --git-dir=\$HOME/.config --work-tree=/'
-    $dot checkout @ -- /root/.config/dotfiles
-    $dot -c user.name=a -c user.email=a stash
+    dot() { git --git-dir=\$HOME/.config --work-tree=/ \"$@\" }
+    dot checkout @ -- /root/.config/dotfiles
+    dot -c user.name=a -c user.email=a stash
     ln -s ~$USER ~/.portal
     git clone --bare -b root ~$USER/.config/secrets .config/secrets
-    dots='git --git-dir=\$HOME/.config/secrets --work-tree=/'
-    $dots co @ -- /root/.config/secrets
-    $dots stash
-    $dots co"
+    dots() { git --git-dir=\$HOME/.config/secrets --work-tree=/ \"$@\" }
+    dots co @ -- /root/.config/secrets
+    dots stash
+    dots co"
 graphical:
   dep: [libinput-gestures, spotify, dmenu]
-  pkg: [x11vnc, remmina, remmina-plugin-vnc, kdeconnect, i3]
+  pkg: [x11vnc, remmina, remmina-plugin-vnc, kdeconnect, i3, dmenu]
   cmd: |
     sudo usermod -aG video $USER
     sudo usermod -aG plugdev $USER # are these needed? where to put them?
-dmenu:
-  cmd:
-    - 'url=sl:dmenu'
-    - *git-pre
-    - sudo make clean install
-    - *git-post
 remote-access: {pkg: [openssh-server]}
 systemd-units:
   cmd: |
@@ -82,5 +76,5 @@ spotify:
   cmd: |
     curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
     echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-    sudo apt-get update && sudo apt-get install spotify-client
+    sudo apt-get update && sudo apt-get install -y spotify-client
 ...
