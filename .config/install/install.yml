@@ -2,7 +2,7 @@
 # vim:ts=2:sw=2:sts=2:et:
 ---
 default:
-  dep: [todo, remote-access, graphical, systemd-units]
+  dep: [secrets, remote-access, graphical, systemd-units, root]
   pkg: [tmux, xclip, sxhkd]
   snippets:
     git-pre: &git-pre |
@@ -12,19 +12,28 @@ default:
       cd ..
       rm -rf tmp
   cmd: |
-    echo "Left to do:"
+    echo "TODO:"
     echo "set (same) x11vnc password"
     echo "compare \$(apt list --installed | sed -e 's/\/.*//g\)'"
     echo relogin
+    echo vim correctly
     echo log in to chrome, lastpass, spotify, mega, dropbox...
-dotfiles:
+secrets:
   cmd: |
-    git clone --bare https://git.tu-berlin.de/aljoschafrey/dotfiles .config/dotfiles
-    echo setup the rest yourself
-todo:
+    git clone --bare https://github.com/aljoschua/secrets .config/secrets
+    dot="git --git-dir=$HOME/.config/secrets --work-tree=$HOME"
+    $dot co @ -- .config/secrets
+    $dot stash
+    $dot co
+root:
   cmd: |
-    echo vim_correctly ...
-    exit 1
+    sudo su -c "
+    cd
+    git clone --bare -b root hub:aljoschua/dotfiles .config/dotfiles
+    dot='git --git-dir=\$HOME/.config --work-tree=\$HOME'
+    $dot checkout @ -- /root/.config/dotfiles
+    $dot -c user.name=a -c user.email=a stash
+    ln -s ~$USER ~/.portal"
 graphical:
   dep: [libinput-gestures, spotify, dmenu]
   pkg: [x11vnc, remmina, remmina-plugin-vnc, kdeconnect, i3]
@@ -32,7 +41,11 @@ graphical:
     sudo usermod -aG video $USER
     sudo usermod -aG plugdev $USER # are these needed? where to put them?
 dmenu:
-  cmd: [echo need to set up dmenu install]
+  cmd:
+    - 'url=sl:dmenu'
+    - *git-pre
+    - sudo make clean install
+    - *git-post
 remote-access: {pkg: [openssh-server]}
 systemd-units:
   cmd: |
