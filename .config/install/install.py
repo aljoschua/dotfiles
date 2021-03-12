@@ -6,11 +6,11 @@ import os
 import logging, coloredlogs
 import pathlib
 
-parser = argparse.ArgumentParser(description='Process some integers.')
+parser = argparse.ArgumentParser(description='Install stuff from yaml file.')
 parser.add_argument('module', default='default', nargs='?',
         help='The target module to install')
 parser.add_argument('--list', '-l', action='store_true')
-# add -s/--skip option for modules
+parser.add_argument('--skip', '-s', action='append', default=[], metavar='module')
 args = parser.parse_args()
 
 coloredlogs.install()
@@ -32,6 +32,9 @@ def execute_command(command):
         exit()
 
 def load_module(name):
+    if name in args.skip:
+        logging.info(f"Skipping {name}")
+        return
     module = conf[name]
     logging.info(f"Installing {name}...")
     if 'dep' in module:
