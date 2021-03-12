@@ -35,7 +35,9 @@ root:
     git clone --bare -b root ~$USER/.config/secrets .config/secrets
     git --git-dir=\$HOME/.config/secrets --work-tree=/ co @ -- /root/.config/secrets
     git --git-dir=\$HOME/.config/secrets --work-tree=/ stash
-    git --git-dir=\$HOME/.config/secrets --work-tree=/ co"
+    git --git-dir=\$HOME/.config/secrets --work-tree=/ co
+    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    curl -fsSL https://mega.nz/keys/MEGA_signing.key | sudo apt-key add -"
 graphical:
   dep: [libinput-gestures, spotify]
   pkg: [x11vnc, remmina, remmina-plugin-vnc, kdeconnect, i3, dmenu]
