@@ -8,6 +8,7 @@ alias dot="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
 dot checkout @ -- .config/dotfiles
 dot -c user.name=a -c user.email=a stash
 ```
+Alternatively, you can issue `curl -L https://git.io/JqcSG | bash`
 
 ## Undo Setup
 Assuming you haven't added more stash entries:
