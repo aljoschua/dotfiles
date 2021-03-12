@@ -20,21 +20,21 @@ default:
 secrets:
   cmd: |
     git clone --bare https://aljoschua@github.com/aljoschua/secrets .config/secrets
-    dot="git --git-dir=$HOME/.config/secrets --work-tree=$HOME"
-    $dot co @ -- .config/secrets
-    $dot stash
-    $dot co
+    dot() { git --git-dir=$HOME/.config/secrets --work-tree=$HOME "$@"; }
+    dot co @ -- .config/secrets
+    dot stash
+    dot co
 root:
   cmd: |
     sudo su -c "
     cd
     git clone --bare -b root ~$USER/.config/dotfiles .config/dotfiles
-    dot() { git --git-dir=\$HOME/.config --work-tree=/ \"$@\" }
+    dot() { git --git-dir=\$HOME/.config --work-tree=/ \"$@\"; }
     dot checkout @ -- /root/.config/dotfiles
     dot -c user.name=a -c user.email=a stash
     ln -s ~$USER ~/.portal
     git clone --bare -b root ~$USER/.config/secrets .config/secrets
-    dots() { git --git-dir=\$HOME/.config/secrets --work-tree=/ \"$@\" }
+    dots() { git --git-dir=\$HOME/.config/secrets --work-tree=/ \"$@\"; }
     dots co @ -- /root/.config/secrets
     dots stash
     dots co"
