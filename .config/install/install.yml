@@ -26,20 +26,18 @@ secrets:
     dot co
 root:
   cmd: |
-    sudo su -c "
+    sudo su -c "set -e
     cd
     git clone --bare -b root ~$USER/.config/dotfiles .config/dotfiles
-    dot() { git --git-dir=\$HOME/.config --work-tree=/ \"$@\"; }
-    dot checkout @ -- /root/.config/dotfiles
-    dot -c user.name=a -c user.email=a stash
+    git --git-dir=\$HOME/.config --work-tree=/ checkout @ -- /root/.config/dotfiles
+    git --git-dir=\$HOME/.config --work-tree=/ -c user.name=a -c user.email=a stash
     ln -s ~$USER ~/.portal
     git clone --bare -b root ~$USER/.config/secrets .config/secrets
-    dots() { git --git-dir=\$HOME/.config/secrets --work-tree=/ \"$@\"; }
-    dots co @ -- /root/.config/secrets
-    dots stash
-    dots co"
+    git --git-dir=\$HOME/.config/secrets --work-tree=/ co @ -- /root/.config/secrets
+    git --git-dir=\$HOME/.config/secrets --work-tree=/ stash
+    git --git-dir=\$HOME/.config/secrets --work-tree=/ co"
 graphical:
-  dep: [libinput-gestures, spotify, dmenu]
+  dep: [libinput-gestures, spotify]
   pkg: [x11vnc, remmina, remmina-plugin-vnc, kdeconnect, i3, dmenu]
   cmd: |
     sudo usermod -aG video $USER
