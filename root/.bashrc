@@ -1,1 +1,1 @@
-source ~/.portal/.rc_init
+.portal/.rc_init
