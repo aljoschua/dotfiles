@@ -4,7 +4,7 @@ After=graphical.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/x11vnc -auth guess -forever -noxdamage -repeat -rfbauth .vnc/passwd -rfbport 5900 -shared
+ExecStart=/usr/bin/x11vnc -auth guess -forever -noxdamage -repeat -rfbauth .vnc/passwd -rfbport 5900 -shared -ncache 10 -ncache_cr
 
 [Install]
 WantedBy=graphical.target
