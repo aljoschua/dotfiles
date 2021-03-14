@@ -1,12 +1,1 @@
-#!/bin/bash
-
-
-alias rm="gio trash"
-alias soundrestart="pulseaudio -k && sudo alsa force-reload" #Doesn't occur anymore, right?
-alias alert='notify-send -u critical -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias ssh="ssh -F ~/.ssh/config_local_command"
-alias gf="git ls-files"
-alias o="xdg-open"
-
-# TU
-alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --passwd-on-stdin < ~/.local/share/secrets/tub-password"
+../shell/alias

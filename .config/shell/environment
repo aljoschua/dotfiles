@@ -1,6 +1,8 @@
+#!/bin/sh
 
 export EDITOR=nvim
 export TEXMFHOME=~/.texmf
 
 # TUB
 export KRB5_CLIENT_KTNAME=FILE:~/.local/share/kerberos/client_keytab
+
