@@ -60,7 +60,17 @@ libinput-gestures:
       sudo usermod -aG input $user || true # is this only necessary on docker ubu?
       sudo ln -sf "${XDG_CONFIG_HOME:-$HOME/.config}/libinput-gestures/running.conf" "/etc/libinput-gestures.conf"
       libinput-gestures-setup autostart
-tub: {pkg: [kinit, kstart]}
+tub: 
+  deb: [tq]
+  pkg: [kinit, kstart]
+  cmd: |-
+    url=updates.tubcloud.tu-berlin.de/
+    latest=$(wget -O- $url | tq '.pricing-table-linux a' -a href)
+    wget -O ~/.local/bin/tubCloud $url$latest
+    chmod +x ~/.local/bin/tubCloud
+tq:
+  cmd: |-
+    sudo pip3 install https://github.com/plainas/tq/zipball/stable
 spotify:
   pkg: [curl]
   cmd: |-
