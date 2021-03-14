@@ -61,7 +61,7 @@ libinput-gestures:
       sudo ln -sf "${XDG_CONFIG_HOME:-$HOME/.config}/libinput-gestures/running.conf" "/etc/libinput-gestures.conf"
       libinput-gestures-setup autostart
 tub: 
-  deb: [tq]
+  dep: [tq]
   pkg: [kinit, kstart]
   cmd: |-
     url=updates.tubcloud.tu-berlin.de/
