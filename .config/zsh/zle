@@ -29,8 +29,6 @@ function splitting {
 }
 
 function launch-command {
-    BUFFER="a$BUFFER"
-    #return
     gnome-terminal -- $BUFFER
 }
 zle -N launch-command
@@ -41,3 +39,6 @@ function continue-1 {
 }
 zle -N continue-1
 bindkey '^1' continue-1
+bindkey -M vicmd '^H' run-help
+bindkey -M viins '^P' up-history
+bindkey -M viins '^N' down-history
