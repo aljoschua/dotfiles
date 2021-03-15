@@ -1,3 +1,4 @@
+# i3 config file (v4)
 set $mod Mod4
 
 ### Style ###
@@ -12,20 +13,6 @@ bar {
         status_command i3status
 }
 for_window [instance="shellex-clone"] floating enable
-
-
-### Change focus ###
-bindsym $mod+space focus mode_toggle
-bindsym $mod+a focus parent
-#bindsym $mod+d focus child
-bindsym Control+Mod1+Right workspace next
-bindsym Control+Mod1+Left workspace prev
-
-### Change state ###
-bindsym $mod+v split toggle
-bindsym $mod+f fullscreen toggle
-#bindsym $mod+e layout toggle all
-bindsym $mod+Shift+space floating toggle
 
 ### Change arrangement ###
 mode "resize" {

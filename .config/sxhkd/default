@@ -58,11 +58,29 @@ super + w ; q
 ctrl + shift + alt + {h,j-l}
     i3-msg move workspace to output {left,down,up,right}
 
+### Mouse mode ###
 mod5 + {ctrl,_,shift,mod1} + {h,j-l}
     p={5,20,100,400}; xdotool mousemove_relative -- {-$p 0,0 $p,0 -$p,$p 0}
 
 mod5 + Return
     xdotool click 1
+
+### Other WM stuff ###
+super + space
+    i3-msg focus mode_toggle
+
+super + shift + space
+    i3-msg floating toggle
+
+super + a
+    i3-msg focus parent
+
+super + v
+    i3-msg split toggle
+
+super + f
+    i3-msg fullscreen toggle
+
 
 ### Media Buttons ##
 XF86Audio{Raise,Lower}Volume
