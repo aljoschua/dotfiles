@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+var=$(
+    echo Speaker:
+    amixer -D pulse get Master | grep '\['
+
+    echo Microphone:
+    amixer -D pulse get Capture | grep '\['
+
+    echo Brightness:
+    xbacklight -get
+
+    echo Sticky-Keys:
+    xkbset q | grep Sticky-Keys
+)
+
+if [ -t 1 ]; then
+    echo "$var"
+    exit 0
+fi
+dunstify -r 999 -t 3000 -- "$var"

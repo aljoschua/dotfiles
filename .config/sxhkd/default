@@ -66,16 +66,16 @@ mod5 + Return
 
 ### Media Buttons ##
 XF86Audio{Raise,Lower}Volume
-    amixer -D pulse set Master 5%{+,-}
+    amixer -D pulse set Master 5%{+,-}; media-status
 
 XF86Audio{_,Mic}Mute
-    amixer -D pulse set {Master,Capture} toggle
+    amixer -D pulse set {Master,Capture} toggle; media-status
 
 XF86MonBrightness{Down,Up}
-    xbacklight {-,+}10
+    xbacklight {-,+}10; media-status
 
 super + XF86MonBrightness{Down,Up}
-    xbacklight \={1,100}
+    xbacklight \={1,100}; media-status
 
 XF86Display
     xrandr --output HDMI-1 --{auto,off} --output eDP-1 --{off,auto}
@@ -85,7 +85,7 @@ super + XF86Display
 
 ### Misc ###
 alt + super + y
-    xkbset {_,-}sticky
+    xkbset {_,-}sticky; media-status
 
 super + question
     zenity --text-info --filename=.config/sxhkd/sxhkdrc --width=500 --height=1000
