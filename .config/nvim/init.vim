@@ -20,7 +20,7 @@ endif " has("autocmd")
 " My Stuff
 
 " File management
-set nobackup
+set nobackup undofile
 set path-=/usr/include path+=**
 
 " Tab Usage
@@ -38,3 +38,12 @@ set background=dark
 
 nnoremap <C-J> :cn<CR>
 nnoremap <C-K> :cp<CR>
+
+function! GitSess()
+    set autowrite
+    nnoremap ZZ :echoerr 'Use Ctrl-Z!'<CR>
+    set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+endfunction
+
+command! Gitsess :call GitSess()
+command! Rc :edit ~/.config/nvim/init.vim
