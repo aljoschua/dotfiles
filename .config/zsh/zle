@@ -12,7 +12,7 @@ zle -N prepend-sudo
 bindkey '\es' prepend-sudo
 
 function edit-command {
-    zle -U "$BUFFER"
+    zle push-input -w
     [[ -z "$BUFFER" ]] && BUFFER=$(fc -ln -1)
 
     if zle expand-cmd-path; then
@@ -35,7 +35,7 @@ zle -N launch-command
 bindkey '\et' launch-command
 
 function foreground {
-    zle -U "$BUFFER"
+    zle push-input -w
     BUFFER="fg"
     if [ "$NUMERIC" ]; then
         BUFFER+=" %$NUMERIC"
