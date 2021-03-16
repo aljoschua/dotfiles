@@ -9,7 +9,6 @@ function prepend-sudo {
     zle accept-line
 }
 zle -N prepend-sudo
-bindkey '\es' prepend-sudo
 
 function edit-command {
     zle push-input -w
@@ -21,18 +20,11 @@ function edit-command {
     fi
 }
 zle -N edit-command
-bindkey '\ee' edit-command
-
-function splitting {
-    echo $1
-    echo $2
-}
 
 function launch-command {
     gnome-terminal -- $BUFFER
 }
 zle -N launch-command
-bindkey '\et' launch-command
 
 function foreground {
     zle push-input -w
@@ -43,8 +35,13 @@ function foreground {
     zle accept-line
 }
 zle -N foreground
+
+bindkey -M viins '^S' prepend-sudo
+bindkey -M viins '^E' edit-command
+bindkey -M viins '^T' launch-command
 bindkey -M viins '^Z' foreground
 bindkey -M vicmd '^Z' foreground
+
 bindkey -M vicmd '^H' run-help
 bindkey -M viins '^P' up-history
 bindkey -M viins '^N' down-history
