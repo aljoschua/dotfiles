@@ -34,11 +34,17 @@ function launch-command {
 zle -N launch-command
 bindkey '\et' launch-command
 
-function continue-1 {
-    fg %1
+function foreground {
+    zle -U "$BUFFER"
+    BUFFER="fg"
+    if [ "$NUMERIC" ]; then
+        BUFFER+=" %$NUMERIC"
+    fi
+    zle accept-line
 }
-zle -N continue-1
-bindkey '^1' continue-1
+zle -N foreground
+bindkey -M viins '^Z' foreground
+bindkey -M vicmd '^Z' foreground
 bindkey -M vicmd '^H' run-help
 bindkey -M viins '^P' up-history
 bindkey -M viins '^N' down-history
