@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-bindkey -d
 bindkey -v
 function prepend-sudo {
     [[ -z $BUFFER ]] && BUFFER=$(fc -ln -1)
@@ -47,8 +46,8 @@ bindkey -v '^T' launch-command
 bindkey -a '^T' launch-command
 bindkey -v '^Z' foreground
 bindkey -a '^Z' foreground
-bindkey -v '^I' insert-last-word
-bindkey -a '^I' insert-last-word
+bindkey -v '^O' insert-last-word
+bindkey -a '^O' insert-last-word
 
 bindkey -a '^H' run-help
 bindkey -v '^H' run-help
