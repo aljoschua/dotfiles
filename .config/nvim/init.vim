@@ -35,6 +35,7 @@ highlight SpecialKey ctermfg=red
 
 set colorcolumn=81
 set background=dark
+set clipboard=unnamedplus
 
 nnoremap <C-J> :cn<CR>
 nnoremap <C-K> :cp<CR>
