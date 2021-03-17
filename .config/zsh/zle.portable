@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
+bindkey -d
 bindkey -v
 function prepend-sudo {
     [[ -z $BUFFER ]] && BUFFER=$(fc -ln -1)
@@ -23,7 +24,8 @@ function edit-command {
 zle -N edit-command
 
 function launch-command {
-    gnome-terminal -- $BUFFER
+    BUFFER="gnome-terminal -- $BUFFER >/dev/null 2>&1"
+    zle accept-line
 }
 zle -N launch-command
 
@@ -37,12 +39,18 @@ function foreground {
 }
 zle -N foreground
 
-bindkey -M viins '^S' prepend-sudo
-bindkey -M viins '^E' edit-command
-bindkey -M viins '^T' launch-command
-bindkey -M viins '^Z' foreground
-bindkey -M vicmd '^Z' foreground
+bindkey -v '^U' prepend-sudo
+bindkey -a '^U' prepend-sudo
+bindkey -v '^E' edit-command
+bindkey -s '^E' edit-command
+bindkey -v '^T' launch-command
+bindkey -a '^T' launch-command
+bindkey -v '^Z' foreground
+bindkey -a '^Z' foreground
+bindkey -v '^I' insert-last-word
+bindkey -a '^I' insert-last-word
 
-bindkey -M vicmd '^H' run-help
-bindkey -M viins '^P' up-history
-bindkey -M viins '^N' down-history
+bindkey -a '^H' run-help
+bindkey -v '^H' run-help
+bindkey -v '^P' up-history
+bindkey -v '^N' down-history
