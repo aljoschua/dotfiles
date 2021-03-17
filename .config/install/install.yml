@@ -47,6 +47,14 @@ graphical:
     sudo usermod -aG video $USER
     sudo usermod -aG plugdev $USER # are these needed? where to put them?
 remote-access: {pkg: [openssh-server]}
+bitwarden:
+  pkg: [zip]
+  cmd: |-
+    wget -O ~/.local/bin/bitwarden 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
+    wget -O bw.zip 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
+    unzip -d ~/.local/bin bw.zip
+    chmod +x ~/.local/bin/bw ~/.local/bin/bitwarden
+    rm bw.zip
 systemd-units:
   cmd: systemctl --user enable ~/.config/systemd/user/*
 libinput-gestures:
