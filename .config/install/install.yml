@@ -2,7 +2,7 @@
 # vim:ts=2:sw=2:sts=2:et:
 ---
 default:
-  dep: [secrets, root, remote-access, graphical, systemd-units]
+  dep: [secrets, root, remote-access, graphical, systemd-units, tub]
   pkg: [tmux, neovim, zsh, docker]
   snippets:
     git-pre: &git-pre |-
@@ -37,31 +37,13 @@ root:
     git --git-dir=\$HOME/.config/secrets --work-tree=/ co @ -- /root/.config/secrets
     git --git-dir=\$HOME/.config/secrets --work-tree=/ stash
     git --git-dir=\$HOME/.config/secrets --work-tree=/ co"
+remote-access: {pkg: [openssh-server]}
 graphical:
-  dep: [libinput-gestures, spotify, dunst]
+  dep: [libinput-gestures, spotify, dunst, mega, chrome, bitwarden, dropbox]
   pkg: [x11vnc, xclip, sxhkd, remmina, remmina-plugin-vnc, kdeconnect, i3, dmenu]
   cmd: |-
     sudo usermod -aG video $USER
     sudo usermod -aG plugdev $USER # are these needed? where to put them?
-dunst:
-  pkg: [dbus, libxinerama-dev, libxrandr-dev, libxss-dev, libglib2.0-dev, libpango1.0-dev, libgtk-3-dev, libnotify-dev]
-  cmd:
-    - url=hub:dunst-project/dunst
-    - *git-pre
-    - make WAYLAND=0
-    - sudo make WAYLAND=0 install
-    - *git-post
-remote-access: {pkg: [openssh-server]}
-bitwarden:
-  pkg: [zip]
-  cmd: |-
-    wget -O ~/.local/bin/bitwarden 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
-    wget -O bw.zip 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
-    unzip -d ~/.local/bin bw.zip
-    chmod +x ~/.local/bin/bw ~/.local/bin/bitwarden
-    rm bw.zip
-systemd-units:
-  cmd: systemctl --user enable ~/.config/systemd/user/*
 libinput-gestures:
   pkg: [xdotool, wmctrl, libinput-tools, zenity]
   cmd:
@@ -73,6 +55,18 @@ libinput-gestures:
       sudo usermod -aG input $user || true # is this only necessary on docker ubu?
       sudo ln -sf "${XDG_CONFIG_HOME:-$HOME/.config}/libinput-gestures/running.conf" "/etc/libinput-gestures.conf"
       libinput-gestures-setup autostart
+spotify:
+  dep: [spotify-pre, root]
+  pkg: [spotify-client]
+spotify-pre: {cmd: 'curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -'}
+dunst:
+  pkg: [dbus, libxinerama-dev, libxrandr-dev, libxss-dev, libglib2.0-dev, libpango1.0-dev, libgtk-3-dev, libnotify-dev]
+  cmd:
+    - url=hub:dunst-project/dunst
+    - *git-pre
+    - make WAYLAND=0
+    - sudo make WAYLAND=0 install
+    - *git-post
 mega:
   dep: [mega-pre, root]
   pkg: [megasync]
@@ -81,6 +75,25 @@ chrome:
   dep: [chrome-pre, root]
   pkg: [google-chrome-stable]
 chrome-pre: {cmd: 'wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -'}
+bitwarden:
+  pkg: [zip]
+  cmd: |-
+    wget -O ~/.local/bin/bitwarden 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
+    wget -O bw.zip 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
+    unzip -d ~/.local/bin bw.zip
+    chmod +x ~/.local/bin/bw ~/.local/bin/bitwarden
+    rm bw.zip
+dropbox:
+ dep: [tq]
+ cmd: |-
+   latest=$wget -O- linux.dropbox.com/packages/ubuntu 2>/dev/null |
+     tq 'a[href$="amd64.deb"]' -a href | tail -n1)
+   wget -O dropbox.deb linux.dropbox.com/packages/ubuntu/$latest
+   sudo apt-get install -qy ./dropbox.deb
+tq:
+  cmd: |-
+    sudo pip3 install https://github.com/plainas/tq/zipball/stable
+## End graphical deps
 tub: 
   dep: [tq]
   pkg: [kinit, kstart]
@@ -89,17 +102,5 @@ tub:
     latest=$(wget -O- $url | tq '.pricing-table-linux a' -a href)
     wget -O ~/.local/bin/tubCloud $url$latest
     chmod +x ~/.local/bin/tubCloud
-tq:
-  cmd: |-
-    sudo pip3 install https://github.com/plainas/tq/zipball/stable
-spotify:
-  dep: [spotify-pre, root]
-  pkg: [spotify-client]
-spotify-pre: {cmd: 'curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -'}
-dropbox:
- dep: [tq]
- cmd: |-
-   latest=$wget -O- linux.dropbox.com/packages/ubuntu 2>/dev/null |
-     tq 'a[href$="amd64.deb"]' -a href | tail -n1)
-   wget -O dropbox.deb linux.dropbox.com/packages/ubuntu/$latest
-   sudo apt-get install -qy ./dropbox.deb
+systemd-units:
+  cmd: systemctl --user enable ~/.config/systemd/user/*
