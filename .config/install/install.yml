@@ -78,7 +78,7 @@ chrome-pre: {cmd: 'wget -q -O - https://dl.google.com/linux/linux_signing_key.pu
 bitwarden:
   pkg: [zip]
   cmd: |-
-    wget -O ~/.local/bin/bitwarden 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
+    wget -O ~/.local/bin/bitwarden 'https://vault.bitwarden.com/download/?app=desktop&platform=linux'
     wget -O bw.zip 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
     unzip -d ~/.local/bin bw.zip
     chmod +x ~/.local/bin/bw ~/.local/bin/bitwarden
