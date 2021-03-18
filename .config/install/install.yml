@@ -38,11 +38,19 @@ root:
     git --git-dir=\$HOME/.config/secrets --work-tree=/ stash
     git --git-dir=\$HOME/.config/secrets --work-tree=/ co"
 graphical:
-  dep: [libinput-gestures, spotify]
-  pkg: [x11vnc, xclip, sxhkd, remmina, remmina-plugin-vnc, kdeconnect, i3, dmenu, dunst]
+  dep: [libinput-gestures, spotify, dunst]
+  pkg: [x11vnc, xclip, sxhkd, remmina, remmina-plugin-vnc, kdeconnect, i3, dmenu]
   cmd: |-
     sudo usermod -aG video $USER
     sudo usermod -aG plugdev $USER # are these needed? where to put them?
+dunst:
+  pkg: [dbus, libxinerama-dev, libxrandr-dev, libxss-dev, libglib2.0-dev, libpango1.0-dev, libgtk-3-dev, libnotify-dev]
+  cmd:
+    - url=hub:dunst-project/dunst
+    - *git-pre
+    - make WAYLAND=0
+    - sudo make WAYLAND=0 install
+    - *git-post
 remote-access: {pkg: [openssh-server]}
 bitwarden:
   pkg: [zip]
