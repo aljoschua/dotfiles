@@ -26,9 +26,8 @@ def execute_command(command):
     logging.info("Executing {")
     print(command)
     logging.info("}")
-    return_code = os.system(f"set -e\n{command}")
-    if return_code:
-        logging.error(f"Command failed with exit code {return_code}")
+    if os.system(f"set -e\n{command}"):
+        logging.error(f"Command failed")
         exit()
 
 def load_module(name):
@@ -49,5 +48,6 @@ def load_module(name):
     if 'cmd' in module:
         execute_command(module['cmd'])
     logging.info(f"Installed {name}")
+    args.skip.append(name)
 
 load_module(args.module)

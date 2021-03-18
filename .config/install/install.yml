@@ -1,15 +1,9 @@
 %YAML 1.2
 # vim:ts=2:sw=2:sts=2:et:
-# dropbox:
-#  cmd: |-
-#    latest=$wget -O- linux.dropbox.com/packages/ubuntu 2>/dev/null |
-#      tq 'a[href$="amd64.deb"]' -a href | tail -n1)
-#    wget -O dropbox.deb linux.dropbox.com/packages/ubuntu/$latest
-#    sudo apt-get install -qy 
 ---
 default:
   dep: [secrets, root, remote-access, graphical, systemd-units]
-  pkg: [tmux, neovim, zsh]
+  pkg: [tmux, neovim, zsh, docker]
   snippets:
     git-pre: &git-pre |-
       git clone --depth 1 "$url" tmp
@@ -21,11 +15,9 @@ default:
     sudo chsh -s /usr/bin/zsh
     sudo chsh -s /usr/bin/zsh $USER
     echo "TODO:"
-    echo "set (same) x11vnc password"
     echo "compare \$(apt-mark showmanual | sed -e 's/\/.*//g\)'" # could diff > file
     echo relogin
-    echo log in to chrome, lastpass, spotify, mega, dropbox...
-    echo sudo update-alternatives --config x-window-manager
+    #echo sudo update-alternatives --config x-window-manager # doesnt work
 secrets:
   cmd: |-
     git clone --bare https://aljoschua${GITHUB_PAT}@github.com/aljoschua/secrets .config/secrets
@@ -74,11 +66,11 @@ libinput-gestures:
       sudo ln -sf "${XDG_CONFIG_HOME:-$HOME/.config}/libinput-gestures/running.conf" "/etc/libinput-gestures.conf"
       libinput-gestures-setup autostart
 mega:
-  dep: [mega-pre] #root as well
+  dep: [mega-pre, root]
   pkg: [megasync]
 mega-pre: {cmd: 'curl -fsSL https://mega.nz/keys/MEGA_signing.key | sudo apt-key add -'}
 chrome:
-  dep: [chrome-pre]
+  dep: [chrome-pre, root]
   pkg: [google-chrome-stable]
 chrome-pre: {cmd: 'wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -'}
 tub: 
@@ -93,6 +85,13 @@ tq:
   cmd: |-
     sudo pip3 install https://github.com/plainas/tq/zipball/stable
 spotify:
-  dep: [spotify-pre] #root
+  dep: [spotify-pre, root]
   pkg: [spotify-client]
 spotify-pre: {cmd: 'curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -'}
+dropbox:
+ dep: [tq]
+ cmd: |-
+   latest=$wget -O- linux.dropbox.com/packages/ubuntu 2>/dev/null |
+     tq 'a[href$="amd64.deb"]' -a href | tail -n1)
+   wget -O dropbox.deb linux.dropbox.com/packages/ubuntu/$latest
+   sudo apt-get install -qy ./dropbox.deb

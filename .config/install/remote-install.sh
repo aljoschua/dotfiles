@@ -13,3 +13,5 @@ dot() {
 }
 dot checkout @ -- .config/dotfiles
 dot -c user.name=a -c user.email=a stash
+[ -t 0 ] && .config/install/install.py
+exit 0
