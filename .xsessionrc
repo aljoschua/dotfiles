@@ -11,6 +11,7 @@ dropbox start &
 megasync &
 dunst &
 tubCloud &
+bitwarden &
 systemd-inhibit --what=handle-power-key sleep infinity &
 
-systemctl --user start sxhkd autokinit.timer chrome-config-backup.timer
+systemctl --user start sxhkd autokinit.timer chrome-config-backup.timer aptmanual.timer
