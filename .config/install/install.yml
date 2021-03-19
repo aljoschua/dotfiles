@@ -104,7 +104,8 @@ bitwarden:
 dropbox:
  dep: [tq]
  cmd: |-
-   latest=$wget -O- linux.dropbox.com/packages/ubuntu 2>/dev/null |
+   latest=$(wget -O- linux.dropbox.com/packages/ubuntu 2>/dev/null |
      tq 'a[href$="amd64.deb"]' -a href | tail -n1)
    wget -O dropbox.deb linux.dropbox.com/packages/ubuntu/$latest
    sudo apt-get install -qy ./dropbox.deb
+   echo y | dropbox start -i
