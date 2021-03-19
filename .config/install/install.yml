@@ -6,8 +6,9 @@ default:
   pkg: [tmux, neovim, zsh, docker]
   snippets:
     git-pre: &git-pre |-
-      git clone --depth 1 "$url" tmp
+      git clone "$url" tmp
       cd tmp
+      git checkout $(git rev-list --tags --max-count=1)
     git-post: &git-post |-
       cd ..
       rm -rf tmp
@@ -17,7 +18,6 @@ default:
     echo "TODO:"
     echo "compare \$(apt-mark showmanual | sed -e 's/\/.*//g\)'" # could diff > file
     echo relogin
-    #echo sudo update-alternatives --config x-window-manager # doesnt work
 secrets:
   cmd: |-
     git clone --bare https://aljoschua${GITHUB_PAT}@github.com/aljoschua/secrets .config/secrets
