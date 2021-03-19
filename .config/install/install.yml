@@ -17,6 +17,7 @@ default:
     sudo chsh -s /usr/bin/zsh $USER
     echo "TODO:"
     echo "compare \$(apt-mark showmanual | sed -e 's/\/.*//g\)'" # could diff > file
+    echo "try installing 'risky' module"
     echo relogin
 secrets:
   cmd: |-
@@ -39,7 +40,7 @@ root:
     git --git-dir=\$HOME/.config/secrets --work-tree=/ co"
 remote-access: {pkg: [openssh-server]}
 graphical:
-  dep: [libinput-gestures, spotify, dunst, mega, chrome, bitwarden, dropbox]
+  dep: [libinput-gestures]
   pkg: [x11vnc, xclip, sxhkd, remmina, remmina-plugin-vnc, kdeconnect, i3, dmenu]
   cmd: |-
     sudo usermod -aG video $USER
@@ -55,6 +56,23 @@ libinput-gestures:
       sudo usermod -aG input $user || true # is this only necessary on docker ubu?
       sudo ln -sf "${XDG_CONFIG_HOME:-$HOME/.config}/libinput-gestures/running.conf" "/etc/libinput-gestures.conf"
       libinput-gestures-setup autostart
+## End graphical deps
+tub: 
+  dep: [tq]
+  pkg: [kinit, kstart]
+  cmd: |-
+    url=updates.tubcloud.tu-berlin.de/
+    latest=$(wget -O- $url | tq '.pricing-table-linux a' -a href)
+    wget -O ~/.local/bin/tubCloud $url$latest
+    chmod +x ~/.local/bin/tubCloud
+tq:
+  cmd: |-
+    sudo pip3 install https://github.com/plainas/tq/zipball/stable
+systemd-units:
+  cmd: systemctl --user enable ~/.config/systemd/user/*
+## End default deps
+risky:
+  dep: [spotify, dunst, mega, chrome, bitwarden, dropbox]
 spotify:
   dep: [spotify-pre, root]
   pkg: [spotify-client]
@@ -90,17 +108,3 @@ dropbox:
      tq 'a[href$="amd64.deb"]' -a href | tail -n1)
    wget -O dropbox.deb linux.dropbox.com/packages/ubuntu/$latest
    sudo apt-get install -qy ./dropbox.deb
-tq:
-  cmd: |-
-    sudo pip3 install https://github.com/plainas/tq/zipball/stable
-## End graphical deps
-tub: 
-  dep: [tq]
-  pkg: [kinit, kstart]
-  cmd: |-
-    url=updates.tubcloud.tu-berlin.de/
-    latest=$(wget -O- $url | tq '.pricing-table-linux a' -a href)
-    wget -O ~/.local/bin/tubCloud $url$latest
-    chmod +x ~/.local/bin/tubCloud
-systemd-units:
-  cmd: systemctl --user enable ~/.config/systemd/user/*
