@@ -3,8 +3,8 @@ Description=Simple X Hotkey Daemon
 Documentation=man:sxhkd(1)
 
 [Service]
-ExecStart=/usr/bin/sxhkd
-ExecReload=/bin/kill -SIGUSR1 $MAINPID
+ExecStart=/bin/sh -c "PATH=$HOME/.local/bin:$PATH sxhkd"
+ExecReload=/bin/bash -c "kill -SIGUSR1 $(ps -u $USER | awk '$4 ~ /^sxhkd$/ {print $1}')"
 
 [Install]
 WantedBy=default.target
