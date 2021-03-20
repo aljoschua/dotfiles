@@ -6,4 +6,4 @@ Type=simple
 ExecStart=/bin/sh -c "tar czf ~/Documents/chrome-config-dirs.tar.gz ~/.config/google-chrome.d"
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

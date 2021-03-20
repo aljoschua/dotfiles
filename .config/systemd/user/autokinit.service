@@ -1,11 +1,9 @@
 [Unit]
 Description=Automatic ticket retrieval from TUB kerberos server
-After=home.mount
-Requires=home.mount
 
 [Service]
 Type=simple
 ExecStart=/bin/bash -c "sleep 10; kinit -f aljoschafrey@TU-BERLIN.DE < ~/.local/share/secrets/tub-password"
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

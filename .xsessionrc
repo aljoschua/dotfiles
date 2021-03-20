@@ -2,9 +2,6 @@ setxkbmap -option caps:swapescape
 xinput set-prop 'SYNA3067:00 06CB:8265 Touchpad' 'libinput Tapping Enabled' 1
 setxkbmap -option terminate:ctrl_alt_bksp
 
-# Why is this neccessary?
-source .profile
-
 redshift-gtk &
 libinput-gestures &
 dropbox start &
@@ -14,4 +11,4 @@ tubCloud &
 bitwarden &
 systemd-inhibit --what=handle-power-key sleep infinity &
 
-systemctl --user start sxhkd autokinit.timer chrome-config-backup.timer aptmanual.timer
+systemctl --user start sxhkd.service
