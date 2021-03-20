@@ -4,6 +4,3 @@ Description=Save apt-mark showmanual
 [Service]
 Type=simple
 ExecStart=/bin/bash -c "apt-mark showmanual > .config/install/aptmanual.lst"
-
-[Install]
-WantedBy=default.target
