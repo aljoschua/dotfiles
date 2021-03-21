@@ -3,11 +3,12 @@
 ---
 default:
   dep: [secrets, root, remote-access, graphical, systemd-units, tub]
-  pkg: [tmux, neovim, zsh, docker]
+  pkg: [tmux, neovim, zsh, docker, git]
   snippets:
     git-pre: &git-pre |-
       git clone "$url" tmp
       cd tmp
+      # assuming latest tag is latest release
       git checkout $(git rev-list --tags --max-count=1)
     git-post: &git-post |-
       cd ..
@@ -15,6 +16,7 @@ default:
   cmd: |-
     sudo chsh -s /usr/bin/zsh
     sudo chsh -s /usr/bin/zsh $USER
+    [ -e f ] && rm f
     echo "TODO:"
     echo "compare \$(apt-mark showmanual | sed -e 's/\/.*//g\)'" # could diff > file
     echo relogin
@@ -26,6 +28,7 @@ secrets:
     dot stash
     dot co
 root:
+  pkg: [curl, wget]
   cmd: |-
     sudo su -c "set -e
     cd
@@ -45,7 +48,7 @@ root:
 remote-access: {pkg: [openssh-server]}
 graphical:
   dep: [libinput-gestures, risky]
-  pkg: [x11vnc, xclip, sxhkd, remmina, remmina-plugin-vnc, kdeconnect, i3, dmenu]
+  pkg: [x11vnc, xclip, sxhkd, remmina, remmina-plugin-vnc, kdeconnect, i3, dmenu, wmctrl, zenity, xdotool]
   cmd: |-
     sudo usermod -aG video $USER
     sudo usermod -aG plugdev $USER # are these needed? where to put them?
@@ -63,7 +66,7 @@ libinput-gestures:
 ## End graphical deps
 tub: 
   dep: [tq]
-  pkg: [kinit, kstart]
+  pkg: [kinit, kstart, wget]
   cmd: |-
     url=updates.tubcloud.tu-berlin.de/
     latest=$(wget -O- $url | tq '.pricing-table-linux a' -a href)
@@ -93,14 +96,14 @@ mega:
   pkg: [megasync]
 mega-pre:
   cmd: |-
-    # try to update repository url
+    # try to update repository url dynamically
     sudo sed -i 's/18\.04/20.04/' /etc/apt/sources.list.d/megasync.list
     sudo apt-get update
 chrome:
   dep: [root]
   pkg: [google-chrome-stable]
 bitwarden:
-  pkg: [zip]
+  pkg: [zip, wget]
   cmd: |-
     wget -O ~/.local/bin/bitwarden 'https://vault.bitwarden.com/download/?app=desktop&platform=linux'
     wget -O bw.zip 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
@@ -109,9 +112,11 @@ bitwarden:
     rm bw.zip
 dropbox:
  dep: [tq]
+ pkg: [wget]
  cmd: |-
    latest=$(wget -O- linux.dropbox.com/packages/ubuntu 2>/dev/null |
      tq 'a[href$="amd64.deb"]' -a href | tail -n1)
    wget -O dropbox.deb linux.dropbox.com/packages/ubuntu/$latest
    sudo apt-get install -qy ./dropbox.deb
    echo y | dropbox start -i &
+   rm dropbox.dep
