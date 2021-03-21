@@ -6,6 +6,7 @@ alias la='ls --color=auto -A'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
 alias f="find"
 alias g=git
 alias tb="nc termbin.com 9999"
