@@ -28,6 +28,10 @@ def execute_command(command):
     logging.info("}")
     if os.system(f"set -e\n{command}"):
         logging.error(f"Command failed")
+        hint = f"Continue with: {__file__} {args.module}"
+        for s in args.skip:
+            hint += f" -s {s}"
+        logging.info(hint)
         exit()
 
 def load_module(name):
@@ -51,3 +55,7 @@ def load_module(name):
     args.skip.append(name)
 
 load_module(args.module)
+hint = f"Install other modules with: {__file__} module"
+for s in args.skip:
+    hint += f" -s {s}"
+logging.info(hint)
