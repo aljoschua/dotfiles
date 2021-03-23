@@ -4,7 +4,7 @@ Documentation=man:sxhkd(1)
 
 [Service]
 ExecStart=/bin/sh -c "PATH=$HOME/.local/bin:$PATH sxhkd"
-ExecReload=/bin/bash -c "kill -SIGUSR1 $(ps -u $USER | awk '$4 ~ /^sxhkd$/ {print $1}')"
+ExecReload=/bin/sh -c "pkill -USR1 -u $USER -o sxhkd"
 
 [Install]
 WantedBy=default.target
