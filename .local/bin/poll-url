@@ -13,6 +13,7 @@ function query() {
         --compressed | tq "$filter" -t
 }
 query > "$initial"
+cat "$initial"
 
 while true; do
     if ping -qnc1 google.com >/dev/null 2>/dev/null; then
