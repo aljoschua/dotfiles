@@ -19,9 +19,13 @@ unalias dot
 rm -rf ~/.config/dotfiles
 ```
 
-## Install programs etc.
-To install programs I use:
-(You can't do this step because you don't have access to my private repository)
+## Install script
+To install programs as well, as all my configuration, I use:
 ```bash
 wget -Of git.io/JqcSG;GITHUB_PAT=:1ae..242 sh f
 ```
+You can't do this step because you don't have access to my private repository.
+If you look at the `.config/install/install.yml` you might find other "modules"
+that can be installed as is (e.g. `systemd-units`).
+
+Documentation of the script might follow 😅.
