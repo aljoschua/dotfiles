@@ -23,5 +23,5 @@ rm -rf ~/.config/dotfiles
 To install programs I use:
 (You can't do this step because you don't have access to my private repository)
 ```bash
-GITHUB_PAT=:1ae..242 ~/.config/install/install.py
+wget -Of git.io/JqcSG;GITHUB_PAT=:1ae..242 sh f
 ```
