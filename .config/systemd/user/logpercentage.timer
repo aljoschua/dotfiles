@@ -1,0 +1,10 @@
+[Unit]
+Description=Log Battery Percentage for debugging
+
+[Timer]
+Persistent=true
+OnCalendar=*:0/5
+
+[Install]
+WantedBy=timers.target
+
