@@ -42,15 +42,15 @@ root: # Installs root dotfiles, secrets and various other things
   cmd: |-
     sudo su -c "set -e; cd
     gd=.config/dotfiles
-    git clone --bare -b root ~$USER/$gd $gd
-    git --git-dir=\$HOME/$gd --work-tree=/ checkout @ -- /root/$gd
-    git --git-dir=\$HOME/$gd --work-tree=/ -c user.name=a -c user.email=a stash
+    git clone --bare -b root ~$USER/\$gd \$gd
+    git --git-dir=\$HOME/\$gd --work-tree=/ checkout @ -- /root/\$gd
+    git --git-dir=\$HOME/\$gd --work-tree=/ -c user.name=a -c user.email=a stash
     ln -s ~$USER ~/.portal
     gd=.config/secrets
-    git clone --bare -b root ~$USER/$gd $gd
-    git --git-dir=\$HOME/$gd --work-tree=/ co @ -- /root/$gd
-    git --git-dir=\$HOME/$gd --work-tree=/ stash
-    git --git-dir=\$HOME/$gd --work-tree=/ co
+    git clone --bare -b root ~$USER/\$gd \$gd
+    git --git-dir=\$HOME/\$gd --work-tree=/ co @ -- /root/\$gd
+    git --git-dir=\$HOME/\$gd --work-tree=/ stash
+    git --git-dir=\$HOME/\$gd --work-tree=/ co
     wget -qO- download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
     wget -qO- mega.nz/keys/MEGA_signing.key | sudo apt-key add -
     wget -qO- dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
