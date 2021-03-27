@@ -15,7 +15,7 @@ default:
     apt-get-install: &agi |-
       sudo apt-get install -qy $pkg
   cmd:
-    - pkg='tmux neovim zsh docker git'
+    - pkg='tmux neovim zsh docker git ncdu'
     - *agi
     - |-
       sudo chsh -s /usr/bin/zsh
