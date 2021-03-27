@@ -2,7 +2,7 @@
 # vim:ts=2:sw=2:sts=2:et:
 ---
 default:
-  dep: [secrets, root, remote-access, graphical, systemd-units, tub]
+  dep: [secrets, root, remote-access, graphical, systemd-units, tub, terminal]
   snippets:
     git-pre: &git-pre |-
       git clone "$url" tmp
@@ -14,21 +14,22 @@ default:
       rm -rf tmp
     apt-get-install: &agi |-
       sudo apt-get install -qy $pkg
-  cmd:
-    - pkg='tmux neovim zsh docker git ncdu'
-    - *agi
-    - |-
-      sudo chsh -s /usr/bin/zsh
-      sudo chsh -s /usr/bin/zsh $USER
-      [ -e f ] && rm f
-      diff <(apt-mark showmanual) .config/install/aptmanual.lst > apt.diff
-      echo "TODO:"
-      echo "View ~/apt.diff to find programs which weren't installed"
-      echo relogin
+  cmd: |-
+    [ -e f ] && rm f
+    diff <(apt-mark showmanual) .config/install/aptmanual.lst > apt.diff
+    echo "TODO:"
+    echo "View ~/apt.diff to find programs which weren't installed"
+    echo relogin
 base: # Basic tools used for installing
   cmd:
     - pkg='wget curl zip'
     - *agi
+terminal: # Terminal applications
+  cmd:
+    - pkg='tmux neovim zsh docker git ncdu'
+    - *agi
+    - sudo chsh -s /usr/bin/zsh
+    - sudo chsh -s /usr/bin/zsh $USER
 secrets:
   cmd: |-
     git clone --bare https://aljoschua${GITHUB_PAT}@github.com/aljoschua/secrets .config/secrets
