@@ -3,7 +3,6 @@
 ---
 default:
   dep: [secrets, root, remote-access, graphical, systemd-units, tub]
-  pkg: [tmux, neovim, zsh, docker, git]
   snippets:
     git-pre: &git-pre |-
       git clone "$url" tmp
@@ -13,13 +12,18 @@ default:
     git-post: &git-post |-
       cd ..
       rm -rf tmp
-  cmd: |-
-    sudo chsh -s /usr/bin/zsh
-    sudo chsh -s /usr/bin/zsh $USER
-    [ -e f ] && rm f
-    echo "TODO:"
-    echo "compare \$(apt-mark showmanual | sed -e 's/\/.*//g\)'" # could diff > file
-    echo relogin
+    apt-get-install: &agi |-
+      sudo apt-get install -qy $pkg
+  cmd:
+    - pkg='tmux neovim zsh docker git'
+    - *agi
+    - |-
+      sudo chsh -s /usr/bin/zsh
+      sudo chsh -s /usr/bin/zsh $USER
+      [ -e f ] && rm f
+      echo "TODO:"
+      echo "compare \$(apt-mark showmanual | sed -e 's/\/.*//g\)'" # could diff > file
+      echo relogin
 secrets:
   cmd: |-
     git clone --bare https://aljoschua${GITHUB_PAT}@github.com/aljoschua/secrets .config/secrets
@@ -28,34 +32,39 @@ secrets:
     dot stash
     dot co
 root:
-  pkg: [curl, wget]
-  cmd: |-
-    sudo su -c "set -e
-    cd
-    git clone --bare -b root ~$USER/.config/dotfiles .config/dotfiles
-    git --git-dir=\$HOME/.config/dotfiles --work-tree=/ checkout @ -- /root/.config/dotfiles
-    git --git-dir=\$HOME/.config/dotfiles --work-tree=/ -c user.name=a -c user.email=a stash
-    ln -s ~$USER ~/.portal
-    git clone --bare -b root ~$USER/.config/secrets .config/secrets
-    git --git-dir=\$HOME/.config/secrets --work-tree=/ co @ -- /root/.config/secrets
-    git --git-dir=\$HOME/.config/secrets --work-tree=/ stash
-    git --git-dir=\$HOME/.config/secrets --work-tree=/ co
-    curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
-    curl -fsSL https://mega.nz/keys/MEGA_signing.key | sudo apt-key add -
-    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    apt-get update
-    systemctl disable cups || true
-    "
+  cmd:
+    - pkg='curl wget'
+    - *agi
+    - |-
+      sudo su -c "set -e
+      cd
+      git clone --bare -b root ~$USER/.config/dotfiles .config/dotfiles
+      git --git-dir=\$HOME/.config/dotfiles --work-tree=/ checkout @ -- /root/.config/dotfiles
+      git --git-dir=\$HOME/.config/dotfiles --work-tree=/ -c user.name=a -c user.email=a stash
+      ln -s ~$USER ~/.portal
+      git clone --bare -b root ~$USER/.config/secrets .config/secrets
+      git --git-dir=\$HOME/.config/secrets --work-tree=/ co @ -- /root/.config/secrets
+      git --git-dir=\$HOME/.config/secrets --work-tree=/ stash
+      git --git-dir=\$HOME/.config/secrets --work-tree=/ co
+      curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
+      curl -fsSL https://mega.nz/keys/MEGA_signing.key | sudo apt-key add -
+      wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+      apt-get update
+      systemctl disable cups || true
+      "
 remote-access: {pkg: [openssh-server]}
 graphical:
   dep: [libinput-gestures, risky]
-  pkg: [x11vnc, xclip, sxhkd, remmina, remmina-plugin-vnc, kdeconnect, i3, dmenu, wmctrl, zenity, xdotool]
-  cmd: |-
-    sudo usermod -aG video $USER
-    sudo usermod -aG plugdev $USER # are these needed? where to put them?
-libinput-gestures:
-  pkg: [xdotool, wmctrl, libinput-tools, zenity]
   cmd:
+    - pkg='x11vnc xclip sxhkd remmina remmina-plugin-vnc kdeconnect i3 dmenu wmctrl zenity xdotool'
+    - *agi
+    - |-
+      sudo usermod -aG video $USER
+      sudo usermod -aG plugdev $USER # are these needed? where to put them?
+libinput-gestures:
+  cmd:
+    - pkg='xdotool wmctrl libinput-tools zenity'
+    - *agi
     - url=hub:bulletmark/libinput-gestures
     - *git-pre
     - sudo make install
@@ -67,12 +76,14 @@ libinput-gestures:
 ## End graphical deps
 tub: 
   dep: [tq]
-  pkg: [kinit, kstart, wget]
-  cmd: |-
-    url=updates.tubcloud.tu-berlin.de/
-    latest=$(wget -O- $url | tq '.pricing-table-linux a' -a href)
-    wget -O ~/.local/bin/tubCloud $url$latest
-    chmod +x ~/.local/bin/tubCloud
+  cmd:
+    - pkg='kinit kstart wget'
+    - *agi
+    - |-
+      url=updates.tubcloud.tu-berlin.de/
+      latest=$(wget -O- $url | tq '.pricing-table-linux a' -a href)
+      wget -O ~/.local/bin/tubCloud $url$latest
+      chmod +x ~/.local/bin/tubCloud
 tq:
   cmd: |-
     sudo pip3 install https://github.com/plainas/tq/zipball/stable
@@ -83,10 +94,11 @@ risky:
   dep: [spotify, dunst, mega, chrome, bitwarden, dropbox]
 spotify:
   dep: [root]
-  pkg: [spotify-client]
+  cmd: [pkg='spotify-client', *agi]
 dunst:
-  pkg: [dbus, libxinerama-dev, libxrandr-dev, libxss-dev, libglib2.0-dev, libpango1.0-dev, libgtk-3-dev, libnotify-dev]
   cmd:
+    - pkg='dbus libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk-3-dev libnotify-dev'
+    - *agi
     - url=hub:dunst-project/dunst
     - *git-pre
     - make WAYLAND=0
