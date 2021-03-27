@@ -32,6 +32,7 @@
 	f = fetch --all --tags --prune
 	fm = !git f && git merge
 	fr = !git f && git rebase
+	frp = !git fr && git push
 	lf = log --format=fuller --date=iso8601 --show-signature --parents --left-right
 	lg = !git lo --graph
 	lo = log --oneline
