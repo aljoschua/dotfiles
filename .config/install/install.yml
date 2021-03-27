@@ -35,22 +35,23 @@ secrets:
     dot co @ -- .config/secrets
     dot stash
     dot co
-root:
+root: # Installs root dotfiles, secrets and various other things
   dep: [base]
   cmd: |-
-    sudo su -c "set -e
-    cd
-    git clone --bare -b root ~$USER/.config/dotfiles .config/dotfiles
-    git --git-dir=\$HOME/.config/dotfiles --work-tree=/ checkout @ -- /root/.config/dotfiles
-    git --git-dir=\$HOME/.config/dotfiles --work-tree=/ -c user.name=a -c user.email=a stash
+    sudo su -c "set -e; cd
+    gd=.config/dotfiles
+    git clone --bare -b root ~$USER/$gd $gd
+    git --git-dir=\$HOME/$gd --work-tree=/ checkout @ -- /root/$gd
+    git --git-dir=\$HOME/$gd --work-tree=/ -c user.name=a -c user.email=a stash
     ln -s ~$USER ~/.portal
-    git clone --bare -b root ~$USER/.config/secrets .config/secrets
-    git --git-dir=\$HOME/.config/secrets --work-tree=/ co @ -- /root/.config/secrets
-    git --git-dir=\$HOME/.config/secrets --work-tree=/ stash
-    git --git-dir=\$HOME/.config/secrets --work-tree=/ co
-    curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
-    curl -fsSL https://mega.nz/keys/MEGA_signing.key | sudo apt-key add -
-    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    gd=.config/secrets
+    git clone --bare -b root ~$USER/$gd $gd
+    git --git-dir=\$HOME/$gd --work-tree=/ co @ -- /root/$gd
+    git --git-dir=\$HOME/$gd --work-tree=/ stash
+    git --git-dir=\$HOME/$gd --work-tree=/ co
+    wget -qO- download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
+    wget -qO- mega.nz/keys/MEGA_signing.key | sudo apt-key add -
+    wget -qO- dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     apt-get update
     systemctl disable cups || true
     "
