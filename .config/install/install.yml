@@ -57,9 +57,9 @@ root: # Installs root dotfiles, secrets and various other things
     apt-get update
     systemctl disable cups || true
     "
-remote-access: {pkg: [openssh-server]}
+remote-access: {cmd: [pkg=openssh-server, *agi]}
 graphical:
-  dep: [libinput-gestures, risky]
+  dep: [libinput-gestures, spotify, dunst, mega, chrome, bitwarden, dropbox]
   cmd:
     - pkg='x11vnc xclip sxhkd remmina remmina-plugin-vnc kdeconnect i3 dmenu wmctrl zenity xdotool'
     - *agi
@@ -78,25 +78,6 @@ libinput-gestures:
       sudo usermod -aG input $user || true # is this only necessary on docker ubu?
       sudo ln -sf "${XDG_CONFIG_HOME:-$HOME/.config}/libinput-gestures/running.conf" "/etc/libinput-gestures.conf"
       libinput-gestures-setup autostart
-## End graphical deps
-tub: 
-  dep: [tq, base]
-  cmd:
-    - pkg='kinit kstart'
-    - *agi
-    - |-
-      url=updates.tubcloud.tu-berlin.de/
-      latest=$(wget -O- $url | tq '.pricing-table-linux a' -a href)
-      wget -O ~/.local/bin/tubCloud $url$latest
-      chmod +x ~/.local/bin/tubCloud
-tq:
-  cmd: |-
-    sudo pip3 install https://github.com/plainas/tq/zipball/stable
-systemd-units:
-  cmd: systemctl --user enable ~/.config/systemd/user/*
-## End default deps
-risky:
-  dep: [spotify, dunst, mega, chrome, bitwarden, dropbox]
 spotify:
   dep: [root]
   cmd: [pkg='spotify-client', *agi]
@@ -137,3 +118,20 @@ dropbox:
    sudo apt-get install -qy ./dropbox.deb
    echo y | dropbox start -i &
    rm dropbox.deb
+## End graphical deps
+tub: 
+  dep: [tq, base]
+  cmd:
+    - pkg='kinit kstart'
+    - *agi
+    - |-
+      url=updates.tubcloud.tu-berlin.de/
+      latest=$(wget -O- $url | tq '.pricing-table-linux a' -a href)
+      wget -O ~/.local/bin/tubCloud $url$latest
+      chmod +x ~/.local/bin/tubCloud
+tq:
+  cmd: |-
+    sudo pip3 install https://github.com/plainas/tq/zipball/stable
+systemd-units:
+  cmd: systemctl --user enable ~/.config/systemd/user/*
+## End default deps
