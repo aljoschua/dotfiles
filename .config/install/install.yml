@@ -132,4 +132,4 @@ dropbox:
    wget -O dropbox.deb linux.dropbox.com/packages/ubuntu/$latest
    sudo apt-get install -qy ./dropbox.deb
    echo y | dropbox start -i &
-   rm dropbox.dep
+   rm dropbox.deb
