@@ -24,6 +24,10 @@ default:
       echo "TODO:"
       echo "compare \$(apt-mark showmanual | sed -e 's/\/.*//g\)'" # could diff > file
       echo relogin
+base: # Basic tools used for installing
+  cmd:
+    - pkg='wget curl zip'
+    - *agi
 secrets:
   cmd: |-
     git clone --bare https://aljoschua${GITHUB_PAT}@github.com/aljoschua/secrets .config/secrets
@@ -32,26 +36,24 @@ secrets:
     dot stash
     dot co
 root:
-  cmd:
-    - pkg='curl wget'
-    - *agi
-    - |-
-      sudo su -c "set -e
-      cd
-      git clone --bare -b root ~$USER/.config/dotfiles .config/dotfiles
-      git --git-dir=\$HOME/.config/dotfiles --work-tree=/ checkout @ -- /root/.config/dotfiles
-      git --git-dir=\$HOME/.config/dotfiles --work-tree=/ -c user.name=a -c user.email=a stash
-      ln -s ~$USER ~/.portal
-      git clone --bare -b root ~$USER/.config/secrets .config/secrets
-      git --git-dir=\$HOME/.config/secrets --work-tree=/ co @ -- /root/.config/secrets
-      git --git-dir=\$HOME/.config/secrets --work-tree=/ stash
-      git --git-dir=\$HOME/.config/secrets --work-tree=/ co
-      curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
-      curl -fsSL https://mega.nz/keys/MEGA_signing.key | sudo apt-key add -
-      wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-      apt-get update
-      systemctl disable cups || true
-      "
+  dep: [base]
+  cmd: |-
+    sudo su -c "set -e
+    cd
+    git clone --bare -b root ~$USER/.config/dotfiles .config/dotfiles
+    git --git-dir=\$HOME/.config/dotfiles --work-tree=/ checkout @ -- /root/.config/dotfiles
+    git --git-dir=\$HOME/.config/dotfiles --work-tree=/ -c user.name=a -c user.email=a stash
+    ln -s ~$USER ~/.portal
+    git clone --bare -b root ~$USER/.config/secrets .config/secrets
+    git --git-dir=\$HOME/.config/secrets --work-tree=/ co @ -- /root/.config/secrets
+    git --git-dir=\$HOME/.config/secrets --work-tree=/ stash
+    git --git-dir=\$HOME/.config/secrets --work-tree=/ co
+    curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
+    curl -fsSL https://mega.nz/keys/MEGA_signing.key | sudo apt-key add -
+    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    apt-get update
+    systemctl disable cups || true
+    "
 remote-access: {pkg: [openssh-server]}
 graphical:
   dep: [libinput-gestures, risky]
@@ -75,9 +77,9 @@ libinput-gestures:
       libinput-gestures-setup autostart
 ## End graphical deps
 tub: 
-  dep: [tq]
+  dep: [tq, base]
   cmd:
-    - pkg='kinit kstart wget'
+    - pkg='kinit kstart'
     - *agi
     - |-
       url=updates.tubcloud.tu-berlin.de/
@@ -116,7 +118,7 @@ chrome:
   dep: [root]
   pkg: [google-chrome-stable]
 bitwarden:
-  pkg: [zip, wget]
+  dep: [base]
   cmd: |-
     wget -O ~/.local/bin/bitwarden 'https://vault.bitwarden.com/download/?app=desktop&platform=linux'
     wget -O bw.zip 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
@@ -124,8 +126,7 @@ bitwarden:
     chmod +x ~/.local/bin/bw ~/.local/bin/bitwarden
     rm bw.zip
 dropbox:
- dep: [tq]
- pkg: [wget]
+ dep: [tq, base]
  cmd: |-
    latest=$(wget -O- linux.dropbox.com/packages/ubuntu 2>/dev/null |
      tq 'a[href$="amd64.deb"]' -a href | tail -n1)
