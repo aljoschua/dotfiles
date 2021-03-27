@@ -49,7 +49,7 @@ bindkey -a '^Z' foreground
 bindkey -v '^O' insert-last-word
 bindkey -a '^O' insert-last-word
 
-bindkey -a '^H' run-help
-bindkey -v '^H' run-help
+bindkey -a '^K' run-help
+bindkey -v '^K' run-help
 bindkey -v '^P' up-history
 bindkey -v '^N' down-history
