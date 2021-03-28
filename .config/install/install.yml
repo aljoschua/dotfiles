@@ -16,7 +16,9 @@ default:
       sudo apt-get install -qy $pkg
   cmd: |-
     [ -e f ] && rm f
-    diff <(apt-mark showmanual) .config/install/aptmanual.lst > apt.diff
+    apt-mark showmanual > current.lst
+    diff current.lst .config/install/aptmanual.lst > apt.diff || true
+    rm current.lst
     echo "TODO:"
     echo "View ~/apt.diff to find programs which weren't installed"
     echo relogin
