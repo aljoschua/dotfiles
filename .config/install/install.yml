@@ -95,10 +95,12 @@ dunst:
 mega:
   dep: [root]
   cmd:
-    # try to update repository url dynamically
-    - sudo sed -i 's/18\.04/20.04/' /etc/apt/sources.list.d/megasync.list
-    - sudo apt-get update
-    - pkg=megasync
+    - |-
+      upstream=$(awk -F= '$1 == "DISTRIB_RELEASE" {print $2}' /etc/upstream-release/lsb-release)
+      wget -qO/dev/null mega.nz/linux/MEGAsync/xUbuntu_$upstream
+      sudo sed -Ei "s/[0-9]{2}\.[0-9]{2}/$upstream/" /etc/apt/sources.list.d/megasync.list
+      sudo apt-get update
+      pkg=megasync
     - *agi
 chrome:
   dep: [root]
