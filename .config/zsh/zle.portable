@@ -14,10 +14,10 @@ zle -N prepend-sudo
 function edit-command {
     [[ -z "$BUFFER" ]] && BUFFER=$(fc -ln -1)
 
-    if zle expand-cmd-path-correctly; then
-        BUFFER="${EDITOR:-vim} ${${(A)${(z)BUFFER}}[1]}"
-        zle accept-line
-    fi
+    zle expand-cmd-path-correctly || return 1
+
+    BUFFER="${EDITOR:-vim} ${${(A)${(z)BUFFER}}[1]}"
+    zle accept-line
 }
 zle -N edit-command
 
