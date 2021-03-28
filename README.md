@@ -48,3 +48,5 @@ The commands are defined in the `.config/install/install.yml` file and ran by th
 A module is essentially a list of commands (cmd) and a list of dependencies (dep), which are other modules to be installed first.
 Before calling `os.system(cmd)` in the python script, the command list is concatenated by newlines.
 The rest of the magic you can find in the yaml file is actually just neat yaml syntax.
+
+Note that each modules commands are executed in their own shell and are aborted, if one of them exits with a non-zero exit code (due to the `set -e` in the python script).
