@@ -30,7 +30,7 @@ function expand-cmd-path-correctly {
         eval expanded_first_shell_word=$shell_words[1]
         full_path=$commands[$expanded_first_shell_word]
         [ $#full_path = 0 ] && return 1
-        BUFFER=${BUFFER/$shell_words[1]/\"$full_path\"}
+        BUFFER=${BUFFER/$shell_words[1]/\'$full_path\'}
     fi
 }
 zle -N expand-cmd-path-correctly
