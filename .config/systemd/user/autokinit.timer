@@ -3,7 +3,7 @@ Description=Automatic ticket retrieval from TUB kerberos server
 
 [Timer]
 Persistent=true
-OnBootSec=5min
+OnStartupSec=5
 #OnUnitActiveSec=1day
 OnCalendar=0/7:0
 
