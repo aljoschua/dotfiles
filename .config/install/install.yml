@@ -1,9 +1,9 @@
 %YAML 1.2
 # vim:ts=2:sw=2:sts=2:et:
 ---
-default:
+default: # Default module, will be used if no module is supplied on command line
   dep: [secrets, root, remote-access, graphical, systemd-units, tub, terminal]
-  snippets:
+  snippets: # Repeating shell commands
     git-pre: &git-pre |-
       git clone "$url" tmp
       cd tmp
@@ -21,7 +21,7 @@ default:
     rm current.lst
     echo "TODO:"
     echo "View ~/apt.diff to find programs which weren't installed"
-    echo relogin
+    echo reboot
 base: # Basic tools used for installing
   cmd:
     - pkg='wget curl zip'
@@ -66,8 +66,8 @@ graphical:
     - pkg='x11vnc xclip sxhkd remmina remmina-plugin-vnc kdeconnect i3 dmenu wmctrl zenity xdotool'
     - *agi
     - |-
-      sudo usermod -aG video $USER
-      sudo usermod -aG plugdev $USER # are these needed? where to put them?
+      sudo usermod -aG video $USER # Allow usage of video devices
+      sudo usermod -aG plugdev $USER # Allow mounting
 libinput-gestures:
   cmd:
     - pkg='xdotool wmctrl libinput-tools zenity'
