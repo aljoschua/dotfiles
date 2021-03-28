@@ -9,7 +9,7 @@ alias dot="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
 dot checkout @ -- .config/dotfiles
 dot -c user.name=a -c user.email=a stash
 ```
-Alternatively, you can issue `wget -O- git.io/JqcSG|sh` (links to raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/remote-install.sh)
+Alternatively, you can issue `wget -O- git.io/JqcSG|sh` (links to https://raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/remote-install.sh)
 
 ## Undo Setup
 Assuming you haven't added more stash entries:
@@ -20,7 +20,7 @@ rm -rf ~/.config/dotfiles
 ```
 
 ## Install script
-To install programs as well, as all my configuration, I use:
+To install programs as well as all my configuration, I use:
 ```bash
 wget -Of git.io/JqcSG;GITHUB_PAT=:1ae..242 sh f
 ```
