@@ -93,16 +93,18 @@ dunst:
     - sudo make WAYLAND=0 install
     - *git-post
 mega:
-  dep: [mega-pre, root]
-  pkg: [megasync]
-mega-pre:
-  cmd: |-
+  dep: [root]
+  cmd:
     # try to update repository url dynamically
-    sudo sed -i 's/18\.04/20.04/' /etc/apt/sources.list.d/megasync.list
-    sudo apt-get update
+    - sudo sed -i 's/18\.04/20.04/' /etc/apt/sources.list.d/megasync.list
+    - sudo apt-get update
+    - pkg=megasync
+    - *agi
 chrome:
   dep: [root]
-  pkg: [google-chrome-stable]
+  cmd:
+    - pkg=google-chrome-stable
+    - *agi
 bitwarden:
   dep: [base]
   cmd: |-
