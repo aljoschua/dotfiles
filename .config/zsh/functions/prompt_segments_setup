@@ -1,6 +1,13 @@
-#!/usr/bin/env zsh
+prompt_segments_help () {
+    echo huy
+}
 
-prompt_segment() {
+prompt_segments_setup () {
+    PS1='%{%f%b%k%}$(prompt_segments_make)'
+    prompt_opts=(subst cr percent bang)
+}
+
+prompt_segments_segment() {
   local seperator=' '
   if [ "$1" = -S ]; then
     seperator=''
@@ -12,7 +19,7 @@ prompt_segment() {
   echo -n "%K{${1:-default}}%F{${2:-default}}%B$3%k%f%b$seperator"
 }
 
-prompt_git() {
+prompt_segments_git() {
   command git diff --quiet 2>/dev/null # Not very performant...
   case $? in
     0) color=green;;
@@ -26,18 +33,18 @@ prompt_git() {
   case $branch_name in
     HEAD)
       commit_hash=$(command git rev-parse --short HEAD)
-      prompt_segment  '' $color d:$commit_hash
+      prompt_segments_segment '' $color d:$commit_hash
       ;;
     ^$)
-      prompt_segment  '' $color i:0000000
+      prompt_segments_segment  '' $color i:0000000
       ;;
     *)
-      prompt_segment  '' $color b:$branch_name
+      prompt_segments_segment  '' $color b:$branch_name
       ;;
   esac
 }
 
-prompt_jobs() {
+prompt_segments_jobs() {
   jobs -dl |
     sed -E '
   /^\[/ s/^\[([0-9]+)\] +[+-]? +([0-9]+) +(\w+) +(\(tty output\)|\(signal\))? +(.+)$/\1 \2 \3\n\5/;
@@ -52,45 +59,33 @@ prompt_jobs() {
         running) pidcolor=green;;
         *) pidcolor=magenta;;
       esac
-      prompt_segment -S '' $pidcolor $pid
-      prompt_segment -S '' '' "|"
-      prompt_segment -S '' '' "$pwd:" $(print -P %~:)
-      prompt_segment '' '' "$command;"
+      prompt_segments_segment -S '' $pidcolor $pid
+      prompt_segments_segment -S '' '' "|"
+      prompt_segments_segment -S '' '' "$pwd:" $(print -P %~:)
+      prompt_segments_segment '' '' "$command;"
     done
 }
 
-prompt_off() {
-  prompt_no_custom=
-}
-
-prompt_on() {
-  unset prompt_no_custom
-}
-
-prompt_battery() {
+prompt_segments_battery() {
   if (upower -d | grep -qe "state: \+discharging") 2>/dev/null; then
     upower -d | awk '/percentage/ { print $2 "%"; exit }'
   fi
 }
 
 ## Main prompt
-local build_prompt() {
+prompt_segments_make() {
   local RETVAL=$?
-  if [ -v prompt_no_custom ]; then
-    echo -n '%m%# '
-    return
-  fi
-  prompt_segment magenta white '%*'
-  prompt_segment magenta white $(prompt_battery)
-  prompt_segment cyan white '%n' aljoschua
-  prompt_segment cyan white '@%m' @430-G5
-  prompt_segment magenta white $RETVAL 0
-  prompt_segment cyan white $ZSH_VERSION
-  prompt_segment magenta white $(fc -LDlt '%T' -1 | awk '{ print $3 }')
-  prompt_jobs
-  prompt_git
-  prompt_segment blue white '%~' '~'
-  prompt_segment '' '' '%(!,#,$)'
+  prompt_segments_segment magenta white '%*'
+  prompt_segments_segment magenta white $(prompt_segments_battery)
+  prompt_segments_segment cyan white '%n' aljoschua
+  prompt_segments_segment cyan white '@%m' @430-G5
+  prompt_segments_segment magenta white $RETVAL 0
+  prompt_segments_segment cyan white $ZSH_VERSION
+  prompt_segments_segment magenta white $(fc -LDlt '%T' -1 | awk '{ print $3 }')
+  prompt_segments_jobs
+  prompt_segments_git
+  prompt_segments_segment blue white '%~' '~'
+  prompt_segments_segment '' '' '%(!,#,$)'
 }
 
-PROMPT='%{%f%b%k%}$(build_prompt)'
+prompt_segments_setup "$@"
