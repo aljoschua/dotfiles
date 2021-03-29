@@ -30,8 +30,14 @@ terminal: # Terminal applications
   cmd:
     - pkg='tmux neovim zsh docker git ncdu'
     - *agi
-    - sudo chsh -s /usr/bin/zsh
-    - sudo chsh -s /usr/bin/zsh $USER
+    - |-
+      sudo chsh -s /usr/bin/zsh
+      sudo chsh -s /usr/bin/zsh $USER
+      vim -u NONE \
+        -c "helptags .local/share/nvim/site/pack/tpope/start/vim-fugitive/doc" \
+        -c "helptags .local/share/nvim/site/pack/syntastic/start/syntastic/doc" \
+        -c q
+
 secrets:
   cmd: |-
     git clone --bare https://aljoschua${GITHUB_PAT}@github.com/aljoschua/secrets .config/secrets
