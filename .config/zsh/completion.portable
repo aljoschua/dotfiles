@@ -1,11 +1,4 @@
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-
-function _rc() {
-    local -a files
-    files=($(ls ~/.config/zsh))
-    _describe rc files
-}
-
-compdef _rc rc
+compdef '_path_files -W "$HOME/.config/zsh"' rc
