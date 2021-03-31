@@ -14,3 +14,4 @@ DCONF_PROFILE DEFAULT=${HOME}/.config/dconf/profile
 EDITOR=nvim
 VISUAL=nvim
 ZDOTDIR DEFAULT=${HOME}/.config/zsh
+GNUPGHOME DEFAULT=${HOME}/.config/gpg
