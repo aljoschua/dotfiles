@@ -28,7 +28,7 @@ base: # Basic tools used for installing
     - *agi
 terminal: # Terminal applications
   cmd:
-    - pkg='tmux neovim zsh docker git ncdu'
+    - pkg='tmux neovim zsh docker.io git ncdu asciinema inotify-tools'
     - *agi
     - |-
       sudo chsh -s /usr/bin/zsh
@@ -69,7 +69,7 @@ remote-access: {cmd: [pkg=openssh-server, *agi]}
 graphical:
   dep: [libinput-gestures, spotify, dunst, mega, chrome, bitwarden, dropbox]
   cmd:
-    - pkg='x11vnc xclip sxhkd remmina remmina-plugin-vnc kdeconnect i3 dmenu wmctrl zenity xdotool'
+    - pkg='x11vnc xclip sxhkd remmina remmina-plugin-vnc kdeconnect i3 dmenu wmctrl zenity xdotool gparted ssh-askpass-gnome screenkey xkbset xcompmgr'
     - *agi
     - |-
       sudo usermod -aG video $USER # Allow usage of video devices
@@ -134,7 +134,7 @@ dropbox:
 tub: 
   dep: [tq, base]
   cmd:
-    - pkg='kinit kstart'
+    - pkg='kinit kstart openconnect'
     - *agi
     - |-
       url=updates.tubcloud.tu-berlin.de/
