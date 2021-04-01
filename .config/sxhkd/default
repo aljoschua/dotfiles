@@ -18,7 +18,7 @@ super + c
     google-chrome-profile-picker
 
 #ctrl + F2
-    #xrandr --output eDP-1 --{off,auto}
+    #xrandr --output eDP1 --{off,auto}
     #sleep 0.1 && xset dpms force off
 
 # start and stop xcompmgr before and after?
@@ -96,10 +96,10 @@ super + XF86MonBrightness{Down,Up}
     xbacklight \={1,100}; media-status
 
 XF86Display
-    xrandr --output HDMI-1 --{auto,off} --output eDP-1 --{off,auto}
+    xrandr --output HDMI1 --{auto,off} --output eDP1 --{off,auto}
 
 super + XF86Display
-    xrandr --output $(xrandr --listmonitors | awk '/1:/ {print $4}') --{right-of,left-of,same-as} eDP-1
+    xrandr --output $(xrandr --listmonitors | awk '/1:/ {print $4}') --{right-of,left-of,same-as} eDP1
 
 ### Misc ###
 alt + super + y
