@@ -67,13 +67,14 @@ root: # Installs root dotfiles, secrets and various other things
     "
 remote-access: {cmd: [pkg=openssh-server, *agi]}
 graphical:
-  dep: [libinput-gestures, spotify, dunst, mega, chrome, bitwarden, dropbox]
+  dep: [wm, libinput-gestures, spotify, dunst, mega, chrome, bitwarden, dropbox]
   cmd:
-    - pkg='x11vnc xclip sxhkd remmina remmina-plugin-vnc kdeconnect i3 dmenu wmctrl zenity xdotool gparted ssh-askpass-gnome screenkey xkbset xcompmgr'
+    - pkg='x11vnc xclip remmina remmina-plugin-vnc kdeconnect gparted ssh-askpass-gnome screenkey'
     - *agi
     - |-
       sudo usermod -aG video $USER # Allow usage of video devices
       sudo usermod -aG plugdev $USER # Allow mounting
+wm: {cmd: [pkg='i3 dmenu wmctrl sxhkd zenity xdotool xcompmgr xkbset', *agi]}
 libinput-gestures:
   cmd:
     - pkg='xdotool wmctrl libinput-tools zenity'
