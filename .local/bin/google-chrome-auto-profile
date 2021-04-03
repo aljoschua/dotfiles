@@ -8,4 +8,4 @@ profile=$(wmctrl -pxl |
         match($5, /\((.*)\).Google-chrome/, arr) {print arr[1]}' |
     head -n1)
 
-google-chrome-stable --user-data-dir=${profile:-$HOME/.config/google-chrome.d/main} "$@"
+google-chrome --user-data-dir=${profile:-$HOME/.config/google-chrome.d/main} "$@"
