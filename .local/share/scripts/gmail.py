@@ -1,9 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # Author: Kraen Hansen (www.creen.dk)
 # Date: February 2011
 import sys
 import os
-import urlparse
+import urllib.parse as urlparse
 
 if __name__ == '__main__':
 	command = ""
@@ -19,7 +19,7 @@ if __name__ == '__main__':
 				if(len(temp) == 2):
 					options[temp[0]] = temp[1]
 			#print options
-			command += "google-chrome --app='https://mail.google.com/mail?view=cm&tf=0"
+			command += "google-chrome 'https://mail.google.com/mail?view=cm&tf=0"
 			if 'to' in options.keys():
 				command += "&to="+options['to']
 			if 'cc' in options.keys():
@@ -32,7 +32,7 @@ if __name__ == '__main__':
 				command += "&body="+options['body']
 			command += "'";
 		else:
-			print "Unknown scheme:",argument.scheme
+			print("Unknown scheme:",argument.scheme)
 	else:
 		command = "google-chrome 'https://mail.google.com/mail/#inbox'"
 	os.system(command);
