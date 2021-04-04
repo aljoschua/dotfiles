@@ -135,7 +135,7 @@ dropbox:
 tub: 
   dep: [tq, base]
   cmd:
-    - pkg='kinit kstart openconnect'
+    - pkg='krb5-user openconnect'
     - *agi
     - |-
       url=updates.tubcloud.tu-berlin.de/
