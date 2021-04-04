@@ -17,6 +17,9 @@ super + {_,shift +} m
 super + c
     google-chrome-profile-picker
 
+@super + b
+    i3-msg scratchpad show {&& (sleep 0.2; xdotool key ctrl+f key BackSpace),_}
+
 #ctrl + F2
     #xrandr --output eDP1 --{off,auto}
     #sleep 0.1 && xset dpms force off
