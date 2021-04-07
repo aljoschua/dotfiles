@@ -66,3 +66,6 @@ bindkey -a '^K' run-help
 bindkey -v '^K' run-help
 bindkey -v '^P' up-history
 bindkey -v '^N' down-history
+
+bindkey -v '^W' backward-kill-word
+bindkey -v '^?' backward-delete-char
