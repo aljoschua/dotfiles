@@ -3,4 +3,7 @@ Description=Automatic ticket retrieval from TUB kerberos server
 
 [Service]
 Type=simple
-ExecStart=/bin/bash -c "sleep 10; kinit -f aljoschafrey@TU-BERLIN.DE -k -t ~/.local/share/secrets/tub.keytab"
+ExecStart=%s -c "kinit aljoschafrey@TU-BERLIN.DE -fkt ~/.local/share/secrets/tub.keytab
+Restart=on-failure
+RestartSec=10s
+
