@@ -10,5 +10,3 @@ dunst &
 tubCloud &
 bitwarden &
 systemd-inhibit --what=handle-power-key sleep infinity &
-
-systemctl --user start sxhkd.service

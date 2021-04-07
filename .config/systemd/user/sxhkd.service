@@ -1,9 +1,10 @@
 [Unit]
 Description=Simple X Hotkey Daemon
 Documentation=man:sxhkd(1)
+After=default.target
 
 [Service]
-ExecStart=/bin/sh -c "PATH=$HOME/.local/bin:$PATH sxhkd"
+ExecStart=/usr/bin/env sxhkd
 ExecReload=/bin/sh -c "pkill -USR1 -u $USER -o sxhkd"
 
 [Install]
