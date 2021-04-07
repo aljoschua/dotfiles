@@ -2,4 +2,5 @@
 
 export TMPDIR=$(mktemp -d $USER-XXXXXX -p /tmp)
 autoload run-help
+autoload run-help-git
 
