@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-exec $(type -ap google-chrome | awk 'NR==2') --password-store=gnome \
+exec /usr/bin/google-chrome --password-store=gnome \
     --user-data-dir="$HOME/.config/google-chrome.d/main" "$@"
