@@ -85,7 +85,6 @@ libinput-gestures:
     - *git-post
     - |-
       sudo usermod -aG input $USER
-      sudo ln -sf "${XDG_CONFIG_HOME:-$HOME/.config}/libinput-gestures/running.conf" "/etc/libinput-gestures.conf"
       libinput-gestures-setup autostart
 spotify:
   dep: [root]
