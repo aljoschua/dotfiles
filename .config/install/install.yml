@@ -67,9 +67,9 @@ root: # Installs root dotfiles, secrets and various other things
     "
 remote-access: {cmd: [pkg=openssh-server, *agi]}
 graphical:
-  dep: [wm, libinput-gestures, spotify, dunst, mega, chrome, bitwarden, dropbox]
+  dep: [root, wm, libinput-gestures, spotify, dunst, mega, chrome, bitwarden, dropbox]
   cmd:
-    - pkg='x11vnc xclip remmina remmina-plugin-vnc kdeconnect gparted ssh-askpass-gnome screenkey'
+    - pkg='x11vnc xclip remmina remmina-plugin-vnc kdeconnect gparted ssh-askpass-gnome screenkey signal-desktop'
     - *agi
     - |-
       sudo usermod -aG video $USER # Allow usage of video devices
