@@ -1,0 +1,7 @@
+[Unit]
+Description=Compress all firefox configs every day
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c "tar czf ~/Documents/firefox-config-dirs.tar.gz ~/.config/firefox-profiles"
+
