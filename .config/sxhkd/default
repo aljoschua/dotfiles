@@ -15,6 +15,9 @@ super + {_,shift +} m
     remmina -c ~/.local/share/remmina/{1580655803090,1592859553306}.remmina
 
 super + c
+    firefox-profile-picker
+
+super + shift + c
     google-chrome-profile-picker
 
 @super + b
