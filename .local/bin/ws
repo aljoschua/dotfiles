@@ -12,6 +12,8 @@ close() {
 ws=$1
 cd
 
+i3-msg "append_layout .config/i3/$ws.json"
+
 if [ $ws = bci ]; then
     signal-desktop &
     cd connecthomer
