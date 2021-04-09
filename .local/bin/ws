@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
 
-close() {
-    workspace=$(wmctrl -d | grep -e '[0-9]\+ \+\*' | cut -d' ' -f1)
-    windowIds=$(wmctrl -l | grep -e '^0x[0-9a-f]\+ \+'$workspace | cut -d' ' -f1)
-
-    for win in $windowIds; do
-        wmctrl -ic $win
-    done
-}
-
 ws=$1
 cd
 
@@ -32,9 +23,6 @@ case $ws in
         gnome-terminal -- tmux new-session -As $ws & ;&
     main)
         firefox -P $ws
-        ;;
-    -c)
-        close
         ;;
     *)
         exit 1

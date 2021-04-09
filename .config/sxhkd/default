@@ -58,7 +58,7 @@ super + w ; {super +,_} w
     i3-msg workspace back_and_forth
 
 super + w ; q
-    ws -c
+    ws-close
 
 ### Monitors ###
 ctrl + shift + alt + {h,j-l}
