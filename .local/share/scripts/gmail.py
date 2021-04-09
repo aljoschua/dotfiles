@@ -19,7 +19,7 @@ if __name__ == '__main__':
 				if(len(temp) == 2):
 					options[temp[0]] = temp[1]
 			#print options
-			command += "google-chrome 'https://mail.google.com/mail?view=cm&tf=0"
+			command += "firefox-auto-profile 'https://mail.google.com/mail?view=cm&tf=0"
 			if 'to' in options.keys():
 				command += "&to="+options['to']
 			if 'cc' in options.keys():
@@ -34,5 +34,5 @@ if __name__ == '__main__':
 		else:
 			print("Unknown scheme:",argument.scheme)
 	else:
-		command = "google-chrome 'https://mail.google.com/mail/#inbox'"
+		command = "firefox-auto-profile 'https://mail.google.com/mail/#inbox'"
 	os.system(command);
