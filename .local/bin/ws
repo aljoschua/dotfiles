@@ -24,12 +24,9 @@ if [ $ws = uni ]; then
 fi
 
 case $ws in
-    uni) ;&
-    bkits) ;&
-    netsec) ;&
-    bci) ;&
-    cd) ;&
-    statistik)
+    apic) ;&
+    gdst) ;&
+    uni)
         [ "$PWD" != "$HOME" ] && cd ~/tubCloud/s21/$ws ;&
     dotfiles)
         gnome-terminal -- tmux new-session -As $ws & ;&
