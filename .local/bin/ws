@@ -1,55 +1,5 @@
 #!/usr/bin/env bash
 
-WS_dotfiles() {
-    firefox -P dotfiles &
-gnome-terminal -- tmux new-session -As dotfiles &
-#gnome-terminal --working-directory ~/.bashrc.d -- bash --init-file <(echo "echo vim init.portable") -l
-}
-
-WS_uni() {
-    firefox -P uni &
-    feh ~/Documents/TUB/Uni-Schedule.png &
-    gnome-terminal --working-directory=$HOME/Documents/TUB/ \
-        -- tmux new-session -As uni &
-}
-
-WS_main() {
-    firefox -P main &
-}
-
-WS_bkits() {
-    cd ~/tubCloud/w20/bkits
-    gnome-terminal -- tmux new-session -As bkits &
-    firefox -P bkits
-}
-
-WS_netsec() {
-    cd ~/tubCloud/w20/netsec
-    #virtualbox --startvm netsecvm &
-    gnome-terminal -- tmux new-session -As netsec &
-    firefox -P netsec &
-}
-
-WS_bci() {
-    cd ~/tubCloud/w20/bci
-    signal-desktop &
-    firefox -P bci &
-    cd ~/connecthomer
-    gnome-terminal -- tmux new-session -As bci &
-}
-
-WS_cd() {
-    cd ~/tubCloud/w20/cd
-    gnome-terminal -- tmux new-session -As cd &
-    firefox -P cd &
-}
-
-WS_statistik() {
-    cd ~/tubCloud/w20/statistik
-    gnome-terminal -- tmux new-session -As statistik &
-    firefox -P statistik &
-}
-
 close() {
     workspace=$(wmctrl -d | grep -e '[0-9]\+ \+\*' | cut -d' ' -f1)
     windowIds=$(wmctrl -l | grep -e '^0x[0-9a-f]\+ \+'$workspace | cut -d' ' -f1)
@@ -59,30 +9,30 @@ close() {
     done
 }
 
-case $1 in
-    \.files)
-        WS_dotfiles
-        ;;
-    uni)
-        WS_uni
-        ;;
-    main)
-        WS_main
-        ;;
-    bkits)
-        WS_bkits
-        ;;
-    netsec)
-        WS_netsec
-        ;;
-    bci)
-        WS_bci
-        ;;
-    cd)
-        WS_cd
-        ;;
+ws=$1
+cd
+
+if [ $ws = bci ]; then
+    signal-desktop &
+    cd connecthomer
+fi
+
+if [ $ws = uni ]; then
+    cd Documents/TUB
+fi
+
+case $ws in
+    uni) ;&
+    bkits) ;&
+    netsec) ;&
+    bci) ;&
+    cd) ;&
     statistik)
-        WS_statistik
+        [ "$PWD" != "$HOME" ] && cd ~/tubCloud/s21/$ws ;&
+    dotfiles)
+        gnome-terminal -- tmux new-session -As $ws & ;&
+    main)
+        firefox -P $ws
         ;;
     -c)
         close
