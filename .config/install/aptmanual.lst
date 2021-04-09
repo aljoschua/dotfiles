@@ -490,6 +490,7 @@ init-system-helpers
 initramfs-tools
 initramfs-tools-bin
 initramfs-tools-core
+inotify-tools
 inputattach
 install-info
 intel-media-va-driver
@@ -1815,6 +1816,7 @@ sgml-base
 sgml-data
 shared-mime-info
 shim-signed
+signal-desktop
 simple-scan
 slick-greeter
 smbclient
