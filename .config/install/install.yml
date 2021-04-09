@@ -70,7 +70,7 @@ graphical:
   dep: [root, wm, libinput-gestures, spotify, dunst, mega, chrome, bitwarden, dropbox]
   cmd:
     - pkg='x11vnc xclip remmina remmina-plugin-vnc kdeconnect gparted ssh-askpass-gnome screenkey signal-desktop'
-    - pkg+=' google-chrome-stable spotify-client
+    - pkg+=' google-chrome-stable spotify-client autorandr'
     - *agi
     - |-
       sudo usermod -aG video $USER # Allow usage of video devices

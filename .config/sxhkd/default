@@ -102,10 +102,10 @@ super + XF86MonBrightness{Down,Up}
     xbacklight \={1,100}; media-status
 
 XF86Display
-    xrandr --output HDMI1 --{auto,off} --output eDP1 --{off,auto}
+    autorandr -l {common,off}
 
 super + XF86Display
-    xrandr --output $(xrandr --listmonitors | awk '/1:/ {print $4}') --{right-of,left-of,same-as} eDP1
+    cinnamon-settings display
 
 ### Misc ###
 alt + super + y
