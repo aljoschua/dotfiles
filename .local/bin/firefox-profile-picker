@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+dir=~/.config/firefox-profiles
+find "$dir" -maxdepth 1 ! -path "$dir" -printf '%P\n' |
+    zenity --list --column=Profile --title="Firefox Profile Picker" --text="Choose a profile for this firefox instance" |
+    xargs -I{} firefox -P "{}"
