@@ -102,7 +102,7 @@ super + XF86MonBrightness{Down,Up}
     xbacklight \={1,100}; media-status
 
 XF86Display
-    autorandr -l {common,off}
+    autorandr {-c,off}
 
 super + XF86Display
     cinnamon-settings display
