@@ -48,7 +48,7 @@ super + {_,shift +} + {h,j-l}
     i3-msg {focus,move} {left,down,up,right}
 
 super + q
-    wmctrl -c :ACTIVE:
+    i3-msg kill
 
 ### Workspaces ###
 super + w ; {super +,_} {shift +,_} {0-9,a-f}
