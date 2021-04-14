@@ -1,0 +1,23 @@
+#!/usr/bin/env xdotool
+
+# Banner 1
+mousemove 1312 928
+click 1
+
+# Banner 2
+mousemove 1172 961
+click 1
+
+# Video break
+mousemove 1919 984
+click 1
+
+# Random click
+mousemove 1919 900
+click 1
+
+# Survey
+mousemove 1919 1017
+click 1
+
+mousemove restore
