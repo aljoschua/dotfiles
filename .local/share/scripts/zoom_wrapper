@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+i3-msg append_layout .config/i3/zoom.json
+exec /usr/bin/zoom "$@"
