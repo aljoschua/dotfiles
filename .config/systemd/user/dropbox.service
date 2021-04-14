@@ -1,0 +1,15 @@
+[Unit]
+Description=Rclone Dropbox Mount Service
+
+[Service]
+Type=notify
+KillMode=none
+ExecStart=/usr/bin/rclone mount dropbox: %h/Dropbox \
+    --use-mmap --dir-cache-time 1000h --poll-interval 15s \
+    --vfs-cache-mode full --tpslimit 10
+ExecStop=/bin/fusermount -uz %h/Dropbox
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+

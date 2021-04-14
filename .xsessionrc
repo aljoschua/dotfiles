@@ -4,9 +4,6 @@ setxkbmap -option terminate:ctrl_alt_bksp
 
 redshift-gtk &
 libinput-gestures &
-dropbox start &
-megasync &
 dunst &
-tubCloud &
 bitwarden &
 systemd-inhibit --what=handle-power-key sleep infinity &

@@ -1,0 +1,15 @@
+[Unit]
+Description=Rclone Mega Mount Service
+
+[Service]
+Type=notify
+KillMode=none
+ExecStart=/usr/bin/rclone mount mega:Dokumente %h/Documents \
+    --use-mmap --dir-cache-time 1000h --poll-interval 15s \
+    --vfs-cache-mode full --tpslimit 10
+ExecStop=/bin/fusermount -uz %h/Documents
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+
