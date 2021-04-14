@@ -12,8 +12,6 @@
 	signingkey = 41643CE650B300FA679FCAFE9859B1564305FA0B
 [commit]
 	gpgsign = true
-[filter "remmina-time"]
-	clean = $GIT_DIR/info/remmina-time
 [remote "origin"]
 	url = hub:aljoschua/dotfiles
 	fetch = +refs/heads/*:refs/remotes/origin/*
