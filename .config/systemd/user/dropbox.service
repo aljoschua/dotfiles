@@ -6,8 +6,10 @@ Type=notify
 KillMode=none
 ExecStart=/usr/bin/rclone mount dropbox: %h/Dropbox \
     --use-mmap --dir-cache-time 1000h --poll-interval 15s \
-    --vfs-cache-mode full --tpslimit 10
+    --vfs-cache-mode full --tpslimit 10 \
+    --buffer-size 16M --vfs-read-chunk-size 100M
 ExecStop=/bin/fusermount -uz %h/Dropbox
+ExecReload=/bin/sh -c "pkill -HUP -u $USER -fo 'rclone mount dropbox:'"
 Restart=on-failure
 
 [Install]

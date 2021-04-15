@@ -6,8 +6,10 @@ Type=notify
 KillMode=none
 ExecStart=/usr/bin/rclone mount mega:Dokumente %h/Documents \
     --use-mmap --dir-cache-time 1000h --poll-interval 15s \
-    --vfs-cache-mode full --tpslimit 10
+    --vfs-cache-mode full --tpslimit 10 \
+    --buffer-size 16M --vfs-read-chunk-size 100M
 ExecStop=/bin/fusermount -uz %h/Documents
+ExecReload=/bin/sh -c "pkill -HUP -u $USER -fo 'rclone mount mega:'"
 Restart=on-failure
 
 [Install]
