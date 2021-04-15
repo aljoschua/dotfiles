@@ -13,4 +13,4 @@ profile=$(sed -E '/-P/!{Q5}; s/.*-P\x00([^\x00]+).*/\1/' /proc/$first_pid/cmdlin
 if [ "$?" = 5 ]; then
     profile=main
 fi
-exec firefox -P ${profile} "$@"
+exec firefox -P ${profile} -new-tab "$@"
