@@ -67,7 +67,7 @@ root: # Installs root dotfiles, secrets and various other things
     "
 remote-access: {cmd: [pkg=openssh-server, *agi]}
 graphical:
-  dep: [root, wm, libinput-gestures, spotify, dunst, mega, chrome, bitwarden, dropbox]
+  dep: [root, wm, libinput-gestures, spotify, dunst, chrome, bitwarden, rclone]
   cmd:
     - pkg='x11vnc xclip remmina remmina-plugin-vnc kdeconnect gparted ssh-askpass-gnome screenkey signal-desktop'
     - pkg+=' google-chrome-stable spotify-client autorandr'
@@ -96,16 +96,6 @@ dunst:
     - make WAYLAND=0
     - sudo make WAYLAND=0 install
     - *git-post
-mega:
-  dep: [root]
-  cmd:
-    - |-
-      upstream=$(awk -F= '$1 == "DISTRIB_RELEASE" {print $2}' /etc/upstream-release/lsb-release)
-      wget -qO/dev/null mega.nz/linux/MEGAsync/xUbuntu_$upstream
-      sudo sed -Ei "s/[0-9]{2}\.[0-9]{2}/$upstream/" /etc/apt/sources.list.d/megasync.list
-      sudo apt-get update
-      pkg=megasync
-    - *agi
 bitwarden:
   dep: [base]
   cmd: |-
@@ -114,26 +104,18 @@ bitwarden:
     unzip -d ~/.local/bin bw.zip
     chmod +x ~/.local/bin/bw ~/.local/bin/bitwarden
     rm bw.zip
-dropbox:
- dep: [tq, base]
- cmd: |-
-   latest=$(wget -O- linux.dropbox.com/packages/ubuntu 2>/dev/null |
-     tq 'a[href$="amd64.deb"]' -a href | tail -n1)
-   wget -O dropbox.deb linux.dropbox.com/packages/ubuntu/$latest
-   sudo apt-get install -qy ./dropbox.deb
-   echo y | dropbox start -i &
-   rm dropbox.deb
+rclone:
+  dep: [base]
+  cmd: |-
+    wget -O rclone.deb downloads.rclone.org/rclone-current-linux-amd64.deb
+    sudo apt-get install -qy ./rclone.deb
+    rm rclone.deb
 ## End graphical deps
 tub: 
   dep: [tq, base]
   cmd:
     - pkg='krb5-user openconnect'
     - *agi
-    - |-
-      url=updates.tubcloud.tu-berlin.de/
-      latest=$(wget -O- $url | tq '.pricing-table-linux a' -a href)
-      wget -O ~/.local/bin/tubCloud $url$latest
-      chmod +x ~/.local/bin/tubCloud
 tq:
   cmd: |-
     sudo pip3 install https://github.com/plainas/tq/zipball/stable
