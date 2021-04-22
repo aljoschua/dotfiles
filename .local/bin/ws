@@ -18,7 +18,7 @@ case $ws in
     apic) ;&
     gdst) ;&
     uni)
-        [ "$PWD" != "$HOME" ] && cd ~/tubCloud/s21/$ws ;&
+        [ "$PWD" = "$HOME" ] && cd ~/tubCloud/s21/$ws ;&
     dotfiles)
         gnome-terminal -- tmux new-session -As $ws & ;&
     main)
