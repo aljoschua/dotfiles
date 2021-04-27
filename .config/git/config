@@ -6,7 +6,7 @@
 	insteadOf = fub:
 [url "git@github.com:"]
 	insteadOf = hub:
-[url "github-apswjf:apswjf/"]
+[url "git@github.com:aljoschua/"]
 	insteadOf = my:
 [url "git@gitlab.tu-berlin.de:"]
 	insteadOf = tubold:
