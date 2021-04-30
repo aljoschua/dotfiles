@@ -31,6 +31,7 @@ alias scudr="systemctl --user daemon-reload"
 alias jcu="journalctl --user -b  -xfu"
 
 alias ..="cd .." ...="cd ../.." ....="cd ../../.."
+alias cd="cd -P"
 
 alias mcal="ncal -bw3"
 

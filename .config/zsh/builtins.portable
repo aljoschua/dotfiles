@@ -1,1 +1,1 @@
-cdpath+=(~/.config ~/.local/share)
+cdpath+=(~/.local/share/cdlinks ~/.config ~/.local/share)
