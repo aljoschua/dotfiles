@@ -1,3 +1,7 @@
 unsetopt menu_complete
 set auto_menu
+setopt cd_silent
+setopt print_exit_value
+setopt multios
+setopt beep
 
