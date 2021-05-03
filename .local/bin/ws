@@ -21,7 +21,8 @@ case $ws in
     uni)
         [ "$PWD" = "$HOME" ] && cd ~/tubCloud/s21/$ws ;&
     dotfiles)
-        gnome-terminal -- tmux new-session -As $ws & ;&
+        gnome-terminal -- tmux new-session -As $ws &
+        ;&
     main)
         firefox -no-remote -P $ws &
         ;;
