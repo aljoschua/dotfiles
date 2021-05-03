@@ -15,6 +15,7 @@ if [ $ws = uni ]; then
 fi
 
 case $ws in
+    dsi) ;&
     apic) ;&
     gdst) ;&
     uni)
