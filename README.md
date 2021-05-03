@@ -22,6 +22,7 @@ rm -rf ~/.config/dotfiles
 ## Install script
 To install programs as well as all my configuration, I use:
 ```bash
+cd
 wget -Of git.io/JqcSG;GITHUB_PAT=:1ae..242 sh f
 ```
 You can't do this step because you don't have access to my private repository.
