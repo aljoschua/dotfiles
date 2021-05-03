@@ -9,7 +9,7 @@
         {
             "border": "normal",
             "floating": "auto_off",
-            "percent": 0.8,
+            "percent": 0.85,
             "current_border_width": 2,
             "swallows": [
                {
@@ -24,7 +24,7 @@
             "border": "normal",
             "floating": "auto_off",
             "layout": "splitv",
-            "percent": 0.2,
+            "percent": 0.15,
             "type": "con",
             "nodes": [
                 {
