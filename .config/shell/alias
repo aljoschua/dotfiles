@@ -7,6 +7,7 @@ alias i3rc="vim ~/.config/i3/config && i3-msg reload"
 alias sxhkdrc="vim ~/.config/sxhkd/sxhkdrc && systemctl --user reload sxhkd.service"
 alias .n="vim ~/.config/notes"
 alias dot="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
+alias d.="dot c ."
 alias dots="git --git-dir=$HOME/.config/secrets --work-tree=$HOME"
 alias vim=nvim
 
