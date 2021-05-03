@@ -8,9 +8,6 @@ super + shift + d
 super + Return
     gnome-terminal
 
-super + e
-    gnome-terminal -- vifm
-
 super + {_,shift +} m
     remmina -c ~/.local/share/remmina/{1580655803090,1592859553306}.remmina
 
