@@ -28,3 +28,11 @@ mktx2() {
     prefix=${path:0:-4}
     /bin/rm "$prefix.log" "$prefix.aux" "$prefix.out"
 }
+
+d() {
+    while [ $# != 0 ]; do
+        (cd "$1" && dot add -u .)
+        shift
+    done
+    dot c
+}
