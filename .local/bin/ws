@@ -23,7 +23,7 @@ case $ws in
     dotfiles)
         gnome-terminal -- tmux new-session -As $ws & ;&
     main)
-        firefox -P $ws
+        firefox -no-remote -P $ws &
         ;;
     *)
         exit 1
