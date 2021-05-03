@@ -30,9 +30,10 @@ mktx2() {
 }
 
 d() {
+    printf -v msg '%s+' "$@"
     while [ $# != 0 ]; do
         (cd "$1" && dot add -u .)
         shift
     done
-    dot c
+    dot c -em "${msg%+}: "
 }
