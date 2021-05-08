@@ -9,7 +9,7 @@ alias dot="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
 dot checkout @ -- .config/dotfiles
 dot -c user.name=a -c user.email=a stash
 ```
-Alternatively, you can issue `wget -O- git.io/JqcSG|sh` (links to https://raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/remote-install.sh)
+Alternatively, you can issue `wget -O- git.io/JqcSG|sh` (links to [https://raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/remote-install.sh](https://raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/remote-install.sh))
 
 ## Undo Setup
 Assuming you haven't added more stash entries:
@@ -26,5 +26,4 @@ cd
 wget -Of git.io/JqcSG;GITHUB_PAT=:1ae..242 sh f
 ```
 You can't do this step because you don't have access to my private repository.
-If you look at the `.config/install/install.yml` you might find other "modules"
-that can be installed as is (e.g. `systemd-units`). See `.config/install` for further information.
+See [.config/install](.config/install) for further information.
