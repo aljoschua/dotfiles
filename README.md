@@ -1,5 +1,15 @@
 # Dotfiles
 These are my configuration files for varous programs, amongst other files I like to keep track of.
+Here is an incomplete list:
+    - neovim
+    - zsh
+    - ssh
+    - sxhkd
+    - i3
+    - [libinput-gestures](https://github.com/bulletmark/libinput-gestures)
+    - dconf
+    - Scripts for managing workspaces
+
 Note that I am on Linux Mint, and the steps below might not work for you.
 On branch `root` you can find the configuration files outside my home directory.
 ## Setup
