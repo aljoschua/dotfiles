@@ -10,8 +10,8 @@ Here is an incomplete list:
     - dconf
     - Scripts for managing workspaces
 
-Note that I am on Linux Mint, and the steps below might not work for you.
 On branch `root` you can find the configuration files outside my home directory.
+
 ## Setup
 ```bash
 git clone --bare https://github.com/aljoschua/dotfiles ~/.config/dotfiles

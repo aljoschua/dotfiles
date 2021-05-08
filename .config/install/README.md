@@ -1,3 +1,8 @@
+# Install
+This directory is dedicated to bootstrap a new system to my needs.
+It installs and sets up programs by parsing a yaml file.
+Note that I am on Linux Mint, and the steps below might not work for you.
+
 #### How it works
 ```yaml
 module1:
