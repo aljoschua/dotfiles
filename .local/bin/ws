@@ -5,11 +5,6 @@ cd
 
 i3-msg "append_layout .config/i3/$ws.json"
 
-if [ $ws = bci ]; then
-    signal-desktop &
-    cd connecthomer
-fi
-
 if [ $ws = uni ]; then
     cd Documents/TUB
 fi
