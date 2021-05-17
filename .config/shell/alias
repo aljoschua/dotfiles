@@ -10,6 +10,7 @@ alias dot="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
 alias d.="dot c ."
 alias dots="git --git-dir=$HOME/.config/secrets --work-tree=$HOME"
 alias vim=nvim
+alias tm="tmux new-session -As"
 
 # TU
 alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --passwd-on-stdin < ~/.local/share/secrets/tub-password"
