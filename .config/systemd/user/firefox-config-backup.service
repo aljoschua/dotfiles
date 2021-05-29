@@ -3,5 +3,7 @@ Description=Compress all firefox configs every day
 
 [Service]
 Type=simple
-ExecStart=/bin/sh -c "tar czf ~/Documents/firefox-config-dirs.tar.gz ~/.config/firefox-profiles"
+ExecStart=/bin/sh -c "rclone sync \
+    --exclude='/*/cache2/' --exclude='/*/storage/default/' --exclude='/*/lock' \
+     ~/.config/firefox-profiles/ mega:firefox-profiles-backup"
 
