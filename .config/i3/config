@@ -11,7 +11,7 @@ bar {
         tray_output eDP1
         workspace_buttons yes
         status_command i3status
-        bindsym button1 exec gnome-terminal
+        bindsym button2 exec gnome-terminal
         bindsym button3 exec onboard
 }
 for_window [instance="shellex-clone"] floating enable
