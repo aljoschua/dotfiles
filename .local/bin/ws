@@ -9,7 +9,13 @@ if [ $ws = uni ]; then
     cd Documents/TUB
 fi
 
+if [ $ws = travel ]; then
+    cd Documents/travel
+    i3-msg "layout stacked"
+fi
+
 case $ws in
+    travel) ;&
     dsi) ;&
     apic) ;&
     gdst) ;&
