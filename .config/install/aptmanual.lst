@@ -397,6 +397,7 @@ gnote
 gnupg
 gnupg-l10n
 gnupg-utils
+golang
 google-chrome-stable
 gparted
 gpg
@@ -1854,6 +1855,7 @@ t1utils
 tar
 tcpdump
 telnet
+texlive-full
 thermald
 thunderbird
 thunderbird-gnome-support
