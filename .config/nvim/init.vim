@@ -41,6 +41,8 @@ nnoremap <C-J> :cn<CR>
 nnoremap <C-K> :cp<CR>
 nnoremap ZA :xa<CR>
 
+abbreviate :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
+
 function! GitSess()
     set autowrite
     nnoremap ZZ :echoerr 'Use Ctrl-Z!'<CR>
