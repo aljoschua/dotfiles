@@ -87,16 +87,16 @@ super + f
 
 ### Media Buttons ##
 XF86Audio{Raise,Lower}Volume
-    amixer -D pulse set Master 5%{+,-}; media-status
+    amixer -D pulse set Master 5%{+,-}; media-status vol
 
 XF86Audio{_,Mic}Mute
-    amixer -D pulse set {Master,Capture} toggle; media-status
+    amixer -D pulse set {Master,Capture} toggle; media-status vol
 
 XF86MonBrightness{Down,Up}
-    xbacklight {-,+}10; media-status
+    xbacklight {-,+}10; media-status bright 
 
 super + XF86MonBrightness{Down,Up}
-    xbacklight \={1,100}; media-status
+    xbacklight \={1,100}; media-status bright
 
 XF86Display
     autorandr {off,-c}
@@ -106,7 +106,7 @@ super + XF86Display
 
 ### Misc ###
 alt + super + y
-    xkbset {_,-}sticky; media-status
+    xkbset {_,-}sticky; media-status sticky
 
 super + question
     zenity --text-info --filename=.config/sxhkd/sxhkdrc --width=500 --height=1000

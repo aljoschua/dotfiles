@@ -1,21 +1,28 @@
 #!/usr/bin/env bash
 
-var=$(
-    echo Speaker:
-    amixer -D pulse get Master | grep '\['
+display_percentage() {
+    killall osd_cat
+    osd_cat -b percentage -d 2 -A center -P $1 -T "${2:- }" &
+}
 
-    echo Microphone:
-    amixer -D pulse get Capture | grep '\['
+case $1 in
+    vol) percentage=$(amixer -D pulse get Master |
+            awk '/%/ {gsub(/[[%\]]/, ""); print $5; exit }')
+        text=$(amixer -D pulse get Master |
+            awk '/%/ {if (length($6) == 5) print "Volume: (Muted)"; exit}')
+        text+=$(amixer -D pulse get Capture |
+            awk '/%/ {if (length($6) == 5) print " Mic: (Muted)"; exit}')
+        display_percentage $percentage "$text"
+        ;;
+    bright)
+        percentage=$(xbacklight -get)
+        display_percentage $percentage
+        ;;
+    sticky)
+        killall osd_cat
+        xkbset q | grep Sticky-Keys | osd_cat -A center
+        ;;
+    *)
+        ;;
 
-    echo Brightness:
-    xbacklight -get
-
-    echo Sticky-Keys:
-    xkbset q | grep Sticky-Keys
-)
-
-if [ -t 1 ]; then
-    echo "$var"
-    exit 0
-fi
-dunstify -r 999 -t 3000 -- "$var"
+esac
