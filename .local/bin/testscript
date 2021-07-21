@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-# simple script/placeholder to test smthng.   #!/usr/bin/python2.7
-
-hoy=$1
-echo :$hoy:
