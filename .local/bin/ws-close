@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-workspace=$(wmctrl -d | grep -e '[0-9]\+ \+\*' | cut -d' ' -f1)
-windowIds=$(wmctrl -l | grep -e '^0x[0-9a-f]\+ \+'$workspace | cut -d' ' -f1)
+workspace=$(wmctrl -d | awk '$2 == "*" {print $1}')
+windowIds=$(wmctrl -l | awk '$2 == "'$workspace'" {print $1}')
 
 for win in $windowIds; do
     wmctrl -ic $win
