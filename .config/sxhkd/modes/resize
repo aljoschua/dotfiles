@@ -1,0 +1,13 @@
+Escape
+    .config/sxhkd/switch default
+
+h
+    i3-msg resize shrink width 10 px or 10 ppt
+j
+    i3-msg resize grow height 10 px or 10 ppt
+k
+    i3-msg resize shrink height 10 px or 10 ppt
+l
+    i3-msg resize grow width 10 px or 10 ppt
+
+
