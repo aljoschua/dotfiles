@@ -37,11 +37,11 @@ set colorcolumn=81
 set background=dark
 set clipboard=unnamedplus
 
-nnoremap <C-J> :cn<CR>
-nnoremap <C-K> :cp<CR>
-nnoremap ZA :xa<CR>
+nnoremap <C-J> :cnext<CR>
+nnoremap <C-K> :cprevious<CR>
+nnoremap ZA :wqall<CR>
 
-abbreviate :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
+iabbrev :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
 
 function! GitSess()
     set autowrite
