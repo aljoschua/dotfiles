@@ -41,6 +41,9 @@ nnoremap <C-J> :cnext<CR>
 nnoremap <C-K> :cprevious<CR>
 nnoremap ZA :wqall<CR>
 
+let mapleader = ' '
+nnoremap <leader>m q:?^make<CR><CR>
+
 iabbrev :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
 
 function! GitSess()
