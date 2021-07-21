@@ -164,6 +164,7 @@ evolution-data-server
 evolution-data-server-common
 exfat-fuse
 exfat-utils
+exuberant-ctags
 fakeroot
 fdisk
 ffmpegthumbnailer
