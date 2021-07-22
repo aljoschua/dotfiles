@@ -59,3 +59,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+let g:plug_window = 'topleft new'
+
+call plug#begin(stdpath('data') . '/vim-plug')
+
+Plug  stdpath('data') . '/site/pack/syntastic'
+Plug  stdpath('data') . '/site/pack/tpope'
+
+
+call plug#end()
