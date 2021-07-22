@@ -37,11 +37,12 @@ set colorcolumn=81
 set background=dark
 set clipboard=unnamedplus
 
+let mapleader = ' '
+
 nnoremap <C-J> :cnext<CR>
 nnoremap <C-K> :cprevious<CR>
 nnoremap ZA :wqall<CR>
-
-let mapleader = ' '
+nnoremap <leader>v :if match(expand('%:p'), $MYVIMRC) != -1 \| write \| source % \| else \| edit $MYVIMRC \| endif<CR>
 nnoremap <leader>m q:?^make<CR><CR>
 
 iabbrev :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
@@ -53,7 +54,6 @@ function! GitSess()
 endfunction
 
 command! Gitsess :call GitSess()
-command! Rc :edit ~/.config/nvim/init.vim
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
