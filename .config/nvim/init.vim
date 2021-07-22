@@ -64,8 +64,8 @@ let g:plug_window = 'topleft new'
 
 call plug#begin(stdpath('data') . '/vim-plug')
 
-Plug  stdpath('data') . '/site/pack/syntastic'
-Plug  stdpath('data') . '/site/pack/tpope'
+Plug  'vim-syntastic/syntastic'
+Plug  'tpope/vim-fugitive'
 
 
 call plug#end()
