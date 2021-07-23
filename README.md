@@ -1,6 +1,7 @@
 # Dotfiles
 These are my configuration files for varous programs, amongst other files I like to keep track of.
 Here is an incomplete list:
+
     - neovim
     - zsh
     - ssh
