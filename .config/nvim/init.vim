@@ -41,17 +41,18 @@ endfunction
 
 command! Gitsess :call GitSess()
 
+call plug#begin(stdpath('data') . '/vim-plug')
+let g:plug_window = 'topleft new'
+
+Plug  'vim-syntastic/syntastic'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:plug_window = 'topleft new'
-
-call plug#begin(stdpath('data') . '/vim-plug')
-
-Plug  'vim-syntastic/syntastic'
 Plug  'tpope/vim-fugitive'
 
+Plug  'takac/vim-hardtime'
+let g:hardtime_default_on = 1
 
 call plug#end()
