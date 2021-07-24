@@ -1631,6 +1631,7 @@ p7zip
 p7zip-full
 packagekit
 packagekit-tools
+pandoc
 parted
 passwd
 patch
