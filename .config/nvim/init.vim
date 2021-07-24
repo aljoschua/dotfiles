@@ -20,7 +20,7 @@ set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,eol:↲,conceal
 highlight SpecialKey ctermfg=red
 
 " Misc.
-set colorcolumn=81
+set colorcolumn=81 cursorline
 set background=dark
 set clipboard=unnamedplus
 
@@ -49,6 +49,14 @@ function! GitSess()
 endfunction
 
 command! Gitsess :call GitSess()
+
+augroup WhereILeftOf
+    au!
+
+    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        \| exe "normal! g'\"" | endif
+    autocmd BufWinEnter init.vim normal! zo
+augroup END
 
 " Plugins {{{1
 call plug#begin(stdpath('data') . '/vim-plug')
