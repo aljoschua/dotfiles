@@ -13,6 +13,21 @@ Here is an incomplete list:
 
 On branch `root` you can find the configuration files outside my home directory.
 
+## How I manage my dotfiles
+I've tried out various approaches for keeping track of my dotfiles. After a long endeavor of creating my own symlink manager, which I never felt ready to publish, I stumbled upon git-managed dotfiles.
+The more you think about it, git has all the functionality you would want for your dotfiles.
+All the setup you need is:
+
+```bash
+cd
+git init
+git config status.showuntrackedfiles no
+```
+
+What you will come to realize is that, almost all other git commands ignore untracked files from the get-go.
+You only have to be careful when using git-add recursively (As in `git add .` or `git add -A`).
+Apart from that, it can be your perfect dotfile manager too.
+
 ## Setup
 ```bash
 git clone --bare https://github.com/aljoschua/dotfiles ~/.config/dotfiles
