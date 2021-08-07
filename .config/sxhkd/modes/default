@@ -51,8 +51,8 @@ super + q
 super + w ; {super +,_} {shift +,_} {0-9,a-f}
     i3-msg {_,_} {move container to,_} workspace {0-9,A-F}
 
-super + w ; {super +,_} w
-    i3-msg workspace back_and_forth
+super + w ; {super +,_} {shift +,_} w
+    i3-msg {_,_} {move container to,_} workspace back_and_forth
 
 super + w ; q
     ws-close
