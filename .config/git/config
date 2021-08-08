@@ -2,8 +2,6 @@
 	name = Aljoscha Frey
 	#email = apswjf@gmail.com # If there is no default, you'll be asked for every repo you clone
 	useConfigOnly = true
-[url "git@git.imp.fu-berlin.de:"]
-	insteadOf = fub:
 [url "github:"]
 	insteadOf = hub:
 [url "git@gitlab.com:"]
@@ -18,9 +16,6 @@
 	insteadOf = gate:
 [url "git://git.suckless.org/"]
 	insteadOf = sl:
-# MCS SS20
-[url "git@gitlab.tu-berlin.de:MCS_SS20-Group_13/"]
-	insteadOf = mcs:
 [alias]
 	a = config --get-regexp 'alias.*'
 	ap = add -p
