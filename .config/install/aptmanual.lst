@@ -41,6 +41,7 @@ base-passwd
 bash
 bash-completion
 bc
+biber
 bind9-dnsutils
 bind9-host
 bind9-libs
