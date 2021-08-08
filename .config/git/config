@@ -4,15 +4,15 @@
 	useConfigOnly = true
 [url "git@git.imp.fu-berlin.de:"]
 	insteadOf = fub:
-[url "git@github.com:"]
+[url "github:"]
 	insteadOf = hub:
 [url "git@gitlab.com:"]
 	insteadOf = lab:
-[url "git@github.com:aljoschua/"]
+[url "github:aljoschua/"]
 	insteadOf = my:
 [url "git@gitlab.tu-berlin.de:"]
 	insteadOf = tubold:
-[url "git@git.tu-berlin.de:"]
+[url "git-tub:"]
 	insteadOf = tub:
 [url "sshgate.tu-berlin.de:x/"]
 	insteadOf = gate:
