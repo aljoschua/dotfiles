@@ -1,8 +1,13 @@
 prompt_segments_help () {
-    echo huy
+    echo "Options:"
+    echo "      nogit   Don't display git info in prompt"
 }
 
 prompt_segments_setup () {
+    prompt_segments_opts=()
+    if [ "$1" = nogit ]; then
+        prompt_segments_opts+=(nogit)
+    fi
     PS1='%{%f%b%k%}$(prompt_segments_make)'
     prompt_opts=(subst cr percent bang)
 }
@@ -83,7 +88,7 @@ prompt_segments_make() {
   prompt_segments_segment cyan white $ZSH_VERSION
   prompt_segments_segment magenta white $(fc -LDlt '%T' -1 | awk '{ print $3 }')
   prompt_segments_jobs
-  prompt_segments_git
+  (( $prompt_segments_opts[(Ie)nogit] )) || prompt_segments_git
   prompt_segments_segment blue white '%~' '~'
   prompt_segments_segment '' '' '%(!,#,$)'
 }

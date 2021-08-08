@@ -6,4 +6,4 @@ done
 
 fpath+=($dir/functions)
 autoload -Uz promptinit && promptinit
-prompt segments
+prompt segments nogit
