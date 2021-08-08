@@ -32,6 +32,7 @@ nnoremap <C-K> :cprevious<CR>
 nnoremap ZA :wqall<CR>
 nnoremap <leader>v :if match(expand('%:p'), $MYVIMRC) != -1 \| write \| source % \| else \| edit $MYVIMRC \| endif<CR>
 nnoremap <leader>m q:?^make<CR><CR>
+nnoremap <leader>l :!xdg-open <C-R><C-F><CR>
 
 
 " map [[ ?{<CR>w99[{
