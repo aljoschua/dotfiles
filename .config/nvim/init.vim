@@ -33,6 +33,7 @@ nnoremap ZA :wqall<CR>
 nnoremap <leader>v :call aljoschua#EditOrSourceVimrc()<CR>
 nnoremap <leader>m q:?^make<CR><CR>
 nnoremap <leader>l :!xdg-open <C-R><C-F><CR>
+nnoremap <leader>r :call aljoschua#Reload()<CR>
 
 
 " map [[ ?{<CR>w99[{
