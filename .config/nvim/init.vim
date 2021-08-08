@@ -55,7 +55,7 @@ augroup WhereILeftOf
 
     autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
         \| exe "normal! g'\"" | endif
-    autocmd BufWinEnter init.vim normal! zo
+    autocmd BufWinEnter init.vim normal! zv
 augroup END
 
 " Plugins {{{1
