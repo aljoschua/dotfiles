@@ -15,4 +15,4 @@ EDITOR=nvim
 VISUAL=nvim
 ZDOTDIR DEFAULT=${HOME}/.config/zsh
 GNUPGHOME DEFAULT=${HOME}/.config/gpg
-CDPATH DEFAULT=${HOME}/.local/share/cdlinks:${HOME}/.config:${HOME}/.local/share:${HOME}
+CDPATH DEFAULT=${HOME}/.local/share/cdpath:${HOME}/.config:${HOME}/.local/share:${HOME}
