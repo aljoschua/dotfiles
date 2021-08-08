@@ -1,7 +1,7 @@
 " Functions for my init.vim
 
 
-function! aljoschua#WriteAndReload()
+function! initvim#WriteAndReload()
     let l:file_reload_actions = {
                 \ expand('~/.config/i3/config'):
                 \   '!i3-msg reload',
@@ -29,7 +29,7 @@ function! aljoschua#WriteAndReload()
     endif
 endfunction
 
-function! aljoschua#GitSess()
+function! initvim#GitSess()
     set autowriteall autoread
     nnoremap ZZ :echoerr 'Use Ctrl-Z!'<CR>
     set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P

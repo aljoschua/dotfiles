@@ -33,7 +33,7 @@ nnoremap ZA :wqall<CR>
 nnoremap <leader>v :edit $MYVIMRC<CR>
 nnoremap <leader>m q:?^make<CR><CR>
 nnoremap <leader>l :!xdg-open <C-R><C-F><CR>
-nnoremap <leader>w :call aljoschua#WriteAndReload()<CR>
+nnoremap <leader>w :call initvim#WriteAndReload()<CR>
 
 
 " map [[ ?{<CR>w99[{
@@ -44,7 +44,7 @@ nnoremap <leader>w :call aljoschua#WriteAndReload()<CR>
 
 iabbrev :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
 
-command! Gitsess :call aljoschua#GitSess()
+command! Gitsess :call initvim#GitSess()
 
 augroup WhereILeftOf
     au!
