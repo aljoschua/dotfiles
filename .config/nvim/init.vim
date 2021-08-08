@@ -30,9 +30,10 @@ let mapleader = ' '
 nnoremap <C-J> :cnext<CR>
 nnoremap <C-K> :cprevious<CR>
 nnoremap ZA :wqall<CR>
+nnoremap <leader>v :edit $MYVIMRC<CR>
 nnoremap <leader>m q:?^make<CR><CR>
 nnoremap <leader>l :!xdg-open <C-R><C-F><CR>
-nnoremap <leader>r :call aljoschua#ReloadOrEditVimrc()<CR>
+nnoremap <leader>w :call aljoschua#WriteAndReload()<CR>
 
 
 " map [[ ?{<CR>w99[{
