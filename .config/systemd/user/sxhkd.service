@@ -4,7 +4,7 @@ Documentation=man:sxhkd(1)
 After=default.target
 
 [Service]
-ExecStart=/usr/bin/env sxhkd
+ExecStart=/usr/bin/env SXHKD_SHELL=%h/.config/sxhkd/shell sxhkd
 ExecReload=/bin/sh -c "pkill -USR1 -u $USER -o sxhkd"
 
 [Install]

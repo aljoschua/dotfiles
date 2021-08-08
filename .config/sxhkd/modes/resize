@@ -1,6 +1,6 @@
 #modeinfo: Resize mode
 Escape
-    .config/sxhkd/switch default
+    !
 
 h
     i3-msg resize shrink width 10 px or 10 ppt

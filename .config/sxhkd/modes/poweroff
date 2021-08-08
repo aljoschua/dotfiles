@@ -1,21 +1,21 @@
 #modeinfo: Poweroff Mode: [R]estart | [p]oweroff | [s]uspend | [l]ogout | [h]ibernate | h[y]brid-sleep | restart [i]3
 Escape
-    .config/sxhkd/switch default
+    !
 
 # Default action
 {super + s,XF86PowerOff}
-    systemctl -i reboot & .config/sxhkd/switch default
+    !systemctl -i reboot
 {shift +,_} r
-    systemctl -i reboot & .config/sxhkd/switch default
+    !systemctl -i reboot
 p
-    systemctl -i poweroff & .config/sxhkd/switch default
+    !systemctl -i poweroff
 s
-    systemctl -i suspend & .config/sxhkd/switch default
+    !systemctl -i suspend
 h
-    systemctl -i hibernate & .config/sxhkd/switch default
+    !systemctl -i hibernate
 y
-    systemctl -i hybrid-sleep & .config/sxhkd/switch default
+    !systemctl -i hybrid-sleep
 l
-    i3-msg exit & .config/sxhkd/switch default
+    !i3-msg exit
 i
-    i3-msg restart & .config/sxhkd/switch default
+    !i3-msg restart
