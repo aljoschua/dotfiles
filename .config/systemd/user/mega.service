@@ -3,13 +3,13 @@ Description=Rclone Mega Mount Service
 
 [Service]
 Type=notify
-KillMode=none
+KillMode=control-group
 ExecStart=/usr/bin/rclone mount mega-doc-cache: %h/Documents \
     --use-mmap --dir-cache-time 1000h --fs-cache-expire-duration 72h \
     --vfs-cache-mode full --tpslimit 10 \
     --buffer-size 16M --vfs-read-chunk-size 100M
 ExecStop=/bin/fusermount -uz %h/Documents
-ExecReload=/bin/sh -c "pkill -HUP -u $USER -fo 'rclone mount mega:'"
+ExecReload=/bin/sh -c "pkill -HUP -u $USER -fo 'rclone mount mega'"
 Restart=on-failure
 
 [Install]
