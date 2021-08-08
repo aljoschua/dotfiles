@@ -1,21 +1,26 @@
 " Functions for my init.vim
 
-function! aljoschua#EditOrSourceVimrc()
-    if match(expand('%:p'), $MYVIMRC) != -1
-        write
-        source %
-    else
-        edit $MYVIMRC
-    endif
-endfunction
 
-function! aljoschua#Reload() " Could also use autocmds....
+function! aljoschua#ReloadOrEditVimrc()
+    let l:reload_actions = {expand('~/.config/i3/config'): '!i3-msg reload',
+                \ expand('~/.config/sxhkd/sxhkdrc'): '!systemctl --user reload sxhkd.service',
+                \ expand('~/.config/nvim/init.vim'): 'source %'}
     let l:file = expand('%:p')
-    if l:file == expand('~/.config/i3/config')
-        !i3-msg reload
-    elseif l:file == expand('~/.config/sxhkd/sxhkdrc') || expand('%:p:h') == expand('~/.config/sxhkd/modes')
-        !systemctl --user reload sxhkd.service
+
+    if has_key(l:reload_actions, l:file)
+        write
+        execute l:reload_actions[l:file]
+        return
     endif
+
+    if expand('%:p:h') == expand('~/.config/sxhkd/modes')
+        write
+        !systemctl --user reload sxhkd.service
+        return
+    endif
+
+    " No reloadable file was detected
+    edit $MYVIMRC
 endfunction
 
 function! aljoschua#GitSess()
