@@ -35,5 +35,5 @@ d() {
         (cd "$1" && dot add -u .)
         shift
     done
-    dot c -em "${msg%+}:"
+    dot c -t <(echo "${msg%+}: ")
 }
