@@ -30,7 +30,7 @@ let mapleader = ' '
 nnoremap <C-J> :cnext<CR>
 nnoremap <C-K> :cprevious<CR>
 nnoremap ZA :wqall<CR>
-nnoremap <leader>v :if match(expand('%:p'), $MYVIMRC) != -1 \| write \| source % \| else \| edit $MYVIMRC \| endif<CR>
+nnoremap <leader>v :call aljoschua#EditOrSourceVimrc()<CR>
 nnoremap <leader>m q:?^make<CR><CR>
 nnoremap <leader>l :!xdg-open <C-R><C-F><CR>
 
@@ -43,13 +43,7 @@ nnoremap <leader>l :!xdg-open <C-R><C-F><CR>
 
 iabbrev :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
 
-function! GitSess()
-    set autowrite
-    nnoremap ZZ :echoerr 'Use Ctrl-Z!'<CR>
-    set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
-endfunction
-
-command! Gitsess :call GitSess()
+command! Gitsess :call aljoschua#GitSess()
 
 augroup WhereILeftOf
     au!
