@@ -34,6 +34,7 @@ nnoremap <leader>v :edit $MYVIMRC<CR>
 nnoremap <leader>m q:?^make<CR><CR>
 nnoremap <leader>l :!xdg-open <C-R><C-F><CR>
 nnoremap <leader>w :call initvim#WriteAndReload()<CR>
+nnoremap <leader>p :write \| !pandoc -o %:r.pdf %<CR>
 
 
 " map [[ ?{<CR>w99[{
