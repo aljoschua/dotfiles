@@ -1,3 +1,4 @@
+#modeinfo: Resize mode
 Escape
     .config/sxhkd/switch default
 

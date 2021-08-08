@@ -113,7 +113,7 @@ super + question
 
 
 {super + s,XF86PowerOff}
-    dunstify "Poweroff Mode: [R]estart | [p]oweroff | [s]uspend | [l]ogout | [h]ibernate | h[y]brid-sleep | restart [i]3"; .config/sxhkd/switch poweroff
+    .config/sxhkd/switch poweroff
 
 super + r
     .config/sxhkd/switch resize

@@ -1,3 +1,4 @@
+#modeinfo: Poweroff Mode: [R]estart | [p]oweroff | [s]uspend | [l]ogout | [h]ibernate | h[y]brid-sleep | restart [i]3
 Escape
     .config/sxhkd/switch default
 

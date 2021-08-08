@@ -3,3 +3,6 @@
 cd $(dirname "$0")
 ln -fs "modes/$1" sxhkdrc
 systemctl --user reload sxhkd
+
+killall osd_cat || true
+awk 'NR==1 && /^#modeinfo:/ {$1=""; print}' "modes/$1" | osd_cat -A center -d 0
