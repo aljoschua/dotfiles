@@ -51,6 +51,14 @@ function foreground {
 }
 zle -N foreground
 
+function prompt-rc-file {
+    BUFFER='vim $(realpath ~/.local/share/config-links/)'
+    CURSOR=$(($#BUFFER-1))
+    zle complete-word
+}
+zle -N prompt-rc-file
+bindkey '^R' prompt-rc-file
+
 bindkey -v '^U' prepend-sudo
 bindkey -a '^U' prepend-sudo
 bindkey -v '^E' edit-command
