@@ -3,10 +3,6 @@
 ws=$1
 cd
 
-if [ $ws = dotfiles ]; then
-    exit
-fi
-
 i3-msg "append_layout .config/i3/$ws.json"
 
 if [ $ws = uni ]; then
