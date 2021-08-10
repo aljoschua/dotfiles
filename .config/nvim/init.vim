@@ -33,7 +33,6 @@ nnoremap ZA :wqall<CR>
 nnoremap <leader>v :edit $MYVIMRC<CR>
 nnoremap <leader>m q:?^make<CR><CR>
 nnoremap <leader>l :!xdg-open <C-R><C-F><CR>
-nnoremap <leader>w :call initvim#WriteAndReload()<CR>
 nnoremap <leader>p :write \| !pandoc -o %:r.pdf %<CR>
 
 
@@ -46,6 +45,21 @@ nnoremap <leader>p :write \| !pandoc -o %:r.pdf %<CR>
 iabbrev :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
 
 command! Gitsess :call initvim#GitSess()
+
+" Autocommands {{{1
+let g:reload_configs = 1
+augroup ReloadConfigs
+    au!
+
+    autocmd BufWritePost ~/.config/i3/config
+                \ if g:reload_configs | !i3-msg reload | endif
+    autocmd BufWritePost ~/.config/sxhkd/*
+                \ if g:reload_configs | !systemctl --user reload sxhkd.service | endif
+    autocmd BufWritePost ~/.config/nvim/init.vim
+                \ if g:reload_configs | source % | endif
+    autocmd BufWritePost ~/.config/systemd/user/*
+                \ if g:reload_configs | !systemctl --user daemon-reload | endif
+augroup END
 
 augroup WhereILeftOf
     au!
