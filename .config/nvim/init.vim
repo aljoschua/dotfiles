@@ -84,4 +84,7 @@ Plug  'tpope/vim-fugitive'
 Plug  'takac/vim-hardtime'
 let g:hardtime_default_on = 1
 
+Plug stdpath('config') . '/pack/autochmod/start' " Loaded outside of vim-plug
+nnoremap <leader>a :call AutoChmodEnable()<CR>
+
 call plug#end()
