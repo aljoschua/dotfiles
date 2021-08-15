@@ -6,7 +6,7 @@ endif
 
 " Options {{{1
 " File management
-set nobackup undofile
+set nobackup undofile hidden
 set path-=/usr/include path+=**
 
 " Tab Usage
