@@ -63,7 +63,7 @@ root: # Installs root dotfiles, secrets and various other things
     "
 remote-access: {cmd: [pkg=openssh-server, *agi]}
 graphical:
-  dep: [root, wm, libinput-gestures, spotify, dunst, chrome, bitwarden, rclone]
+  dep: [root, wm, libinput-gestures, dunst, chrome, bitwarden, rclone]
   cmd:
     - pkg='x11vnc xclip remmina remmina-plugin-vnc kdeconnect gparted ssh-askpass-gnome screenkey signal-desktop'
     - pkg+=' google-chrome-stable spotify-client autorandr'
