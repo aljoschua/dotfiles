@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Zoom
 Comment=Zoom Video Conference
-Exec=/home/aljoschua/.local/share/scripts/zoom_wrapper %U
+Exec=/home/aljoschua/.local/lib/scripts/zoom_wrapper %U
 Icon=Zoom
 Terminal=false
 Type=Application
