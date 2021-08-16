@@ -50,6 +50,8 @@ let g:reload_configs = 1
 augroup ReloadConfigs
     au!
 
+    autocmd BufWritePost ~/.config/i3status/config
+                \ if g:reload_configs | execute '!i3-msg restart' | endif
     autocmd BufWritePost ~/.config/i3/config
                 \ if g:reload_configs | execute '!i3-msg reload' | endif
     autocmd BufWritePost ~/.config/sxhkd/*
