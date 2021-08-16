@@ -25,7 +25,7 @@ case $ws in
         gnome-terminal -- tmux new-session -As $ws &
         ;&
     main)
-        firefox -P $ws
+        firefox -P $ws &
         ;;
     *)
         exit 1
