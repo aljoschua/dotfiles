@@ -3,7 +3,7 @@ Description=Rclone Dropbox Mount Service
 
 [Service]
 Type=notify
-KillMode=none
+KillMode=control-group
 ExecStart=/usr/bin/rclone mount dropbox: %h/Dropbox \
     --use-mmap --dir-cache-time 1000h --poll-interval 15s \
     --vfs-cache-mode full --tpslimit 10 \
