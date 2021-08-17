@@ -50,16 +50,11 @@ let g:reload_configs = 1
 augroup ReloadConfigs
     au!
 
-    autocmd BufWritePost ~/.config/i3status/config
-                \ if g:reload_configs | execute '!i3-msg restart' | endif
-    autocmd BufWritePost ~/.config/i3/config
-                \ if g:reload_configs | execute '!i3-msg reload' | endif
-    autocmd BufWritePost ~/.config/sxhkd/*
-                \ if g:reload_configs | execute '!systemctl --user reload sxhkd.service' | endif
-    autocmd BufWritePost ~/.config/nvim/init.vim
-                \ if g:reload_configs | source % | endif
-    autocmd BufWritePost ~/.config/systemd/user/*
-                \ if g:reload_configs | execute '!systemctl --user daemon-reload' | endif
+    autocmd BufWritePost ~/.config/i3status/config call reload_configs#i3status()
+    autocmd BufWritePost ~/.config/i3/config call reload_configs#i3()
+    autocmd BufWritePost ~/.config/sxhkd/* call reload_configs#sxhkd()
+    autocmd BufWritePost ~/.config/nvim/init.vim call reload_configs#vim()
+    autocmd BufWritePost ~/.config/systemd/user/* call reload_configs#systemd()
 augroup END
 
 augroup WhereILeftOf
