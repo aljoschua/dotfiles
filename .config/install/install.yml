@@ -30,6 +30,7 @@ terminal: # Terminal applications
   cmd:
     - pkg='tmux neovim zsh docker.io git ncdu asciinema inotify-tools'
     - *agi
+    - sudo usermod -aG docker $USER
     - |-
       sudo chsh -s /usr/bin/zsh
       sudo chsh -s /usr/bin/zsh $USER
