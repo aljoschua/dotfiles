@@ -118,6 +118,19 @@ super + question
 super + r
     .config/sxhkd/switch resize
 
+## Dunst ##
+ctrl + space
+    dunstctl close
+
+ctrl + shift + space
+    dunstctl close_all
+
+ctrl + dead_circumflex
+    dunstctl history-pop
+
+ctrl + shift + period
+    dunstctl context
+
 ### Quit ###
 ctrl + alt + r
     systemctl -i reboot
