@@ -105,9 +105,6 @@ super + XF86Display
     cinnamon-settings display
 
 ### Misc ###
-super + y
-    xkbset {_,-}sticky -twokey -latchlock; media-status sticky
-
 super + question
     zenity --text-info --filename=.config/sxhkd/sxhkdrc --width=500 --height=1000
 

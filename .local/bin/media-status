@@ -18,10 +18,6 @@ case $1 in
         percentage=$(xbacklight -get)
         display_percentage $percentage
         ;;
-    sticky)
-        killall osd_cat
-        xkbset q | grep Sticky-Keys | osd_cat -A center
-        ;;
     *)
         ;;
 
