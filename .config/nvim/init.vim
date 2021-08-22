@@ -21,7 +21,6 @@ highlight SpecialKey ctermfg=red
 
 " Misc.
 set colorcolumn=81 cursorline
-set background=dark
 set clipboard=unnamedplus
 
 " Mappings {{{1
