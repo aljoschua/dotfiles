@@ -5,7 +5,7 @@ alias soundrestart="pulseaudio -k && sudo alsa force-reload" #Doesn't occur anym
 alias alert='notify-send -u critical -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias .n="vim ~/.config/notes"
 alias dot="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
-alias d.="dot c ."
+alias d.="dot ap ."
 alias dots="git --git-dir=$HOME/.config/secrets --work-tree=$HOME"
 alias vim=nvim
 alias tm="tmux new-session -As"
