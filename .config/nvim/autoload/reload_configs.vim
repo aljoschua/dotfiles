@@ -27,3 +27,9 @@ function! reload_configs#systemd()
         !systemctl --user daemon-reload
     endif
 endfunction
+
+function! reload_configs#tmux()
+    if g:reload_configs
+        !tmux source-file ~/.tmux.conf
+    endif
+endfunction
