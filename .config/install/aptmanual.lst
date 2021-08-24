@@ -400,6 +400,7 @@ gnupg
 gnupg-l10n
 gnupg-utils
 golang
+golang-1.16
 google-chrome-stable
 gparted
 gpg
