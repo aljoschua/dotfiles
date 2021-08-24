@@ -7,7 +7,7 @@ endif
 " Options {{{1
 " File management
 set nobackup undofile hidden
-set path-=/usr/include path+=**
+set path-=/usr/include
 
 " Tab Usage
 set tabstop=4 shiftwidth=4 expandtab softtabstop=4
