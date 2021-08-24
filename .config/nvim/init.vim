@@ -31,7 +31,7 @@ nnoremap <C-J> :cnext<CR>
 nnoremap <C-K> :cprevious<CR>
 nnoremap ZA :wqall<CR>
 nnoremap <leader>m q:?^make<CR><CR>
-nnoremap <leader>l :!xdg-open <C-R><C-F><CR>
+nnoremap <leader>o :!xdg-open <C-R><C-F>
 nnoremap <leader>p :write !pandoc -o %:r.pdf<CR>
 
 
