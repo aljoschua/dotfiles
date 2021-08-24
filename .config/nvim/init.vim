@@ -22,6 +22,7 @@ highlight SpecialKey ctermfg=red
 " Misc.
 set colorcolumn=81 cursorline
 set clipboard=unnamedplus
+set ignorecase smartcase
 
 " Mappings {{{1
 let mapleader = ' '
