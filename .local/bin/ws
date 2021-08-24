@@ -26,6 +26,10 @@ case $ws in
         ;&
     main)
         firefox -P $ws &
+        {   sleep 4
+            wmctrl -ia $(wmctrl -lp | awk -v pid=$! '$3 == pid {print $1}') &&
+            xdotool key --clearmodifiers super+f super+f
+        } &
         ;;
     *)
         exit 1
