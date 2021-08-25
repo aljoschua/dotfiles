@@ -65,6 +65,7 @@ iabbrev :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
 if isdirectory('.git') && empty(argv())
     call initvim#GitSess()
 endif
+command! Trailspace :%s/ \+$//
 
 " Autocommands {{{1
 let g:reload_configs = 1
