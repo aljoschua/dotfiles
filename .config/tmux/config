@@ -9,3 +9,10 @@ bind-key -r -T prefix j select-pane -D
 bind-key -r -T prefix h select-pane -L
 bind-key -r -T prefix l select-pane -R
 bind-key -T prefix b last-window
+
+
+
+set-environment -g TMUX_PLUGIN_MANAGER_PATH '~/.local/share/tmux-plugins/'
+run-shell 'mkdir ~/.local/share/tmux-plugins'
+run-shell 'git clone hub:tmux-plugins/tpm ~/.local/share/tmux-plugins/tpm || true'
+run-shell '~/.local/share/tmux-plugins/tpm/tpm'
