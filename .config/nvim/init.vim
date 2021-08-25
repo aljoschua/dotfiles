@@ -77,7 +77,7 @@ augroup ReloadConfigs
     autocmd BufWritePost ~/.config/sxhkd/* call reload_configs#sxhkd()
     autocmd BufWritePost ~/.config/nvim/init.vim call reload_configs#vim()
     autocmd BufWritePost ~/.config/systemd/user/* call reload_configs#systemd()
-    autocmd BufWritePost ~/.tmux.conf call reload_configs#tmux()
+    autocmd BufWritePost ~/.config/tmux/config call reload_configs#tmux()
 augroup END
 
 augroup WhereILeftOf
