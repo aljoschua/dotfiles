@@ -62,7 +62,9 @@ nnoremap <leader>p :write !pandoc -o %:r.pdf<CR>
 
 iabbrev :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
 
-command! Gitsess :call initvim#GitSess()
+if isdirectory('.git') && empty(argv())
+    call initvim#GitSess()
+endif
 
 " Autocommands {{{1
 let g:reload_configs = 1
