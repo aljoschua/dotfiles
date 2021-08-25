@@ -3,7 +3,9 @@
 ws=$1
 cd
 
-i3-msg "append_layout .config/i3/$ws.json"
+if [ -r .config/i3/$ws.json ]; then
+    i3-msg "append_layout .config/i3/$ws.json"
+fi
 
 if [ $ws = uni ]; then
     cd Documents/TUB
