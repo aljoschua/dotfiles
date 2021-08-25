@@ -4,6 +4,25 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch
 endif
 
+" Plugins {{{1
+call plug#begin(stdpath('data') . '/vim-plug')
+let g:plug_window = 'topleft new'
+
+Plug  'vim-syntastic/syntastic'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+Plug  'tpope/vim-fugitive'
+
+Plug  'takac/vim-hardtime'
+let g:hardtime_default_on = 1
+
+Plug stdpath('config') . '/pack/autochmod/start' " Loaded outside of vim-plug
+nnoremap <leader>a :call AutoChmodEnable()<CR>
+
+call plug#end()
 " Options {{{1
 " File management
 set nobackup undofile hidden
@@ -66,22 +85,3 @@ augroup WhereILeftOf
     autocmd BufWinEnter init.vim normal! zv
 augroup END
 
-" Plugins {{{1
-call plug#begin(stdpath('data') . '/vim-plug')
-let g:plug_window = 'topleft new'
-
-Plug  'vim-syntastic/syntastic'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-Plug  'tpope/vim-fugitive'
-
-Plug  'takac/vim-hardtime'
-let g:hardtime_default_on = 1
-
-Plug stdpath('config') . '/pack/autochmod/start' " Loaded outside of vim-plug
-nnoremap <leader>a :call AutoChmodEnable()<CR>
-
-call plug#end()
