@@ -14,6 +14,6 @@ bind-key -T prefix b last-window
 
 
 set-environment -g TMUX_PLUGIN_MANAGER_PATH '~/.local/share/tmux-plugins/'
-run-shell 'mkdir ~/.local/share/tmux-plugins'
+run-shell 'mkdir -p ~/.local/share/tmux-plugins'
 run-shell 'git clone hub:tmux-plugins/tpm ~/.local/share/tmux-plugins/tpm || true'
 run-shell '~/.local/share/tmux-plugins/tpm/tpm'
