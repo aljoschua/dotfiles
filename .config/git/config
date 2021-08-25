@@ -4,6 +4,8 @@
 	useConfigOnly = true
 [url "github:"]
 	insteadOf = hub:
+[url "github-aljoschafrey:aljoschafrey/"]
+	insteadOf = hubtub:
 [url "git@gitlab.com:"]
 	insteadOf = lab:
 [url "github:aljoschua/"]
