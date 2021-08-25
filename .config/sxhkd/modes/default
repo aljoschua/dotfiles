@@ -127,7 +127,3 @@ ctrl + dead_circumflex
 
 ctrl + shift + period
     dunstctl context
-
-### Quit ###
-ctrl + alt + r
-    systemctl -i reboot
