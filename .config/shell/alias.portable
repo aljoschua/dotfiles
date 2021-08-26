@@ -12,6 +12,7 @@ alias g=git
 alias tb="nc termbin.com 9999"
 alias cp="cp -i"
 alias mv="mv -i"
+alias es="env | sort"
 
 alias aguu="sudo apt-get update -y && sudo apt-get upgrade -y"
 alias agi="sudo apt-get -y install"
