@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
 
+fail() {
+    echo "$@" >&2
+    exit 1
+}
+
 check_args() {
-    [ $# != 1 ] && exit 1
-    for name in travel dsi gdst apic uni dotfiles main; do
+    [ $# != 1 ] && fail "ws requires exactly one argument"
+    possible_names="travel dsi gdst apic uni dotfiles main"
+    for name in $possible_names; do
         [ $name = "$1" ] && local match=
     done
-    [ -v match ] || exit 1
+    [ -v match ] || fail "ws only accepts '$possible_names'"
 }
 
 i3_maybe_append_layout() {
@@ -56,5 +62,6 @@ main() {
     export WS_HOME="$PWD"
 
     launch_apps
+    exit 0
 }
 main "$@"
