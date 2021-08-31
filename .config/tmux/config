@@ -11,6 +11,9 @@ bind-key -r -T prefix j select-pane -D
 bind-key -r -T prefix h select-pane -L
 bind-key -r -T prefix l select-pane -R
 bind-key -T prefix b last-window
+bind-key -T prefix N switch-client -n
+bind-key -T prefix P switch-client -p
+
 
 set-hook -g session-created {
     run-shell 'tmux source-file "$WS_HOME/init.tmux"'
