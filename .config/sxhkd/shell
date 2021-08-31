@@ -1,7 +1,7 @@
 #!/bin/bash
 
 unset SXHKD_SHELL DCONF_PROFILE
-unset JOURNAL_STREAM IM_CONFIG_PHASE MANAGER_PID INVOCATION_ID # systemd environment
+unset JOURNAL_STREAM IM_CONFIG_PHASE MANAGERPID INVOCATION_ID # systemd environment
 
 shift # Remove '-c'
 if [[ "$1" =~ ^\! ]]; then
