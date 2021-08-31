@@ -52,6 +52,8 @@ nnoremap ZA :wqall<CR>
 nnoremap <leader>m q:?^make<CR><CR>
 nnoremap <leader>o :!xdg-open <C-R><C-F>
 nnoremap <leader>p :write !pandoc -o %:r.pdf<CR>
+nnoremap <leader>c :cd %:h<CR>
+nnoremap <leader>- :cd -<CR>
 
 
 " map [[ ?{<CR>w99[{
