@@ -1,39 +1,60 @@
 #!/usr/bin/env bash
 
-ws=$1
-cd
+check_args() {
+    [ $# != 1 ] && exit 1
+    for name in travel dsi gdst apic uni dotfiles main; do
+        [ $name = "$1" ] && local match=
+    done
+    [ -v match ] || exit 1
+}
 
-if [ -r .config/i3/$ws.json ]; then
-    i3-msg "append_layout .config/i3/$ws.json"
-fi
+i3_maybe_append_layout() {
+    if [ -r ".config/i3/$WS_NAME.json" ]; then
+        i3-msg append_layout ".config/i3/$WS_NAME.json"
+    fi
+}
 
-if [ $ws = uni ]; then
-    cd Documents/TUB
-fi
+change_directory() {
+    [ -d "tubCloud/s21/$WS_NAME" ] && cd "tubCloud/s21/$WS_NAME"
 
-if [ $ws = travel ]; then
-    cd Documents/travel
-    i3-msg "layout stacked"
-fi
+    [ "$WS_NAME" = uni ] && cd Documents/TUB
 
-case $ws in
-    travel) ;&
-    dsi) ;&
-    apic) ;&
-    gdst) ;&
-    uni)
-        [ "$PWD" = "$HOME" ] && cd ~/tubCloud/s21/$ws ;&
-    dotfiles)
-        gnome-terminal -- tmux new-session -As $ws &
-        ;&
-    main)
-        firefox -P $ws &
-        {   sleep 4
-            wmctrl -ia $(wmctrl -lp | awk -v pid=$! '$3 == pid {print $1}') &&
-            xdotool key --clearmodifiers super+f super+f
-        } &
-        ;;
-    *)
-        exit 1
-        ;;
-esac
+    [ "$WS_NAME" = travel ] && cd Documents/travel
+}
+
+launch_apps() {
+    local pre="$WS_HOME/ws-pre.bash" post="$WS_HOME/ws-post.bash"
+    [ -r "$pre" ] && source "$pre"
+
+    [ "$WS_NAME" != main ] && launch_tmux
+    launch_browser
+
+    [ -r "$post" ] && source "$post"
+}
+
+launch_tmux() {
+    gnome-terminal -- tmux new-session -As "$WS_NAME" &
+}
+
+launch_browser() {
+    firefox -P "$WS_NAME" &
+    {   sleep 4 # Needs to be dynamic...
+        wmctrl -ia $(wmctrl -lp | awk -v pid=$! '$3 == pid {print $1}') &&
+        xdotool key --clearmodifiers --delay 100 super+f super+f
+    } &
+}
+
+main() {
+    check_args "$@"
+
+    export WS_NAME="$1"
+    cd
+
+    i3_maybe_append_layout
+
+    change_directory
+    export WS_HOME="$PWD"
+
+    launch_apps
+}
+main "$@"
