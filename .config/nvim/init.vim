@@ -63,6 +63,7 @@ nnoremap <leader>- :cd -<CR>
 " }}}
 
 iabbrev :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
+cabbrev PDF %:r.pdf
 
 if isdirectory('.git') && empty(argv())
     call initvim#GitSess()
