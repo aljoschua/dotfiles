@@ -1,0 +1,12 @@
+#modeinfo: Workspace mode: ...
+Escape
+    !
+
+{super +,_} {shift +,_} {0-9,a-f}
+    !i3-msg {_,_} {move container to,_} workspace {0-9,A-F}
+
+{super +,_} w
+    !i3-msg workspace back_and_forth
+
+q
+    !ws-close
