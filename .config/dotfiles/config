@@ -3,8 +3,6 @@
 	filemode = true
 	bare = true
 	sparseCheckout = true
-[status]
-	showUntrackedFiles = no
 [alias]
 	s = status -sb --show-stash
 [user]
