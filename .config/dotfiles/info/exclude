@@ -36,6 +36,7 @@
 !/.config/dunst/**
 !/.config/gdb/
 !/.config/gdb/**
+/.config/gdb/history
 !/.config/git/
 !/.config/git/**
 !/.config/gtk-3.0/
@@ -51,6 +52,7 @@
 !/.config/mimeapps.list
 !/.config/nvim/
 !/.config/nvim/**
+/.config/nvim/.netrwhist
 !/.config/qt5ct/
 !/.config/qt5ct/qt5ct.conf
 !/.config/shell/
@@ -63,6 +65,8 @@
 !/.config/tmux/**
 !/.config/zsh/
 !/.config/zsh/**
+/.config/zsh/.zcompdump
+/.config/zsh/functions/*.zwc
 
 !/.local/
 
