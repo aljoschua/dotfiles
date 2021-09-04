@@ -32,7 +32,7 @@ mktx2() {
 d() {
     printf -v msg '%s+' "$@"
     while [ $# != 0 ]; do
-        (cd "$1" && dot add -u .)
+        (cd "$1" && dot add .)
         shift
     done
     dot c -t <(echo "${msg%+}: ")
