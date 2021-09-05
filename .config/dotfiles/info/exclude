@@ -67,6 +67,7 @@
 !/.config/zsh/**
 /.config/zsh/.zcompdump
 /.config/zsh/functions/*.zwc
+/.config/zsh/functions/*/*.zwc
 
 !/.local/
 
