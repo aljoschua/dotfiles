@@ -1,0 +1,6 @@
+zle push-input -w
+BUFFER="fg"
+if [ "$NUMERIC" ]; then
+    BUFFER+=" %$NUMERIC"
+fi
+zle accept-line

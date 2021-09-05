@@ -1,0 +1,6 @@
+[[ -z $BUFFER ]] && BUFFER=$(fc -ln -1)
+
+[[ $BUFFER == sudo\ * ]] && return
+
+BUFFER="sudo $BUFFER"
+zle accept-line

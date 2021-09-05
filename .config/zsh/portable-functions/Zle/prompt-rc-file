@@ -1,0 +1,3 @@
+BUFFER='vim $(realpath ~/.local/share/config-links/)'
+CURSOR=$(($#BUFFER-1))
+zle complete-word

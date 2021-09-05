@@ -1,0 +1,10 @@
+local shell_words expanded_first_shell_word full_path
+shell_words=(${(A)${(z)BUFFER}})
+if [ $#shell_words = 0 ]; then
+    return 1
+else
+    eval expanded_first_shell_word=$shell_words[1]
+    full_path=$commands[$expanded_first_shell_word]
+    [ $#full_path = 0 ] && return 1
+    BUFFER=${BUFFER/$shell_words[1]/\'$full_path\'}
+fi

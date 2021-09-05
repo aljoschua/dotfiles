@@ -1,61 +1,16 @@
 #!/usr/bin/env zsh
 
 bindkey -v
-function prepend-sudo {
-    [[ -z $BUFFER ]] && BUFFER=$(fc -ln -1)
-
-    [[ $BUFFER == sudo\ * ]] && return
-
-    BUFFER="sudo $BUFFER"
-    zle accept-line
-}
 zle -N prepend-sudo
 
-function edit-command {
-    [[ -z "$BUFFER" ]] && BUFFER=$(fc -ln -1)
-
-    zle expand-cmd-path-correctly || return 1
-
-    BUFFER="${EDITOR:-vim} ${${(A)${(z)BUFFER}}[1]}"
-    zle accept-line
-}
 zle -N edit-command
 
-function expand-cmd-path-correctly {
-    local shell_words expanded_first_shell_word full_path
-    shell_words=(${(A)${(z)BUFFER}})
-    if [ $#shell_words = 0 ]; then
-        return 1
-    else
-        eval expanded_first_shell_word=$shell_words[1]
-        full_path=$commands[$expanded_first_shell_word]
-        [ $#full_path = 0 ] && return 1
-        BUFFER=${BUFFER/$shell_words[1]/\'$full_path\'}
-    fi
-}
 zle -N expand-cmd-path-correctly
 
-function launch-command {
-    BUFFER="gnome-terminal -- $BUFFER >/dev/null 2>&1"
-    zle accept-line
-}
 zle -N launch-command
 
-function foreground {
-    zle push-input -w
-    BUFFER="fg"
-    if [ "$NUMERIC" ]; then
-        BUFFER+=" %$NUMERIC"
-    fi
-    zle accept-line
-}
 zle -N foreground
 
-function prompt-rc-file {
-    BUFFER='vim $(realpath ~/.local/share/config-links/)'
-    CURSOR=$(($#BUFFER-1))
-    zle complete-word
-}
 zle -N prompt-rc-file
 bindkey '^R' prompt-rc-file
 
