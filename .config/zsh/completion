@@ -1,4 +1,0 @@
-_cd_all() {
-    CURRENT=1 _cd "$@"
-}
-compdef _cd_all d

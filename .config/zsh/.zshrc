@@ -9,5 +9,8 @@ done
 fpath+=($dir/{,portable-}functions/*/)
 autoload -Uz $dir/{,portable-}functions/*/*
 
+# Need to reload completions with new fpath
+compinit
+
 autoload -Uz promptinit && promptinit
 prompt segments nogit
