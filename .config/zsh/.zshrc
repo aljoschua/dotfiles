@@ -1,5 +1,5 @@
 
-dir=$(dirname $(print -P "%N"))
+dir=$ZDOTDIR
 for file in $dir/*; do
     source "$file"
 done

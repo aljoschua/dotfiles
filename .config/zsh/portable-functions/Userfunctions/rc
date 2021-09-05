@@ -1,4 +1,4 @@
-local dir=$HOME/.config/zsh
+local dir=$ZDOTDIR
 if [ "$1" ]; then
     local filename=$dir/$1
 else
