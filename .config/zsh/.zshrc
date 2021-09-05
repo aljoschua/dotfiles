@@ -9,8 +9,12 @@ done
 fpath+=($dir/{,portable-}functions/*/)
 autoload -Uz $dir/{,portable-}functions/*/*
 
-# Need to reload completions with new fpath
-compinit
+# Portable stuff
+compdef _rc rc
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Non-portable stuff
+compdef _d d
 
 autoload -Uz promptinit && promptinit
 prompt segments nogit

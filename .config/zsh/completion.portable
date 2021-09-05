@@ -1,4 +1,0 @@
-
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-
-compdef '_path_files -W "$HOME/.config/zsh"' rc

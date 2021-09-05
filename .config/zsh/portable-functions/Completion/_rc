@@ -1,0 +1,2 @@
+#compdef rc
+_path_files -W "$HOME/.config/zsh"
