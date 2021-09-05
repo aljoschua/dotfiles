@@ -1,0 +1,10 @@
+inotifywait -qmr \
+    -e modify -e moved_to \
+    --format "%w%f" "$1" |
+    while read filePath; do
+        ${2:-echo} "$filePath"
+        #if [[ "$filePath" =~ $2 ]]
+        #then
+        #    eval "$3"
+        #fi
+    done

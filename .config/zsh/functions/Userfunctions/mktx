@@ -1,0 +1,5 @@
+cd $(dirname "$1")
+pdflatex --halt-on-error "$1"
+my_path=$(realpath "$1")
+prefix=${my_path:0:-4}
+/bin/rm "$prefix.log" "$prefix.aux" "$prefix.out"
