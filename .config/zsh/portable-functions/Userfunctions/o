@@ -1,0 +1,12 @@
+# need *, because getopt requires at least one short option
+eval set -- $(getopt -n xdg-open -l help,manual,version -- \* "$@")
+
+if [ "$2" = -- ]; then
+    xdg-open $1
+    return
+fi
+
+shift
+for i in "$@"; do
+    xdg-open "$i"
+done
