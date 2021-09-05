@@ -2,7 +2,7 @@ local dir=$HOME/.config/zsh
 if [ "$1" ]; then
     local filename=$dir/$1
 else
-    local filename=~/.zshrc
+    local filename=$dir/.zshrc
 fi
 
 ${EDITOR:-vim} $filename
