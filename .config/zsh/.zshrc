@@ -7,6 +7,7 @@ done
 [ -r "$WS_HOME/source.zsh" ] && source "$WS_HOME/source.zsh"
 
 fpath+=($dir/{,portable-}functions/*/)
+autoload -Uz $dir/{,portable-}functions/*/*
 
 autoload -Uz promptinit && promptinit
 prompt segments nogit
