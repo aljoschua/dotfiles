@@ -6,7 +6,7 @@ super + shift + d
     i3-dmenu-desktop
 
 super + Return
-    gnome-terminal
+    stterm
 
 super + {_,shift +} m
     remmina -c ~/.local/share/remmina/{1580655803090,1592859553306}.remmina

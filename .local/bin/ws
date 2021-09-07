@@ -39,7 +39,7 @@ launch_apps() {
 }
 
 launch_tmux() {
-    gnome-terminal -- tmux new-session -As "$WS_NAME" &
+    stterm -- tmux new-session -As "$WS_NAME" &
 }
 
 launch_browser() {

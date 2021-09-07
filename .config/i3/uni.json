@@ -19,8 +19,8 @@
             "percent": 0.5,
             "swallows": [
                {
-               "class": "^Gnome\\-terminal$",
-               "instance": "^gnome\\-terminal\\-server$"
+               "class": "^st\\-256color$",
+               "instance": "^st\\-256color$"
                }
             ],
             "type": "con"

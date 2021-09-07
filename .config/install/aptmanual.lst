@@ -1838,6 +1838,7 @@ ssh-askpass-gnome
 ssl-cert
 strace
 streamer
+stterm
 suckless-tools
 sudo
 sxhkd
