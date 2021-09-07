@@ -54,6 +54,7 @@ nnoremap <leader>o :!xdg-open <C-R><C-F>
 nnoremap <leader>p :write !pandoc -o %:r.pdf<CR>
 nnoremap <leader>c :cd %:h<CR>
 nnoremap <leader>- :cd -<CR>
+nnoremap S :%s//g<Left><Left>
 
 
 " map [[ ?{<CR>w99[{
