@@ -44,9 +44,11 @@ launch_tmux() {
 
 launch_browser() {
     firefox -P "$WS_NAME" &
-    {   sleep 4 # Needs to be dynamic...
-        wmctrl -ia $(wmctrl -lp | awk -v pid=$! '$3 == pid {print $1}') &&
-        xdotool key --clearmodifiers --delay 100 super+f super+f
+    {
+        sleep 4
+        stterm &
+        sleep 0.1
+        kill $!
     } &
 }
 
