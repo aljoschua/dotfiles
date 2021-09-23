@@ -20,7 +20,7 @@ Plug  'takac/vim-hardtime'
 let g:hardtime_default_on = 1
 
 Plug stdpath('config') . '/pack/autochmod/start' " Loaded outside of vim-plug
-nnoremap <leader>a :call AutoChmodEnable()<CR>
+nnoremap <Leader>a :call AutoChmodEnable()<CR>
 
 call plug#end()
 " Options {{{1
@@ -49,11 +49,11 @@ let mapleader = ' '
 nnoremap <C-J> :cnext<CR>
 nnoremap <C-K> :cprevious<CR>
 nnoremap ZA :wqall<CR>
-nnoremap <leader>m q:?^make<CR><CR>
-nnoremap <leader>o :!xdg-open <C-R><C-F>
-nnoremap <leader>p :write !pandoc -o %:r.pdf<CR>
-nnoremap <leader>c :cd %:h<CR>
-nnoremap <leader>- :cd -<CR>
+nnoremap <Leader>m q:?^make<CR><CR>
+nnoremap <Leader>o :!xdg-open <C-R><C-F>
+nnoremap <Leader>p :write !pandoc -o %:r.pdf<CR>
+nnoremap <Leader>c :cd %:h<CR>
+nnoremap <Leader>- :cd -<CR>
 nnoremap S :%s//g<Left><Left>
 
 
