@@ -2,7 +2,6 @@
 # Reduce latency when pressing <Esc>
 export KEYTIMEOUT=1
 
-TMOUT=1
 TRAPALRM() {
     zle reset-prompt
 }
