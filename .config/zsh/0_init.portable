@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 export TMPDIR=$(mktemp -d $USER-XXXXXX -p /tmp)
 autoload run-help
 autoload run-help-git

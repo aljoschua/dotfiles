@@ -1,5 +1,3 @@
-#!/bin/sh
-
 export EDITOR=nvim
 export TEXMFHOME=~/.texmf
 
