@@ -1,6 +1,3 @@
 [[ -z "$BUFFER" ]] && BUFFER=$(fc -ln -1)
 
-zle expand-cmd-path-correctly || return 1
-
-BUFFER="${EDITOR:-vim} ${${(A)${(z)BUFFER}}[1]}"
-zle accept-line
+BUFFER="${EDITOR:-vim} =${${(A)${(z)BUFFER}}[1]}"
