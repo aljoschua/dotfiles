@@ -12,21 +12,21 @@ zle -N launch-command
 zle -N foreground
 
 zle -N prompt-rc-file
-bindkey '^R' prompt-rc-file
+bindkey '^[r' prompt-rc-file
 
-bindkey -v '^U' prepend-sudo
-bindkey -a '^U' prepend-sudo
-bindkey -v '^E' edit-command
-bindkey -a '^E' edit-command
-bindkey -v '^T' launch-command
-bindkey -a '^T' launch-command
+bindkey -v '^[s' prepend-sudo
+bindkey -a '^[s' prepend-sudo
+bindkey -v '^[e' edit-command
+bindkey -a '^[e' edit-command
+bindkey -v '^[t' launch-command
+bindkey -a '^[t' launch-command
 bindkey -v '^Z' foreground
 bindkey -a '^Z' foreground
-bindkey -v '^O' insert-last-word
-bindkey -a '^O' insert-last-word
+bindkey -v '^[o' insert-last-word
+bindkey -a '^[o' insert-last-word
 
-bindkey -a '^K' run-help
-bindkey -v '^K' run-help
+bindkey -a '^[k' run-help
+bindkey -v '^[k' run-help
 bindkey -v '^P' up-history
 bindkey -v '^N' down-history
 
