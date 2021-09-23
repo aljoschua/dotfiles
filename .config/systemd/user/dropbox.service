@@ -1,5 +1,6 @@
 [Unit]
 Description=Rclone Dropbox Mount Service
+After=default.target
 
 [Service]
 Type=notify
