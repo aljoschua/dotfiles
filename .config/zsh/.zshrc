@@ -18,3 +18,5 @@ compdef _d d
 
 autoload -Uz promptinit && promptinit
 prompt segments nogit
+
+stty $(printf '%s undef ' stop start rprnt werase discard kill lnext)
