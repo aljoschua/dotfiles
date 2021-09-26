@@ -1,0 +1,44 @@
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+*
+
+!/etc/
+
+!/etc/UPower/
+!/etc/UPower/UPower.conf
+
+!/etc/X11/
+!/etc/X11/xorg.conf.d/
+!/etc/X11/xorg.conf.d/20-intel.conf
+
+!/etc/apt/
+!/etc/apt/sources.list.d/
+!/etc/apt/sources.list.d/google-chrome.list
+!/etc/apt/sources.list.d/megasync.list
+!/etc/apt/sources.list.d/signal-xenial.list
+!/etc/apt/sources.list.d/spotify.list
+
+!/etc/network/
+!/etc/network/if-up.d/
+!/etc/network/if-up.d/arpmiri
+!/etc/network/if-up.d/publish-public-ip
+
+!/etc/pam.d/
+!/etc/pam.d/systemd-user
+
+!/etc/udev/
+!/etc/udev/rules.d/
+!/etc/udev/rules.d/granni-tablet.rules
+
+!/root/
+!/root/.bashrc
+
+!/root/.config/
+!/root/.config/dotfiles/
+!/root/.config/dotfiles/config
+!/root/.config/dotfiles/info/
+!/root/.config/dotfiles/info/exclude
