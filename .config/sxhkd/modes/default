@@ -6,7 +6,7 @@ super + shift + d
     i3-dmenu-desktop
 
 super + Return
-    stterm
+    x-terminal-emulator
 
 super + {_,shift +} m
     remmina -c ~/.local/share/remmina/{1580655803090,1592859553306}.remmina
@@ -38,7 +38,7 @@ super + F2
     echo -n | dmenu -p "$" | exec sh
 
 super + F1
-    find ~ -printf '%P\n' | dmenu -i | xargs -r gnome-terminal -- vim
+    find ~ -printf '%P\n' | dmenu -i | xargs -r x-terminal-emulator -- vim
 
 ### Windows ###
 super + {_,shift +} + {h,j-l}

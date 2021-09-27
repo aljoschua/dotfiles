@@ -86,6 +86,7 @@
 !/.local/bin/timer.old
 !/.local/bin/ws
 !/.local/bin/ws-close
+!/.local/bin/x-terminal-emulator
 
 !/.local/lib/
 !/.local/lib/scripts/

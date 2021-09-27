@@ -39,14 +39,14 @@ launch_apps() {
 }
 
 launch_tmux() {
-    stterm -- tmux new-session -As "$WS_NAME" &
+    x-terminal-emulator -- tmux new-session -As "$WS_NAME" &
 }
 
 launch_browser() {
     firefox -P "$WS_NAME" &
     {
         sleep 4
-        stterm &
+        x-terminal-emulator &
         sleep 0.1
         kill $!
     } &
