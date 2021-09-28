@@ -1,6 +1,8 @@
-setxkbmap -option caps:swapescape
-xinput set-prop 'SYNA3067:00 06CB:8265 Touchpad' 'libinput Tapping Enabled' 1
-setxkbmap -option terminate:ctrl_alt_bksp
-xkbset exp =st; xkbset sticky -twokey -latchlock
+{
+    setxkbmap -option caps:swapescape
+    xinput set-prop 'SYNA3067:00 06CB:8265 Touchpad' 'libinput Tapping Enabled' 1
+    setxkbmap -option terminate:ctrl_alt_bksp
+    xkbset exp =st; xkbset sticky -twokey -latchlock
 
-systemd-inhibit --what=handle-power-key sleep infinity &
+    systemd-inhibit --what=handle-power-key sleep infinity &
+} &
