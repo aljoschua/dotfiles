@@ -59,8 +59,11 @@
 !/.config/shell/**
 !/.config/sxhkd/
 !/.config/sxhkd/**
+!/.config/systemd/
 !/.config/systemd/user/
 !/.config/systemd/user/**
+/.config/systemd/user/default.target.wants
+/.config/systemd/user/timers.target.wants
 !/.config/tmux/
 !/.config/tmux/**
 !/.config/zsh/
