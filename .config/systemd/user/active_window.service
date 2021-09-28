@@ -1,0 +1,7 @@
+[Unit]
+Description=Save apt-mark showmanual
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c "echo $(iwgetid -r) $(xdotool getwindowfocus getwindowname) >> .local/share/active_window/$(date +%%F).log"
+
