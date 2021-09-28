@@ -1,0 +1,9 @@
+[Unit]
+Description=Password Manager
+After=default.target
+
+[Service]
+ExecStart=/usr/bin/env bitwarden
+
+[Install]
+WantedBy=default.target

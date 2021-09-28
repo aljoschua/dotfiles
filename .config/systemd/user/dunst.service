@@ -1,0 +1,9 @@
+[Unit]
+Description=Notification daemon
+After=default.target
+
+[Service]
+ExecStart=/usr/bin/env dunst
+
+[Install]
+WantedBy=default.target

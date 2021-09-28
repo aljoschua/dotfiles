@@ -1,0 +1,9 @@
+[Unit]
+Description=Redshift Screen Dimmer
+After=default.target
+
+[Service]
+ExecStart=/usr/bin/env redshift-gtk
+
+[Install]
+WantedBy=default.target

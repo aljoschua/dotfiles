@@ -1,0 +1,9 @@
+[Unit]
+Description=Touchpad Gestures
+After=default.target
+
+[Service]
+ExecStart=/usr/bin/env libinput-gestures
+
+[Install]
+WantedBy=default.target

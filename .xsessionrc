@@ -3,8 +3,4 @@ xinput set-prop 'SYNA3067:00 06CB:8265 Touchpad' 'libinput Tapping Enabled' 1
 setxkbmap -option terminate:ctrl_alt_bksp
 xkbset exp =st; xkbset sticky -twokey -latchlock
 
-redshift-gtk &
-libinput-gestures &
-dunst &
-bitwarden &
 systemd-inhibit --what=handle-power-key sleep infinity &
