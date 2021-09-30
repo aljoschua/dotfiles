@@ -6,7 +6,7 @@ alias dot="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
 alias d.="dot ap ."
 alias dots="git --git-dir=$HOME/.config/secrets --work-tree=$HOME"
 alias vim=nvim
-alias tm="tmux new-session -As"
+alias tm="tmux new-session -EAs"
 alias .d="vim ~/.local/share/diary/\$(date +%F)"
 alias xcb="{xclip -selection clipboard \$([ -t 0 ] && echo -- -o)}"
 alias dotex="vim ~/.config/dotfiles/info/exclude"
