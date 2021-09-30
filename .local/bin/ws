@@ -23,6 +23,8 @@ i3_maybe_append_layout() {
 change_directory() {
     [ -d "tubCloud/s21/$WS_NAME" ] && cd "tubCloud/s21/$WS_NAME"
 
+    [ "$WS_NAME" = dsi ] && cd ~/tubCloudb/s21/dsi
+
     [ "$WS_NAME" = uni ] && cd Documents/TUB
 
     [ "$WS_NAME" = travel ] && cd Documents/travel
