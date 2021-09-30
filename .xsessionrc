@@ -5,4 +5,6 @@
     xkbset exp =st; xkbset sticky -twokey -latchlock
 
     systemd-inhibit --what=handle-power-key sleep infinity &
+
+    systemctl --user --no-block start graphical.target
 } &
