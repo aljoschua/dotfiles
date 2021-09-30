@@ -53,6 +53,7 @@ nnoremap <Leader>o :!xdg-open <C-R><C-F>
 nnoremap <Leader>p :write !pandoc -o %:r.pdf<CR>
 nnoremap <Leader>c :cd %:h<CR>
 nnoremap <Leader>- :cd -<CR>
+nnoremap <Leader>b :b<Space>
 nnoremap S :%s//g<Left><Left>
 
 
