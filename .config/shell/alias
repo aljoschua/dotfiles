@@ -9,6 +9,7 @@ alias vim=nvim
 alias tm="tmux new-session -As"
 alias .d="vim ~/.local/share/diary/\$(date +%F)"
 alias xcb="{xclip -selection clipboard \$([ -t 0 ] && echo -- -o)}"
+alias dotex="vim ~/.config/dotfiles/info/exclude"
 
 # TU
 alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --passwd-on-stdin < ~/.local/share/secrets/tub-password"
