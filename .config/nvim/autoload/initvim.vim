@@ -10,3 +10,11 @@ function! initvim#GitSess()
         source Session.vim
     endif
 endfunction
+
+function! initvim#badd(...)
+    for files in a:000
+        for file in split(expand(files), '\n')
+            execute 'badd ' .  file
+        endfor
+    endfor
+endfunction

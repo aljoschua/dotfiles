@@ -71,6 +71,8 @@ if isdirectory('.git') && empty(argv())
 endif
 command! Trailspace :%s/ \+$//
 
+command! -nargs=+ -complete=file Badd call initvim#badd(<f-args>)
+
 " Autocommands {{{1
 let g:reload_configs = 1
 augroup ReloadConfigs
