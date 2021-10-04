@@ -94,3 +94,10 @@ augroup WhereILeftOf
     autocmd BufWinEnter init.vim normal! zv
 augroup END
 
+augroup AutosaveSessions
+    au!
+
+    autocmd BufEnter,VimLeave * if v:this_session != ''
+                \| mksession!
+                \| endif
+augroup END
