@@ -21,6 +21,8 @@ let g:hardtime_default_on = 1
 Plug stdpath('config') . '/pack/autochmod/start' " Loaded outside of vim-plug
 nnoremap <Leader>a :call AutoChmodEnable()<CR>
 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 call plug#end()
 " Options {{{1
 " File management

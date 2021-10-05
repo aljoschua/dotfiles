@@ -72,6 +72,9 @@
 /.config/zsh/.zcompdump
 /.config/zsh/functions/*.zwc
 /.config/zsh/functions/*/*.zwc
+!/.config/rclone/
+!/.config/rclone/**
+/.config/rclone/rclone.conf
 
 !/.local/
 
