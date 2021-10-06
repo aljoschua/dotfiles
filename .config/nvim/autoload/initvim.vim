@@ -20,3 +20,8 @@ function! initvim#badd(...)
         endfor
     endfor
 endfunction
+
+function! initvim#present()
+    set relativenumber& colorcolumn& list&
+    HardTimeOff
+endfunction
