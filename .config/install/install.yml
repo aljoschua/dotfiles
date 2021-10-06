@@ -114,5 +114,5 @@ tq:
   cmd: |-
     sudo pip3 install https://github.com/plainas/tq/zipball/stable
 systemd-units:
-  cmd: systemctl --user enable ~/.config/systemd/user/*
+  cmd: systemctl --user daemon-reload
 ## End default deps
