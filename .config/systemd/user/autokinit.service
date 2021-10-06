@@ -1,9 +1,0 @@
-[Unit]
-Description=Automatic ticket retrieval from TUB kerberos server
-
-[Service]
-Type=simple
-ExecStart=%s -c "kinit aljoschafrey@TU-BERLIN.DE -fkt ~/.local/share/secrets/tub.keytab"
-Restart=on-failure
-RestartSec=10s
-
