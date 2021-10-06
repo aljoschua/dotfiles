@@ -1,8 +1,0 @@
-[Unit]
-Description=Beacon loss notifier
-
-[Service]
-ExecStart=%s -c "journalctl -u wpa_supplicant -ocat -gCTRL-EVENT-BEACON-LOSS | xargs -L1 notify-send"
-
-[Install]
-WantedBy=default.target
