@@ -20,6 +20,11 @@ i3_maybe_append_layout() {
     fi
 }
 
+bind_ws_name() {
+    mkdir -p ~/.cache/ws
+    echo "$WS_NAME" > ~/.cache/ws/$(wmctrl -d | awk '/\*/{print $NF}')
+}
+
 change_directory() {
     [ -d "tubCloud/s21/$WS_NAME" ] && cd "tubCloud/s21/$WS_NAME"
 
@@ -61,6 +66,8 @@ main() {
     cd
 
     i3_maybe_append_layout
+
+    bind_ws_name
 
     change_directory
     export WS_HOME="$PWD"
