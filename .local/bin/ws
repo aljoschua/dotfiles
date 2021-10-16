@@ -7,7 +7,7 @@ fail() {
 
 check_args() {
     [ $# != 1 ] && fail "ws requires exactly one argument"
-    possible_names="travel dsi gdst apic uni dotfiles main"
+    possible_names="travel dsi thesis uni dotfiles main"
     for name in $possible_names; do
         [ $name = "$1" ] && local match=
     done
@@ -26,9 +26,9 @@ bind_ws_name() {
 }
 
 change_directory() {
-    [ -d "tubCloud/s21/$WS_NAME" ] && cd "tubCloud/s21/$WS_NAME"
+    [ -d "tubCloud/w21/$WS_NAME" ] && cd "tubCloud/w21/$WS_NAME"
 
-    [ "$WS_NAME" = dsi ] && cd ~/tubCloudb/s21/dsi
+    [ "$WS_NAME" = dsi ] && cd ~/tubCloudb/w21/dsi
 
     [ "$WS_NAME" = uni ] && cd Documents/TUB
 
