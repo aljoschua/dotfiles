@@ -1,0 +1,7 @@
+[Unit]
+Description=Git Backup for Ignored files
+
+[Service]
+Type=simple
+ExecStart=%h/.local/lib/scripts/gitbu.sh
+
