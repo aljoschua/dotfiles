@@ -4,9 +4,9 @@ Description=Rclone %i
 [Service]
 Type=notify
 KillMode=control-group
-ExecStart=/usr/bin/zsh -c "source %E/rclone/%i; start"
-ExecStop=/usr/bin/zsh -c "source %E/rclone/%i; stop"
-ExecReload=/usr/bin/zsh -c "source %E/rclone/%i; reload"
+ExecStart=/usr/bin/zsh -c "source %E/rclone/mount.sh %i; start"
+ExecStop=/usr/bin/zsh -c "source %E/rclone/mount.sh %i; stop"
+ExecReload=/usr/bin/zsh -c "source %E/rclone/mount.sh %i; reload"
 Restart=on-failure
 
 [Install]
