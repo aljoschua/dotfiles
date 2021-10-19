@@ -115,4 +115,5 @@ tq:
     sudo pip3 install https://github.com/plainas/tq/zipball/stable
 systemd-units:
   cmd: systemctl --user daemon-reload
+dconf: {cmd: dconf load / < .config/dconf/settings.dconf}
 ## End default deps
