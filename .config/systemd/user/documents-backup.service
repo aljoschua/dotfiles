@@ -1,8 +1,0 @@
-[Unit]
-Description=Documents Backup
-
-[Service]
-Type=simple
-ExecStart=/bin/sh -c "rclone sync ~/Documents mega:Documents"
-
-
