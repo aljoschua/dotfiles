@@ -9,6 +9,6 @@ fi
 
 if ! type start >/dev/null; then
     start() {
-        echo exec rclone sync $opts ${srcpath:-$HOME/$instance} ${dstpath:-mega:$instance}
+        exec rclone sync $opts ${srcpath:-$HOME/$instance} ${dstpath:-mega:$instance}
     }
 fi
