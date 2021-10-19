@@ -6,8 +6,8 @@ mount_opts="--use-mmap --dir-cache-time 1000h --poll-interval 15s \
     --buffer-size 16M --vfs-read-chunk-size 100M"
 
 cd ${0%/*}
-if [ -r $instance ]; then
-    source $instance
+if [ -r mount-$instance ]; then
+    source mount-$instance
 fi
 
 start() {
