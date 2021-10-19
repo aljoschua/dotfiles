@@ -1,5 +1,5 @@
 [Unit]
-Description=Rclone %i
+Description=Rclone mount for %i
 
 [Service]
 Type=notify

@@ -1,0 +1,6 @@
+[Unit]
+Description=Rclone sync for %i
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/zsh -c "source %E/rclone/sync.sh %i; start"
