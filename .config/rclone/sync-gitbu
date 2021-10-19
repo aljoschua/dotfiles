@@ -1,0 +1,5 @@
+# vim:ft=zsh
+start() {
+    ~/.local/lib/scripts/gitbu.sh
+    exec rclone sync ~/.local/share/gitbu mega:gitbu
+}

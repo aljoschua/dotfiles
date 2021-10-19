@@ -10,5 +10,3 @@ for repo in $(< $storage/dirs.lst); do
         rsync -rR $(git check-ignore $(find)) $dir
     )
 done
-
-rclone sync $storage mega:gitbu
