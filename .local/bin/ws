@@ -28,8 +28,6 @@ bind_ws_name() {
 change_directory() {
     [ -d "tubCloud/w21/$WS_NAME" ] && cd "tubCloud/w21/$WS_NAME"
 
-    [ "$WS_NAME" = dsi ] && cd ~/tubCloudb/w21/dsi
-
     [ "$WS_NAME" = uni ] && cd Documents/TUB
 
     [ "$WS_NAME" = travel ] && cd Documents/travel
