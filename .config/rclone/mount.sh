@@ -11,7 +11,7 @@ if [ -r mount-$instance ]; then
 fi
 
 start() {
-    exec rclone mount $instance: ~/$instance $mount_opts
+    eval exec rclone mount $instance: ~/$instance $mount_opts
 }
 
 stop() {
