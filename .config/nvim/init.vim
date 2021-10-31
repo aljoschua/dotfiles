@@ -7,6 +7,11 @@ endif
 call plug#begin(stdpath('data') . '/vim-plug')
 let g:plug_window = 'topleft new'
 
+Plug 'tpope/vim-eunuch'
+if $SUDO_ASKPASS == ""
+    let $SUDO_ASKPASS = '/usr/bin/ssh-askpass'
+endif
+
 Plug  'vim-syntastic/syntastic'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -17,9 +22,6 @@ Plug  'tpope/vim-fugitive'
 
 Plug  'takac/vim-hardtime'
 let g:hardtime_default_on = 1
-
-Plug stdpath('config') . '/pack/autochmod/start' " Loaded outside of vim-plug
-nnoremap <Leader>a :call AutoChmodEnable()<CR>
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
