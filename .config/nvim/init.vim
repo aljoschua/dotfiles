@@ -7,6 +7,8 @@ endif
 call plug#begin(stdpath('data') . '/vim-plug')
 let g:plug_window = 'topleft new'
 
+Plug 'tpope/vim-sensible'
+
 Plug 'tpope/vim-eunuch'
 if $SUDO_ASKPASS == ""
     let $SUDO_ASKPASS = '/usr/bin/ssh-askpass'
