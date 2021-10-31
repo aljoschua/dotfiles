@@ -3,7 +3,7 @@
 function! initvim#GitSess()
     set autowriteall autoread
     set path+=**
-    nnoremap ZZ :echoerr 'Use Ctrl-Z!'<CR>
+    nnoremap ZZ :update \| close<CR>
     nnoremap <Leader>g :G<Space>
     set statusline=%<%f\ %h%m%r%{fugitive#Statusline()}%=%-14.(%l,%c%V%)\ %P
 endfunction
