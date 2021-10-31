@@ -50,7 +50,7 @@ let mapleader = ' '
 nnoremap <C-J> :cnext<CR>
 nnoremap <C-K> :cprevious<CR>
 nnoremap ZA :wqall<CR>
-nnoremap <Leader>m q:?^make<CR><CR>
+nnoremap <Leader>m :let s = @/<CR>q:?^make<CR><CR>:let @/ = s<CR>:unlet s<CR>
 nnoremap <Leader>o :!xdg-open <C-R><C-F>
 nnoremap <Leader>p :write !pandoc -o %:r.pdf<CR>
 nnoremap <Leader>c :cd %:h<CR>
