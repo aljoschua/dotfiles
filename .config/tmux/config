@@ -3,7 +3,11 @@ bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection c
 set -g visual-bell on
 set -s escape-time 0
 set-option -g default-terminal "screen-256color"
+
+set-option -su terminal-overrides
 set-option -sa terminal-overrides ',xterm-256color:RGB'
+
+set-option -gu update-environment
 set-option -ga update-environment ' WS_NAME WS_HOME'
 
 bind-key -r -T prefix k select-pane -U
