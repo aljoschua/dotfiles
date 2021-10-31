@@ -1619,6 +1619,7 @@ nvidia-prime-applet
 ocl-icd-libopencl1
 onboard
 onboard-common
+openconnect
 openjdk-11-jre
 openjdk-11-jre-headless
 openprinting-ppds
