@@ -12,12 +12,16 @@
 !/.gdbinit
 !/.pam_environment
 !/.rc_init
-!/.ssh/README.md
-!/.ssh/config
 !/.tmux.conf
 !/.toprc
 !/.xsessionrc
 !/README.md
+
+!/.ssh/
+!/.ssh/README.md
+!/.ssh/config
+!/.ssh/config.d/
+!/.ssh/config.d/**
 
 !/.config/
 
