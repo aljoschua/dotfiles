@@ -22,6 +22,7 @@
 !/.ssh/config
 !/.ssh/config.d/
 !/.ssh/config.d/**
+/.ssh/config.d/local.conf
 
 !/.config/
 
