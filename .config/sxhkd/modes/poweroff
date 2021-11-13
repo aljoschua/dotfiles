@@ -1,4 +1,4 @@
-#modeinfo: Poweroff Mode: [R]estart | [p]oweroff | [s]uspend | [l]ogout | [h]ibernate | h[y]brid-sleep | restart [i]3
+#modeinfo: Poweroff Mode: [R]estart | [p]oweroff | [s]uspend | [l]ogout | [h]ibernate | h[y]brid-sleep | restart [i]3 | lock [m]onitor
 Escape
     !
 
@@ -19,3 +19,5 @@ l
     !i3-msg exit
 i
     !i3-msg restart
+m
+    !slock
