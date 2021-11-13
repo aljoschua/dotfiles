@@ -60,7 +60,16 @@ nnoremap <Leader>p :write !pandoc -o %:r.pdf<CR>
 nnoremap <Leader>c :cd %:h<CR>
 nnoremap <Leader>- :cd -<CR>
 nnoremap <Leader>b :b<Space>
+
+" Repurpose default bindings
 nnoremap S :%s//g<Left><Left>
+nnoremap Y y$
+noremap p ]p
+noremap P ]P
+noremap ]p p
+noremap ]P P
+noremap c "cc
+ounmap c
 
 
 " map [[ ?{<CR>w99[{
