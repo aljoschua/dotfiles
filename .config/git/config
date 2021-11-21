@@ -33,6 +33,7 @@
 	fr = !git f && git rebase
 	frp = !git fr && git push
 	lf = log --format=fuller --date=iso8601 --show-signature --parents --left-right
+	ls = !git lf --author 'Aljoscha Frey' --grep
 	lg = !git lo --graph
 	lo = log --oneline
 	rc = rm --cached
