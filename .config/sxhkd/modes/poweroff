@@ -20,4 +20,4 @@ l
 i
     !i3-msg restart
 m
-    !slock
+    !.local/lib/scripts/lock-screen.sh
