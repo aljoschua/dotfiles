@@ -1,7 +1,7 @@
 # Dotfiles - root
 These are my configuration files for the root user.
 These assume that dotfiles are correctly set up for a normal user.
-Throughout this readme, she will be called gil.
+Throughout this readme, this user will be called gil.
 ## Setup
 As root, execute:
 ```bash
