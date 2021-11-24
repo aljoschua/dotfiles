@@ -18,8 +18,20 @@ function! initvim#badd(...)
     endfor
 endfunction
 
+let s:presentToggle = 0
 function! initvim#present()
-    bufdo set relativenumber& colorcolumn& list&
-    buffer #
-    HardTimeOff
+    if s:presentToggle == 1
+        let s:presentToggle = 0
+        source $MYVIMRC
+        HardTimeOn
+        echo 'Toggling presentation mode off'
+    else
+        let s:presentToggle = 1
+        let l:bufnr = bufnr()
+        setglobal relativenumber colorcolumn& list& cursorline&
+        bufdo setlocal relativenumber& colorcolumn& list& cursorline&
+        execute 'buffer ' . l:bufnr
+        HardTimeOff
+        echo 'Toggling presentation mode on (remember to increase font size)'
+    endif
 endfunction
