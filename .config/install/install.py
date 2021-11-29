@@ -14,27 +14,28 @@ conf = yaml.load(open(config_file), Loader=yaml.SafeLoader)
 def log(string):
     print(f"\x1b[1;31m### {string}\x1b[0m")
 
-def execute_command(command):
-    if isinstance(command, list):
-        command = "\n".join(command)
+def execute_commands(commands):
+    if isinstance(commands, list):
+        commands = "\n".join(commands)
     log("Executing {")
-    print(command)
+    print(commands)
     log("}")
-    if os.system(f"set -e\n{command}"):
-        log(f"Command failed")
+    if os.system(f"set -e\n{commands}"):
+        log(f"Commands failed")
         exit()
 
-def load_module(name):
+def install_module(name):
     module = conf[name]
     log(f"Installing {name}...")
+
     if 'dep' in module:
-        log(f"Installing requirements for {name}")
-        for requirement in module['dep']:
-            load_module(requirement)
-        log(f"Installed requirements for {name}")
+        log(f"Installing dependency for {name}")
+        for dependency in module['dep']:
+            install_module(dependency)
+        log(f"Installed dependency for {name}")
 
     if 'cmd' in module:
-        execute_command(module['cmd'])
+        execute_commands(module['cmd'])
     log(f"Installed {name}")
 
-load_module(cli_module)
+install_module(cli_module)
