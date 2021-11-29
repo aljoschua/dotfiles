@@ -59,10 +59,11 @@ nnoremap <C-K> :cprevious<CR>
 nnoremap ZA :wqall<CR>
 nnoremap <Leader>m :let s = @/<CR>q:?^make<CR><CR>:let @/ = s<CR>:unlet s<CR>
 nnoremap <Leader>o :!xdg-open <C-R><C-F>
-nnoremap <Leader>p :write !pandoc -o %:r.pdf<CR>
+nnoremap <Leader>P :write !pandoc -o %:r.pdf<CR>
 nnoremap <Leader>c :cd %:h<CR>
 nnoremap <Leader>- :cd -<CR>
 nnoremap <Leader>b :b<Space>
+nnoremap <silent> <Leader>p :set opfunc=initvim#replacewithunnamedplus<CR>g@
 
 " Repurpose default bindings
 nnoremap S :%s//g<Left><Left>

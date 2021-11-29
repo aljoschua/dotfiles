@@ -35,3 +35,14 @@ function! initvim#present()
         echo 'Toggling presentation mode on (remember to increase font size)'
     endif
 endfunction
+
+function! initvim#replacewithunnamedplus(type, ...)
+    if a:type == 'line'
+        let l:mode = 'V'
+    elseif a:type == 'block'
+        let l:mode = '\<C-V>'
+    else
+        let l:mode = 'v'
+    endif
+    silent execute 'normal `[' . l:mode . '`]"pc\<C-R>+\<ESC>'
+endfunction
