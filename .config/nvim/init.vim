@@ -22,6 +22,8 @@ let g:syntastic_check_on_wq = 0
 
 Plug  'tpope/vim-fugitive'
 
+Plug 'tpope/vim-commentary'
+
 Plug  'takac/vim-hardtime'
 let g:hardtime_default_on = 1
 
