@@ -1,0 +1,5 @@
+i3-msg layout stacked
+
+launch_apps() {
+    launch_browser
+}

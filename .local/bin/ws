@@ -14,12 +14,6 @@ check_args() {
     [ -v match ] || fail "ws only accepts '$possible_names'"
 }
 
-i3_maybe_append_layout() {
-    if [ -r ".config/i3/$WS_NAME.json" ]; then
-        i3-msg append_layout ".config/i3/$WS_NAME.json"
-    fi
-}
-
 bind_ws_name() {
     mkdir -p ~/.cache/ws
     echo "$WS_NAME" > ~/.cache/ws/$(wmctrl -d | awk '/\*/{print $NF}')
@@ -27,20 +21,11 @@ bind_ws_name() {
 
 change_directory() {
     [ -d "tubCloud/w21/$WS_NAME" ] && cd "tubCloud/w21/$WS_NAME"
-
-    [ "$WS_NAME" = uni ] && cd Documents/TUB
-
-    [ "$WS_NAME" = travel ] && cd Documents/travel
 }
 
 launch_apps() {
-    local pre="$WS_HOME/ws-pre.bash" post="$WS_HOME/ws-post.bash"
-    [ -r "$pre" ] && source "$pre"
-
-    [ "$WS_NAME" != main ] && launch_tmux
+    launch_tmux
     launch_browser
-
-    [ -r "$post" ] && source "$post"
 }
 
 launch_tmux() {
@@ -63,9 +48,10 @@ main() {
     export WS_NAME="$1"
     cd
 
-    i3_maybe_append_layout
-
     bind_ws_name
+
+    local script=".config/ws/$WS_NAME"
+    [ -r "$script" ] && source "$script"
 
     change_directory
     export WS_HOME="$PWD"

@@ -1,0 +1,5 @@
+i3-msg append_layout ".config/i3/uni.json"
+
+change_directory() {
+    cd Documents/TUB
+}
