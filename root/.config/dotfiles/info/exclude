@@ -30,6 +30,9 @@
 !/etc/pam.d/
 !/etc/pam.d/systemd-user
 
+!/etc/default
+!/etc/default/acpi-support
+
 !/etc/udev/
 !/etc/udev/rules.d/
 !/etc/udev/rules.d/granni-tablet.rules
