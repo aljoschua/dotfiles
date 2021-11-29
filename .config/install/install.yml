@@ -24,10 +24,12 @@ default: # Default module, will be used if no module is supplied on command line
     echo reboot
 base: # Basic tools used for installing
   cmd:
+    - command -v wget && exit
     - pkg='wget curl zip'
     - *agi
 terminal: # Terminal applications
   cmd:
+    - command -v tmux && exit
     - pkg='tmux neovim zsh docker.io git ncdu asciinema inotify-tools'
     - *agi
     - sudo usermod -aG docker $USER
@@ -37,6 +39,7 @@ terminal: # Terminal applications
 
 secrets:
   cmd: |-
+    [ -d ~/.config/secrets ] && exit
     git clone --bare https://aljoschua${GITHUB_PAT}@github.com/aljoschua/secrets .config/secrets
     dot() { git --git-dir=$HOME/.config/secrets --work-tree=$HOME "$@"; }
     dot co @ -- .config/secrets
@@ -46,6 +49,7 @@ root: # Installs root dotfiles, secrets and various other things
   dep: [base]
   cmd: |-
     sudo su -c 'set -e; cd
+    [ -d .config/dotfiles ] && exit
     for gd in .config/{dotfiles,secrets} do
       eval git clone --bare -b root ~$SUDO_USER/$gd $gd
       git --git-dir=$HOME/$gd --work-tree=/ checkout @ -- /root/$gd
@@ -63,6 +67,7 @@ remote-access: {cmd: [pkg=openssh-server, *agi]}
 graphical:
   dep: [root, wm, libinput-gestures, dunst, chrome, bitwarden, rclone]
   cmd:
+    - command -v x11vnc && exit
     - pkg='x11vnc xclip remmina remmina-plugin-vnc kdeconnect gparted ssh-askpass-gnome screenkey signal-desktop'
     - pkg+=' google-chrome-stable spotify-client autorandr'
     - *agi
@@ -72,6 +77,7 @@ graphical:
 wm: {cmd: [pkg='i3 dmenu wmctrl sxhkd zenity xdotool xcompmgr xkbset', *agi]}
 libinput-gestures:
   cmd:
+    - command -v libinput-gestures-setup && exit
     - pkg='xdotool wmctrl libinput-tools zenity'
     - *agi
     - url=hub:bulletmark/libinput-gestures
@@ -83,6 +89,7 @@ libinput-gestures:
       libinput-gestures-setup autostart
 dunst:
   cmd:
+    - command -v dunst && exit
     - pkg='dbus libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk-3-dev libnotify-dev'
     - *agi
     - url=hub:dunst-project/dunst
@@ -93,6 +100,7 @@ dunst:
 bitwarden:
   dep: [base]
   cmd: |-
+    command -v bitwarden && exit
     wget -O ~/.local/bin/bitwarden 'https://vault.bitwarden.com/download/?app=desktop&platform=linux'
     wget -O bw.zip 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
     unzip -d ~/.local/bin bw.zip
@@ -101,6 +109,7 @@ bitwarden:
 rclone:
   dep: [base]
   cmd: |-
+    command -v rclone && exit
     wget -O rclone.deb downloads.rclone.org/rclone-current-linux-amd64.deb
     sudo apt-get install -qy ./rclone.deb
     rm rclone.deb
@@ -108,10 +117,12 @@ rclone:
 tub: 
   dep: [tq, base]
   cmd:
+    command -v openconnect && exit
     - pkg='krb5-user openconnect'
     - *agi
 tq:
   cmd: |-
+    command -v tq && exit
     sudo pip3 install https://github.com/plainas/tq/zipball/stable
 systemd-units:
   cmd: systemctl --user daemon-reload
