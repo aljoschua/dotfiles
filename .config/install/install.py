@@ -1,45 +1,40 @@
 #!/usr/bin/env python3
 
 import yaml
-import argparse
-import os
-import logging, coloredlogs
-import pathlib
+import os, sys
 
-parser = argparse.ArgumentParser(description='Install stuff from yaml file.')
-parser.add_argument('module', default='default', nargs='?',
-        help='The target module to install')
-parser.add_argument('--list', '-l', action='store_true')
-args = parser.parse_args()
+if len(sys.argv) > 1:
+    cli_module = sys.argv[1]
+else:
+    cli_module = "default"
 
-coloredlogs.install()
-config_file = pathlib.Path(__file__).parent / 'install.yml'
+config_file = "/".join(__file__.split('/')[:-1]) + "/install.yml"
 conf = yaml.load(open(config_file), Loader=yaml.SafeLoader)
-if args.list:
-    print(conf.keys())
-    exit()
+
+def log(string):
+    print(f"\x1b[1;31m### {string}\x1b[0m")
 
 def execute_command(command):
     if isinstance(command, list):
         command = "\n".join(command)
-    logging.info("Executing {")
+    log("Executing {")
     print(command)
-    logging.info("}")
+    log("}")
     if os.system(f"set -e\n{command}"):
-        logging.error(f"Command failed")
+        log(f"Command failed")
         exit()
 
 def load_module(name):
     module = conf[name]
-    logging.info(f"Installing {name}...")
+    log(f"Installing {name}...")
     if 'dep' in module:
-        logging.info(f"Installing requirements for {name}")
+        log(f"Installing requirements for {name}")
         for requirement in module['dep']:
             load_module(requirement)
-        logging.info(f"Installed requirements for {name}")
+        log(f"Installed requirements for {name}")
 
     if 'cmd' in module:
         execute_command(module['cmd'])
-    logging.info(f"Installed {name}")
+    log(f"Installed {name}")
 
-load_module(args.module)
+load_module(cli_module)
