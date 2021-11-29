@@ -1,6 +1,7 @@
 %YAML 1.2
 # vim:ts=2:sw=2:sts=2:et:
 ---
+
 default: # Default module, will be used if no module is supplied on command line
   dep: [secrets, root, remote-access, graphical, systemd-units, tub, terminal]
   snippets: # Repeating shell commands
@@ -22,11 +23,13 @@ default: # Default module, will be used if no module is supplied on command line
     echo "TODO:"
     echo "View ~/apt.diff to find programs which weren't installed"
     echo reboot
+
 base: # Basic tools used for installing
   cmd:
     - command -v wget && exit
     - pkg='wget curl zip'
     - *agi
+
 terminal: # Terminal applications
   cmd:
     - command -v tmux && exit
@@ -45,6 +48,7 @@ secrets:
     dot co @ -- .config/secrets
     dot stash
     dot co
+
 root: # Installs root dotfiles, secrets and various other things
   dep: [base]
   cmd: |-
@@ -63,7 +67,9 @@ root: # Installs root dotfiles, secrets and various other things
     apt-get update
     systemctl disable cups || true
     '
+
 remote-access: {cmd: [pkg=openssh-server, *agi]}
+
 graphical:
   dep: [root, wm, libinput-gestures, dunst, chrome, bitwarden, rclone]
   cmd:
@@ -74,7 +80,9 @@ graphical:
     - |-
       sudo usermod -aG video $USER # Allow usage of video devices
       sudo usermod -aG plugdev $USER # Allow mounting
+
 wm: {cmd: [pkg='i3 dmenu wmctrl sxhkd zenity xdotool xcompmgr xkbset', *agi]}
+
 libinput-gestures:
   cmd:
     - command -v libinput-gestures-setup && exit
@@ -87,6 +95,7 @@ libinput-gestures:
     - |-
       sudo usermod -aG input $USER
       libinput-gestures-setup autostart
+
 dunst:
   cmd:
     - command -v dunst && exit
@@ -97,6 +106,7 @@ dunst:
     - make WAYLAND=0
     - sudo make WAYLAND=0 install
     - *git-post
+
 bitwarden:
   dep: [base]
   cmd: |-
@@ -106,6 +116,7 @@ bitwarden:
     unzip -d ~/.local/bin bw.zip
     chmod +x ~/.local/bin/bw ~/.local/bin/bitwarden
     rm bw.zip
+
 rclone:
   dep: [base]
   cmd: |-
@@ -114,17 +125,21 @@ rclone:
     sudo apt-get install -qy ./rclone.deb
     rm rclone.deb
 ## End graphical deps
+
 tub: 
   dep: [tq, base]
   cmd:
     command -v openconnect && exit
     - pkg='krb5-user openconnect'
     - *agi
+
 tq:
   cmd: |-
     command -v tq && exit
     sudo pip3 install https://github.com/plainas/tq/zipball/stable
+
 systemd-units:
   cmd: systemctl --user daemon-reload
+
 dconf: {cmd: dconf load / < .config/dconf/settings.dconf}
 ## End default deps
