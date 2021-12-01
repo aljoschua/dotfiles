@@ -7,9 +7,6 @@ set-option -g default-terminal "screen-256color"
 set-option -su terminal-overrides
 set-option -sa terminal-overrides ',xterm-256color:RGB'
 
-set-option -gu update-environment
-set-option -ga update-environment ' WS_NAME WS_HOME'
-
 bind-key -r -T prefix k select-pane -U
 bind-key -r -T prefix j select-pane -D
 bind-key -r -T prefix h select-pane -L
@@ -17,11 +14,6 @@ bind-key -r -T prefix l select-pane -R
 bind-key -T prefix b last-window
 bind-key -T prefix N switch-client -n
 bind-key -T prefix P switch-client -p
-
-
-set-hook -g session-created {
-    run-shell 'tmux source-file "$WS_HOME/init.tmux"'
-}
 
 set-environment -g TMUX_PLUGIN_MANAGER_PATH '~/.local/share/tmux-plugins/'
 run-shell 'mkdir -p ~/.local/share/tmux-plugins'

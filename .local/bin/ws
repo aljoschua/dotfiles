@@ -29,7 +29,20 @@ launch_apps() {
 }
 
 launch_tmux() {
-    x-terminal-emulator -- tmux new-session -As "$WS_NAME" &
+    if tmux has-session -t "$WS_NAME" 2>/dev/null; then
+        x-terminal-emulator -- tmux attach-session -t "$WS_NAME" &
+    else
+        tmux new-session -ds "$WS_NAME"
+        tmux set-environment WS_NAME "$WS_NAME"
+        tmux set-environment WS_HOME "$WS_HOME"
+        x-terminal-emulator -- tmux attach-session -c "$WS_HOME" &
+        tmux new-window -kt ":0" -c "$WS_HOME"
+        setup_tmux
+    fi
+}
+
+setup_tmux() {
+    :
 }
 
 launch_browser() {
