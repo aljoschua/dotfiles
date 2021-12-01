@@ -1,0 +1,3 @@
+setup_tmux() {
+    tmux source-file ~/.config/ws/thesis.tmux
+}
