@@ -1,10 +1,14 @@
 # vim:ft=tmux:
-set-option -g visual-bell on
+# Server options
 set-option -s escape-time 0
-set-option -g default-terminal "screen-256color"
+set-option -s default-terminal "screen-256color"
 set-option -su terminal-overrides
 set-option -sa terminal-overrides ',xterm-256color:RGB'
 
+# Global session options
+set-option -g visual-bell on
+
+# Keybindings
 bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
 bind-key -r k select-pane -U
 bind-key -r j select-pane -D
@@ -14,6 +18,7 @@ bind-key b last-window
 bind-key N switch-client -n
 bind-key P switch-client -p
 
+# TPM auto-install
 set-environment -g TMUX_PLUGIN_MANAGER_PATH '~/.local/share/tmux-plugins/'
 run-shell 'mkdir -p ~/.local/share/tmux-plugins'
 run-shell 'git clone hub:tmux-plugins/tpm ~/.local/share/tmux-plugins/tpm || true'
