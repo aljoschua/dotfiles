@@ -21,6 +21,6 @@ prompt segments nogit
 
 stty $(printf '%s undef ' stop start rprnt werase discard kill lnext)
 
-setopt append_history extended_history hist_find_no_dups
+setopt append_history extended_history hist_find_no_dups hist_ignore_dups
 HISTSIZE=1000
 SAVEHIST=1000
