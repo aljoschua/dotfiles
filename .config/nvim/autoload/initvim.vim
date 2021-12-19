@@ -32,6 +32,7 @@ function! initvim#present()
         bufdo setlocal relativenumber& colorcolumn& list& cursorline&
         execute 'buffer ' . l:bufnr
         HardTimeOff
+        let g:hardtime_default_on = 0
         echo 'Toggling presentation mode on (remember to increase font size)'
     endif
 endfunction
