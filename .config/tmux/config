@@ -2,6 +2,8 @@
 # Server options
 set-option -s escape-time 0
 set-option -s default-terminal "screen-256color"
+set-option set-titles on
+set-option set-titles-string "Tmux - #S:#I:#W - \"#T\" #{session_alerts}"
 set-option -su terminal-overrides
 set-option -sa terminal-overrides ',xterm-256color:RGB'
 
