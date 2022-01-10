@@ -1,0 +1,34 @@
+
+Escape
+    !
+
+Return
+    !x-terminal-emulator
+
+r
+    !echo -n | dmenu -p "$" | exec sh
+
+i
+    !echo -n | dmenu -p "i3-msg" | xargs i3-msg
+
+{super +,} d
+    !i3-dmenu-desktop
+
+{_,shift +} m
+    !remmina -c ~/.local/share/remmina/{1580655803090,1592859553306}.remmina
+
+f
+    !firefox-profile-picker
+
+c
+    !google-chrome-profile-picker
+
+# start and stop xcompmgr before and after?
+Print
+    !gnome-screenshot -Bi
+
+s
+    !st -g=80x1 -n shellex-clone
+
+b
+    !i3-msg scratchpad show

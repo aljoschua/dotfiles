@@ -1,42 +1,3 @@
-### Applications ###
-super + d
-    dmenu_run
-
-super + shift + d
-    i3-dmenu-desktop
-
-super + Return
-    x-terminal-emulator
-
-super + {_,shift +} m
-    remmina -c ~/.local/share/remmina/{1580655803090,1592859553306}.remmina
-
-super + c
-    firefox-profile-picker
-
-super + shift + c
-    google-chrome-profile-picker
-
-@super + b
-    i3-msg scratchpad show {&& xdotool key --clearmodifiers ctrl+f BackSpace,_}
-
-#ctrl + F2
-    #xrandr --output eDP1 --{off,auto}
-    #sleep 0.1 && xset dpms force off
-
-# start and stop xcompmgr before and after?
-Print
-    gnome-screenshot -Bi
-
-super + F5
-    st -g=80x1 -n shellex-clone
-
-super + F3
-    echo -n | dmenu -p "i3-msg" | xargs i3-msg
-
-super + F2
-    echo -n | dmenu -p "$" | exec sh
-
 ### Windows ###
 super + {_,shift +} + {h,j-l}
     i3-msg {focus,move} {left,down,up,right}
@@ -114,6 +75,9 @@ super + r
 
 super + e
     .config/sxhkd/switch empty
+
+super + d
+    .config/sxhkd/switch apps
 
 super + y
     xkbset {_,-}sticky
