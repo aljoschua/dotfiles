@@ -37,9 +37,6 @@ super + F3
 super + F2
     echo -n | dmenu -p "$" | exec sh
 
-super + F1
-    find ~ -printf '%P\n' | dmenu -i | xargs -r x-terminal-emulator -- vim
-
 ### Windows ###
 super + {_,shift +} + {h,j-l}
     i3-msg {focus,move} {left,down,up,right}
