@@ -62,7 +62,7 @@ nnoremap <Leader>o :!xdg-open <C-R><C-F>
 nnoremap <Leader>P :write !pandoc -o %:r.pdf<CR>
 nnoremap <Leader>c :cd %:h<CR>
 nnoremap <Leader>- :cd -<CR>
-nnoremap <Leader>b :ls<CR>:b<Space>
+nnoremap <Leader>b :ls h<CR>:b<Space>
 nnoremap <silent> <Leader>p :set opfunc=initvim#replacewithunnamedplus<CR>g@
 
 " Repurpose default bindings
