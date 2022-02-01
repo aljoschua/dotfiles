@@ -6,6 +6,7 @@ set-option -su terminal-overrides
 set-option -sa terminal-overrides ',xterm-256color:RGB'
 
 # Global session options
+set-option -g base-index 1
 set-option -g visual-bell on
 set-option -g set-titles on
 set-option -g set-titles-string "Tmux - #S:#I:#W - \"#T\" #{session_alerts}"

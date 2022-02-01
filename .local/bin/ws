@@ -36,7 +36,7 @@ launch_tmux() {
         tmux set-environment WS_NAME "$WS_NAME"
         tmux set-environment WS_HOME "$WS_HOME"
         x-terminal-emulator -- tmux attach-session -c "$WS_HOME" &
-        tmux new-window -kt ":0" -c "$WS_HOME"
+        tmux new-window -kt ":1" -c "$WS_HOME"
         setup_tmux
     fi
 }
