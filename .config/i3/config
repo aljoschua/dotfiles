@@ -14,4 +14,4 @@ bar {
         bindsym button2 exec gnome-terminal
         bindsym button3 exec onboard
 }
-for_window [instance="shellex-clone"] floating enable
+for_window [class="shellux"] floating enable

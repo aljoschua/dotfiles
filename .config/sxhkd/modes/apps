@@ -6,6 +6,9 @@ Return
     !x-terminal-emulator
 
 r
+    !.local/lib/scripts/tmux_run.sh
+
+R
     !echo -n | dmenu -p "$" | exec sh
 
 i
