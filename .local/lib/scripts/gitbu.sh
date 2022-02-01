@@ -2,9 +2,10 @@
 set -eu
 
 storage=$HOME/.local/share/gitbu
-for repo in $(< $storage/dirs.lst); do 
+projects=$HOME/.local/src
+for repo in $(ls $projects); do 
     (
-        cd ~/$repo
+        cd $projects/$repo
         dir=$storage/${repo//\//%}
         mkdir -p $dir
         rsync -rR $(git check-ignore $(find)) $dir
