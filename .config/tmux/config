@@ -2,13 +2,13 @@
 # Server options
 set-option -s escape-time 0
 set-option -s default-terminal "screen-256color"
-set-option set-titles on
-set-option set-titles-string "Tmux - #S:#I:#W - \"#T\" #{session_alerts}"
 set-option -su terminal-overrides
 set-option -sa terminal-overrides ',xterm-256color:RGB'
 
 # Global session options
 set-option -g visual-bell on
+set-option -g set-titles on
+set-option -g set-titles-string "Tmux - #S:#I:#W - \"#T\" #{session_alerts}"
 
 # Keybindings
 bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
