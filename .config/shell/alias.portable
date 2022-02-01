@@ -19,6 +19,8 @@ alias agr="sudo apt-get -y remove"
 alias agp="sudo apt-get -y purge --autoremove"
 alias agar="sudo apt-get -y autoremove"
 alias agac="sudo apt-get -y autoclean"
+alias acs="apt-cache show"
+alias acse="apt-cache search"
 
 alias sc="sudo systemctl"
 alias scr="sudo systemctl restart"
