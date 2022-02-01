@@ -12,17 +12,11 @@
 !/.gdbinit
 !/.pam_environment
 !/.rc_init
+!/.ssh
 !/.tmux.conf
 !/.toprc
 !/.xsessionrc
 !/README.md
-
-!/.ssh/
-!/.ssh/README.md
-!/.ssh/config
-!/.ssh/config.d/
-!/.ssh/config.d/**
-/.ssh/config.d/local.conf
 
 !/.config/
 
@@ -62,6 +56,12 @@
 !/.config/qt5ct/qt5ct.conf
 !/.config/shell/
 !/.config/shell/**
+!/.config/ssh/
+!/.config/ssh/README.md
+!/.config/ssh/config
+!/.config/ssh/config.d/
+!/.config/ssh/config.d/**
+/.config/ssh/config.d/local.conf
 !/.config/sxhkd/
 !/.config/sxhkd/**
 !/.config/systemd/
