@@ -14,4 +14,4 @@ EDITOR=nvim
 VISUAL=nvim
 ZDOTDIR DEFAULT=${HOME}/.config/zsh
 GNUPGHOME DEFAULT=${HOME}/.config/gpg
-CDPATH DEFAULT=${HOME}/.local/share/cdpath:${HOME}/.config:${HOME}/.local/share:${HOME}/.local/lib:${HOME}/.local:${HOME}/.local/share/nvim/vim-plug:${HOME}
+CDPATH DEFAULT=${HOME}/.local/share/cdpath:${HOME}/.config:${HOME}/.local/share:${HOME}/.local/src:${HOME}/.local/lib:${HOME}/.local:${HOME}/.local/share/nvim/vim-plug:${HOME}
