@@ -1,6 +1,6 @@
 # window 0
-rename-window main
-send-keys "vim info\n"
+rename-window -t 1 main
+send-keys -t 1. "vim info\n"
 
 # window 1
 new-window -n proposal
