@@ -1,4 +1,5 @@
 export TMPDIR=$(mktemp -d $USER-XXXXXX -p /tmp)
+trap 'command rm -rf $TMPDIR' EXIT
 autoload run-help
 autoload run-help-git
 
