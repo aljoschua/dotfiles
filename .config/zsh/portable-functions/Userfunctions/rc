@@ -12,3 +12,5 @@ ${EDITOR:-vim} $filename
 local comp=$dir/completion comp_p=$dir/completion.portable
 [ "$filename" != $comp_p ] && [ -e $comp_p ] && source $comp_p
 [ "$filename" != $comp ] && [ -e $comp ] && source $comp
+
+return 0
