@@ -1,0 +1,6 @@
+local shell_words
+shell_words=(${(A)${(z)BUFFER}})
+BUFFER="${shell_words[1]} ${${(@)shell_words[2,-1]}// //}"
+CURSOR=$#BUFFER
+zle complete-word
+zle auto-suffix-remove
