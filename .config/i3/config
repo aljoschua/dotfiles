@@ -15,3 +15,4 @@ bar {
         bindsym button3 exec onboard
 }
 for_window [class="shellux"] floating enable
+popup_during_fullscreen leave_fullscreen
