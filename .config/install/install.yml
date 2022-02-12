@@ -15,8 +15,12 @@ default: # Default module, will be used if no module is supplied on command line
       rm -rf tmp
     apt-get-install: &agi |-
       sudo apt-get install -qy $pkg
+    apt-get-download: &agd |-
+      apt-get download -qy $pkg
   cmd: |-
     [ -e f ] && rm f
+    sudo apt-get install -qy ./*.deb
+    rm ./*.deb
     apt-mark showmanual > current.lst
     diff current.lst .config/install/aptmanual.lst > apt.diff || true
     rm current.lst
@@ -34,11 +38,12 @@ terminal: # Terminal applications
   cmd:
     - command -v tmux && exit
     - pkg='tmux neovim zsh docker.io git ncdu asciinema inotify-tools'
-    - *agi
+    - *agd
     - sudo usermod -aG docker $USER
     - |-
       sudo chsh -s /usr/bin/zsh
       sudo chsh -s /usr/bin/zsh $USER
+
 
 secrets:
   cmd: |-
@@ -68,7 +73,7 @@ root: # Installs root dotfiles, secrets and various other things
     systemctl disable cups || true
     '
 
-remote-access: {cmd: [pkg=openssh-server, *agi]}
+remote-access: {cmd: [pkg=openssh-server, *agd]}
 
 graphical:
   dep: [root, wm, libinput-gestures, dunst, chrome, bitwarden, rclone]
@@ -76,18 +81,18 @@ graphical:
     - command -v x11vnc && exit
     - pkg='x11vnc xclip remmina remmina-plugin-vnc kdeconnect gparted ssh-askpass-gnome screenkey signal-desktop'
     - pkg+=' google-chrome-stable spotify-client autorandr'
-    - *agi
+    - *agd
     - |-
       sudo usermod -aG video $USER # Allow usage of video devices
       sudo usermod -aG plugdev $USER # Allow mounting
 
-wm: {cmd: [pkg='i3 dmenu wmctrl sxhkd zenity xdotool xcompmgr xkbset', *agi]}
+wm: {cmd: [pkg='i3 dmenu wmctrl sxhkd zenity xdotool xcompmgr xkbset', *agd]}
 
 libinput-gestures:
   cmd:
     - command -v libinput-gestures-setup && exit
     - pkg='xdotool wmctrl libinput-tools zenity'
-    - *agi
+    - *agd
     - url=hub:bulletmark/libinput-gestures
     - *git-pre
     - sudo make install
@@ -131,7 +136,7 @@ tub:
   cmd:
     command -v openconnect && exit
     - pkg='krb5-user openconnect'
-    - *agi
+    - *agd
 
 tq:
   cmd: |-
@@ -140,6 +145,5 @@ tq:
 
 systemd-units:
   cmd: systemctl --user daemon-reload
-
 dconf: {cmd: dconf load / < .config/dconf/settings.dconf}
 ## End default deps
