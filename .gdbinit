@@ -1,1 +1,1 @@
-source ~/.config/gdb/init
+.config/gdb/init
