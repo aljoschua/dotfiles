@@ -23,11 +23,21 @@ bind-key P switch-client -p
 bind-key x kill-pane
 bind-key -n Enter {
     if-shell "true" {
-        %if "#{==:#{session_name},scratch}"
-            send-keys " && exit"
+        %if "#{&&:#{==:#S,scratch},#{==:#W,zsh}}"
+            detach-client
+            send-keys -t scratch: Escape "Isleep .1 && " Escape "A && exit"
         %endif
     }
     send-keys Enter
+}
+bind-key -n C-j {
+    if-shell "true" {
+        %if "#{&&:#{==:#S,scratch},#{==:#W,zsh}}"
+            detach-client
+            send-keys -t scratch: Escape "Ix-terminal-emulator -- " Escape "A &! exit"
+        %endif
+    }
+    send-keys C-m
 }
 
 # TPM auto-install
