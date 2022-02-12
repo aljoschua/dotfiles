@@ -31,7 +31,7 @@ Print
     !gnome-screenshot -Bi
 
 s
-    !st -g=80x1 -n shellex-clone
+    !xdg-open "https://scholar.google.com/scholar?q=$(xclip -selection clipboard -o | sed 's/ /%20/g')"
 
 b
     !i3-msg scratchpad show
