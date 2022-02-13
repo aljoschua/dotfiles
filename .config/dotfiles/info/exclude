@@ -8,13 +8,13 @@
 
 !/.bash_logout
 !/.bashrc
-!/.dmrc
 !/.gdbinit
 !/.pam_environment
 !/.rc_init
 !/.ssh
 !/.tmux.conf
 !/.toprc
+!/.xsession
 !/.xsessionrc
 !/README.md
 
@@ -79,6 +79,8 @@
 /.config/rclone/rclone.conf
 !/.config/ws/
 !/.config/ws/**
+!/.config/xsession/
+!/.config/xsession/**
 
 !/.local/
 
