@@ -67,6 +67,8 @@
 !/.config/systemd/
 !/.config/systemd/user/
 !/.config/systemd/user/**
+!/.config/top/
+!/.config/top/**
 !/.config/tmux/
 !/.config/tmux/**
 !/.config/zsh/
