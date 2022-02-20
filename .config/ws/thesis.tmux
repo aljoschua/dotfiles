@@ -8,4 +8,4 @@ send-keys "cd thesis-proposal\nvim -S\n\n"
 
 # window 2
 new-window -n geth
-send-keys "cd evm-getage\nsource dev/source.zsh\nvim -S\n"
+send-keys "cd evm-history\nsource dev/source.zsh\nvim -S\n"
