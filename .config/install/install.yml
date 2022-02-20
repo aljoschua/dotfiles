@@ -48,29 +48,33 @@ terminal: # Terminal applications
 secrets:
   cmd: |-
     [ -d ~/.config/secrets ] && exit
-    git clone --bare https://aljoschua${GITHUB_PAT}@github.com/aljoschua/secrets .config/secrets
-    dot() { git --git-dir=$HOME/.config/secrets --work-tree=$HOME "$@"; }
-    dot co @ -- .config/secrets
-    dot stash
-    dot co
+    export GIT_DIR=$HOME/.config/secrets GIT_WORK_TREE=$HOME
+    git clone --bare https://aljoschua${GITHUB_PAT}@github.com/aljoschua/secrets $GIT_DIR
+    git checkout @ -- $GIT_DIR
+    git stash
+    git checkout
 
 root: # Installs root dotfiles, secrets and various other things
   dep: [base]
   cmd: |-
     sudo su -c 'set -e; cd
     [ -d .config/dotfiles ] && exit
-    for gd in .config/{dotfiles,secrets} do
-      eval git clone --bare -b root ~$SUDO_USER/$gd $gd
-      git --git-dir=$HOME/$gd --work-tree=/ checkout @ -- /root/$gd
-      git --git-dir=$HOME/$gd --work-tree=/ -c user.name=a -c user.email=a stash
+    for repo in .config/{dotfiles,secrets}; do
+      export GIT_DIR=$HOME/$repo GIT_WORK_TREE=/
+      eval git clone --bare -b root ~$SUDO_USER/$repo $GIT_DIR
+      git checkout @ -- $GIT_DIR
+      git -c user.name=a -c user.email=a stash
     done
     eval ln -s ~$SUDO_USER ~/.portal
-    git --git-dir=$HOME/.config/secrets --work-tree=/ co
-    wget -qO- download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
-    wget -qO- mega.nz/keys/MEGA_signing.key | sudo apt-key add -
-    wget -qO- dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    git checkout
+    for key in download.spotify.com/debian/pubkey_0D811D58.gpg \
+        mega.nz/keys/MEGA_signing.key \
+        dl.google.com/linux/linux_signing_key.pub; do
+      wget -qO- $key | apt-key add -
+    done
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 5E3C45D7B312C643
     apt-get update
-    systemctl disable cups || true
+    systemctl disable cups.service || true
     '
 
 remote-access: {cmd: [pkg=openssh-server, *agd]}
