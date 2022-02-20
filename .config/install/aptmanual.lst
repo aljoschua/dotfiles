@@ -1615,6 +1615,7 @@ network-manager-openvpn-gnome
 network-manager-pptp
 network-manager-pptp-gnome
 networkd-dispatcher
+npm
 ntfs-3g
 nvidia-prime-applet
 ocl-icd-libopencl1
