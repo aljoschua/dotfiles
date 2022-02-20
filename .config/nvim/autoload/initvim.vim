@@ -27,13 +27,22 @@ function! initvim#present()
         echo 'Toggling presentation mode off'
     else
         let s:presentToggle = 1
-        let l:bufnr = bufnr()
-        setglobal relativenumber colorcolumn& list& cursorline&
-        bufdo setlocal relativenumber& colorcolumn& list& cursorline&
-        execute 'buffer ' . l:bufnr
+        setglobal relativenumber& colorcolumn& list& cursorline&
+        augroup PresentSettings
+            autocmd!
+
+            autocmd BufEnter * call initvim#updateLocalOptions()
+        augroup END
+        doautocmd BufEnter
         HardTimeOff
         let g:hardtime_default_on = 0
         echo 'Toggling presentation mode on (remember to increase font size)'
+    endif
+endfunction
+
+function! initvim#updateLocalOptions()
+    if &buftype == ''
+        setlocal relativenumber< colorcolumn< list< cursorline<
     endif
 endfunction
 
