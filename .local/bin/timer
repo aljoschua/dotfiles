@@ -13,7 +13,7 @@ alert_user() {
 
 loop() {
     while [ true ]; do
-        play "$sound"
+        ffplay -autoexit -nodisp "$sound"
     done
 }
 
