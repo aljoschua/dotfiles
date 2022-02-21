@@ -9,7 +9,7 @@
 !/.bash_logout
 !/.bashrc
 !/.gdbinit
-!/.pam_environment
+!/.profile
 !/.rc_init
 !/.ssh
 !/.tmux.conf
