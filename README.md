@@ -11,6 +11,7 @@ Here is an incomplete list:
 - dconf
 - Scripts for managing workspaces
 
+All of these have their configuration files in `.config/`.
 On branch `root` you can find the configuration files outside my home directory.
 
 ## How I manage my dotfiles
@@ -24,21 +25,24 @@ git init
 git config status.showuntrackedfiles no
 ```
 
+Now you can use `git add <file>` to add a file or change to a file to your dotfiles, `git commit` to persist changes/addition and `git push` to upload (Make sure to configre a remote beforehand: `git remote add origin <url>`). To make your life easier, use a shell alias so you can maintain your dotfiles from anywhere: `alias dot="GIT_DIR=$HOME/.git GIT_WORK_TREE=$HOME git"`.
+
 What you will come to realize is that, almost all other git commands ignore untracked files from the get-go.
 You only have to be careful when using git-add recursively (As in `git add .` or `git add -A`).
 Apart from that, it can be your perfect dotfile manager too.
 
 ## Setup
+To try out my dotfiles without deleting any of yours, invoke:
 ```bash
 git clone --bare https://github.com/aljoschua/dotfiles ~/.config/dotfiles
-alias dot="git --git-dir=$HOME/.config/dotfiles --work-tree=$HOME"
+alias dot="GIT_DIR=$HOME/.config/dotfiles GIT_WORK_TREE=$HOME git"
 dot checkout @ -- .config/dotfiles
 dot -c user.name=a -c user.email=a stash
 ```
 Alternatively, you can issue `wget -O- git.io/JqcSG|sh` (links to [https://raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/remote-install.sh](https://raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/remote-install.sh))
 
 ## Undo Setup
-Assuming you haven't added more stash entries:
+If you're done trying out my dotfiles, you can use these commands to restore yours and delete mine, assuming you haven't added more stash entries (If you don't know what I mean, you didn't add stash entries ;)
 ```bash
 dot stash pop
 unalias dot
@@ -46,10 +50,10 @@ rm -rf ~/.config/dotfiles
 ```
 
 ## Install script
-To install programs as well as all my configuration, I use:
+This script is designed to install programs I use as well as install this repository.
+It does not make sense for you to run this, but you could to something similiar for yourself.
+See [.config/install](.config/install) for further information.
 ```bash
 cd
 wget -Of git.io/JqcSG;GITHUB_PAT=:1ae..242 sh f
 ```
-You can't do this step because you don't have access to my private repository.
-See [.config/install](.config/install) for further information.
