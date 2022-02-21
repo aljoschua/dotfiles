@@ -11,6 +11,7 @@ alias .d="vim ~/.local/share/diary/\$(date +%F)"
 alias xcb="{xclip -selection clipboard \$([ -t 0 ] && echo -- -o)}"
 alias dotex="vim ~/.config/dotfiles/info/exclude"
 alias wttr="curl wttr.in/berlin"
+alias fct="fc -lDt '%F %T'"
 
 # TU
 alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --passwd-on-stdin < ~/.local/share/secrets/tub-password"

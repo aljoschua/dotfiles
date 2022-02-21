@@ -83,9 +83,7 @@ prompt_segments2_battery() {
 ## Main prompt
 prompt_segments2_make() {
   local RETVAL=$?
-  prompt_segments2_segment magenta white '%*'
   prompt_segments2_segment magenta white $RETVAL 0
-  prompt_segments2_segment magenta white $(fc -LDlt '%T' -1 | awk '{ print $3 }')
   prompt_segments2_jobs
   prompt_segments2_segment blue white '%~' '~'
   prompt_segments2_segment '' '' '%(!,#,$)'
