@@ -31,6 +31,8 @@ let g:hardtime_maxcount = 3
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+Plug 'tomlion/vim-solidity'
+
 call plug#end()
 " Options {{{1
 " File management
