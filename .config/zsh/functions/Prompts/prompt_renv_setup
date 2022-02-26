@@ -1,0 +1,70 @@
+prompt_renv_setup () {
+    PROMPT='%{%f%b%k%}$(prompt_renv_make)'
+    RPROMPT='%{%f%b%k%}$(prompt_renv_make_right)'
+    ZLE_RPROMPT_INDENT=0
+    prompt_cleanup "unset ZLE_RPROMPT_INDENT"
+    prompt_cleanup "unset RPROMPT"
+    prompt_opts=(subst cr percent sp)
+}
+
+prompt_renv_segment() {
+  local seperator=' '
+  if [ "$1" = -S ]; then
+    seperator=''
+    shift
+  fi
+  if [[ $(print -P "$3") = "$4" ]]; then
+    return
+  fi
+  echo -n "%K{${1:-default}}%F{${2:-default}}%B$3%k%f%b$seperator"
+}
+
+prompt_renv_jobs() {
+  jobs -dl |
+    sed -E '
+  /^\[/ s/^\[([0-9]+)\] +[+-]? +([0-9]+) +(\w+) +(\(tty output\)|\(signal\))? +(.+)$/\1 \2 \3\n\5/;
+      /^\(/ s/^\(pwd : (.*)\)$/\1/
+    ' |
+    while read jobno pid state; do
+      read command
+      read pwd
+      case "$state" in
+        suspended) pidcolor=red;;
+        terminated) pidcolor=white;;
+        running) pidcolor=green;;
+        *) pidcolor=magenta;;
+      esac
+      prompt_renv_segment -S '' $pidcolor $pid
+      prompt_renv_segment -S '' '' "|"
+      prompt_renv_segment -S '' '' "$pwd:" $(print -P %~:)
+      prompt_renv_segment '' '' "$command;"
+    done
+}
+
+prompt_renv_env() {
+    prompt_renv_segment $1 $2 "$3=$(eval echo \$$3)" "$3=$4"
+}
+
+prompt_renv_make() {
+  local exitstatus=($pipestatus) displaystatus
+  for s in $exitstatus; do
+      if [ $s != 0 ]; then
+          displaystatus=1
+      fi
+  done
+  if [ "$displaystatus" = 1 ]; then
+    prompt_renv_segment black red pipestatus=$exitstatus
+  fi
+  prompt_renv_jobs
+  echo '> '
+}
+
+prompt_renv_make_right() {
+  prompt_renv_env black green PWD ~
+  prompt_renv_env black white SUDO_USER ""
+  prompt_renv_env black white USER aljoschua
+  prompt_renv_env black white HOST 430-G5
+  prompt_renv_segment -S black green ZSH_VERSION=$ZSH_VERSION
+}
+
+prompt_renv_setup "$@"

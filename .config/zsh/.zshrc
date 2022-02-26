@@ -17,7 +17,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 compdef _d d
 
 autoload -Uz promptinit && promptinit
-prompt segments2 nogit
+prompt renv
 
 stty $(printf '%s undef ' stop start rprnt werase discard kill lnext)
 
