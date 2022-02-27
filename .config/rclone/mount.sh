@@ -1,5 +1,3 @@
-# vim:ft=sh
-
 instance=$1
 mount_opts="--use-mmap --dir-cache-time 1000h --poll-interval 15s \
     --vfs-cache-mode full --tpslimit 10 \

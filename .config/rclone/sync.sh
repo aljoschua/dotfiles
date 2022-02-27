@@ -1,5 +1,3 @@
-# vim:ft=sh
-
 instance=$1
 
 cd ${0%/*}
