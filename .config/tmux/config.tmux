@@ -1,4 +1,3 @@
-# vim:ft=tmux:
 # Server options
 set-option -s escape-time 0
 set-option -s default-terminal "screen-256color"
