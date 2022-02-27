@@ -1,11 +1,10 @@
-# window 0
 rename-window -t 1 main
-send-keys -t 1. "vim info\n"
+send-keys -t 1. "-\nvi info\n"
 
-# window 1
-new-window -n proposal
-send-keys "cd thesis-proposal\nvim -S\n\n"
+new-window -n thesis
+send-keys "cd thesis-thesis\nvi -S\n\n"
 
-# window 2
-new-window -n geth
+new-window -n evm-history
 send-keys "cd evm-history\nsource dev/source.zsh\nvim -S\n"
+
+source-file ~/.config/ws/thesis_geth.tmux
