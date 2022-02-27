@@ -1,7 +1,9 @@
-unsetopt menu_complete
-set auto_menu
-setopt cd_silent
-setopt print_exit_value
-setopt multios
-setopt beep
-setopt autolist
+setopt CD_SILENT
+setopt PRINT_EXIT_VALUE
+setopt MULTIOS
+setopt BEEP
+
+# Completion
+setopt AUTO_LIST
+setopt NO_MENU_COMPLETE
+setopt AUTO_MENU
