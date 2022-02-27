@@ -2,4 +2,4 @@ export TMPDIR=$(mktemp -d $USER-XXXXXX -p /tmp)
 trap 'command rm -rf $TMPDIR' EXIT
 autoload run-help
 autoload run-help-git
-
+chpwd() { if [ "$autols" != "" ]; then ls --color=force -A; fi }
