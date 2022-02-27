@@ -8,7 +8,6 @@
 
 !/.bash_logout
 !/.bashrc
-!/.gdbinit
 !/.profile
 !/.rc_init
 !/.ssh
@@ -33,9 +32,6 @@
 !/.config/dotfiles/info/exclude
 !/.config/dunst/
 !/.config/dunst/**
-!/.config/gdb/
-!/.config/gdb/**
-/.config/gdb/history
 !/.config/git/
 !/.config/git/**
 !/.config/gtk-3.0/
