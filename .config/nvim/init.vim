@@ -24,6 +24,8 @@ Plug  'tpope/vim-fugitive'
 
 Plug 'tpope/vim-commentary'
 
+Plug 'tpope/vim-vinegar'
+
 Plug  'takac/vim-hardtime'
 let g:hardtime_default_on = 1
 let g:hardtime_ignore_quickfix = 1
