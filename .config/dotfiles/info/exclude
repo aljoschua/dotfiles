@@ -6,8 +6,6 @@
 # *~
 *
 
-!/.bash_logout
-!/.bashrc
 !/.profile
 !/.rc_init
 !/.ssh
@@ -21,8 +19,6 @@
 
 !/.config/autorandr/
 !/.config/autorandr/**
-!/.config/bash/
-!/.config/bash/**
 !/.config/dconf/
 !/.config/dconf/settings.dconf
 !/.config/dotfiles/
