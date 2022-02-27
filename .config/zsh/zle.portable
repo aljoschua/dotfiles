@@ -25,6 +25,7 @@ bindkey -a '^Z' foreground
 bindkey -v '^[o' insert-last-word
 bindkey -a '^[o' insert-last-word
 bindkey -v '^[c' expand-cd-path
+bindkey -v '^[p' push-line
 
 bindkey -a '^[k' run-help
 bindkey -v '^[k' run-help
