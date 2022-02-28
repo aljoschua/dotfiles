@@ -39,6 +39,21 @@ prompt_renv_jobs() {
       prompt_renv_segment -S '' '' "$pwd:" $(print -P %~:)
       prompt_renv_segment '' '' "$command;"
     done
+  return
+
+  for jobno in ${(@k)jobdirs}; do #somehow can't access jobdirs..
+    local state="$jobstate[$jobno]"
+    case $state in
+      suspended:*) pidcolor=red;;
+      done:*) pidcolor=white;;
+      running:*) pidcolor=green;;
+      *) pidcolor=magenta;;
+    esac
+    prompt_renv_segment -S '' $pidcolor ${${state##*:}%=*}
+    prompt_renv_segment -S '' '' "|"
+    prompt_renv_segment -S '' '' "$jobdirs[$jobno]:" $(print -P %~:)
+    prompt_renv_segment '' '' "$jobtexts[$jobno];"
+  done
 }
 
 prompt_renv_env() {
