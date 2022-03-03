@@ -1,9 +1,0 @@
-[Unit]
-Description=Password Manager
-PartOf=graphical.target
-
-[Service]
-ExecStart=/usr/bin/env zsh -c "path+=(~/.local/bin); exec bitwarden"
-
-[Install]
-WantedBy=graphical.target

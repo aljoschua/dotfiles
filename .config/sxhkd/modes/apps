@@ -34,4 +34,4 @@ s
     !xdg-open "https://scholar.google.com/scholar?q=$(xclip -selection clipboard -o | sed 's/ /%20/g')"
 
 b
-    !i3-msg scratchpad show
+    !.local/lib/scripts/tmux_run.sh "bw get password " " | xcb"

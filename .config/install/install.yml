@@ -119,11 +119,10 @@ dunst:
 bitwarden:
   dep: [base]
   cmd: |-
-    command -v bitwarden && exit
-    wget -O ~/.local/bin/bitwarden 'https://vault.bitwarden.com/download/?app=desktop&platform=linux'
+    command -v bw && exit
     wget -O bw.zip 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
     unzip -d ~/.local/bin bw.zip
-    chmod +x ~/.local/bin/bw ~/.local/bin/bitwarden
+    chmod +x ~/.local/bin/bw
     rm bw.zip
 
 rclone:
