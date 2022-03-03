@@ -12,7 +12,7 @@ R
     !echo -n | dmenu -p "$" | exec sh
 
 i
-    !echo -n | dmenu -p "i3-msg" | xargs i3-msg
+    !.local/lib/scripts/tmux_run.sh "i3-msg "
 
 {super +,} d
     !i3-dmenu-desktop
