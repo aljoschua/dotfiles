@@ -82,8 +82,8 @@ remote-access: {cmd: [pkg=openssh-server, *agd]}
 graphical:
   dep: [root, wm, libinput-gestures, dunst, chrome, bitwarden, rclone]
   cmd:
-    - command -v x11vnc && exit
-    - pkg='x11vnc xclip remmina remmina-plugin-vnc kdeconnect gparted ssh-askpass-gnome screenkey signal-desktop'
+    - command -v xclip && exit
+    - pkg='xclip remmina remmina-plugin-vnc kdeconnect gparted ssh-askpass-gnome screenkey signal-desktop'
     - pkg+=' google-chrome-stable spotify-client autorandr'
     - *agd
     - |-
