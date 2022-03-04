@@ -3,8 +3,6 @@
 	filemode = true
 	bare = true
 	sparseCheckout = true
-[alias]
-	s = status -sb --show-stash
 [user]
 	email = aljoscha.fry@gmail.com
 	signingkey = 41643CE650B300FA679FCAFE9859B1564305FA0B
