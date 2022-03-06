@@ -1,11 +1,11 @@
-#modeinfo: Poweroff Mode: [R]estart | [p]oweroff | [s]uspend | [l]ogout | [h]ibernate | h[y]brid-sleep | restart [i]3 | lock [m]onitor
+#modeinfo: Poweroff Mode: [r]estart | [p]oweroff | [s]uspend | [l]ogout | [h]ibernate | h[y]brid-sleep | restart [i]3 | lock [m]onitor
 Escape
     !
 
 # Default action
-{super + s,XF86PowerOff}
+XF86PowerOff
     !systemctl -i reboot
-{shift +,_} r
+r
     !systemctl -i reboot
 p
     !systemctl -i poweroff
