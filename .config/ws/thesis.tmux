@@ -1,5 +1,5 @@
 rename-window -t 1 main
-send-keys -t 1. "-\nvi info\n"
+send-keys "cd -\nvi info\n"
 
 new-window -n evm-history
 send-keys "vi -S\n"

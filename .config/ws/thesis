@@ -1,3 +1,5 @@
 setup_tmux() {
     tmux new-window -t $WS_NAME:10 tmux source-file ~/.config/ws/thesis.tmux
 }
+
+i3-msg layout stacked
