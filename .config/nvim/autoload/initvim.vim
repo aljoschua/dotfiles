@@ -54,5 +54,5 @@ function! initvim#replacewithunnamedplus(type, ...)
     else
         let l:mode = 'v'
     endif
-    silent execute 'normal `[' . l:mode . '`]"pc\<C-R>+\<ESC>'
+    silent execute 'normal `[' . l:mode . '`]"pc' . "\<C-R>+\<Esc>"
 endfunction
