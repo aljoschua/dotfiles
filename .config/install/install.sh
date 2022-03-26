@@ -30,7 +30,7 @@ _git_post() {
 }
 
 default() {
-    _require secrets root remote_access graphical systemd_units tub general
+    _require dotfiles secrets root remote_access graphical systemd_units tub general
     [ -e f ] && rm f
     sudo apt-get install -qy ./*.deb
     rm ./*.deb
@@ -42,9 +42,19 @@ default() {
     echo reboot
 }
 
+dotfiles() (
+    [ -d ~/.config/dotfiles ] && return
+    _require base
+    export GIT_DIR=$HOME/.config/dotfiles GIT_WORK_TREE=$HOME
+    git clone --bare https://aljoschua@github.com/aljoschua/dotfiles $GIT_DIR
+    git checkout @ -- $GIT_DIR
+    git -c user.name=a -c user.email=a stash
+    git checkout
+)
+
 base() {
     command -v wget && return
-    _install wget curl zip
+    _install wget curl zip git
 }
 
 terminal() { # Terminal applications
