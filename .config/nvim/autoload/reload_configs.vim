@@ -30,6 +30,6 @@ endfunction
 
 function! reload_configs#tmux()
     if g:reload_configs
-        !tmux source-file ~/.config/tmux/config
+        !tmux source-file ~/.config/tmux/config.tmux
     endif
 endfunction
