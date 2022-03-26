@@ -17,7 +17,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 compdef _d d
 
 autoload -Uz promptinit && promptinit
-prompt renv
+prompt env
 
 stty $(printf '%s undef ' stop start rprnt werase discard kill lnext)
 
