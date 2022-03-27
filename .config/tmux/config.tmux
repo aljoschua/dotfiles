@@ -12,6 +12,10 @@ set-option -g set-titles-string "Tmux - #S:#I:#W - \"#T\" #{session_alerts}"
 
 # Keybindings
 bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+bind-key -T copy-mode-vi p {
+    send-keys -X copy-selection-and-cancel
+    paste-buffer
+}
 bind-key -r k select-pane -U
 bind-key -r j select-pane -D
 bind-key -r h select-pane -L
