@@ -25,26 +25,24 @@
 	ap = add -p
 	b = branch -avv
 	c = commit -v
+	c-a = commit -v --amend
 	c-an = commit --amend --no-edit
 	ca = commit -av
+	cl = config --show-origin --includes -l
 	co = checkout
 	cp = commit -vp
 	dc = diff --cached
 	f = fetch --all --tags --prune
-	fm = !git f && git merge
 	fr = !git f && git rebase
 	frp = !git fr && git push
 	lf = log --format=fuller --date=iso8601 --show-signature --parents --left-right
-	ls = !git lf --author 'Aljoscha Frey' --grep
 	lg = !git lo --graph
 	lo = log --oneline
+	ls = !git lf --author 'Aljoscha Frey' --grep
 	rc = rm --cached
 	rf = checkout HEAD --
 	s = status -sbu --show-stash
 	t = tag -as
-	hub = !git clone hub:$1 && cd $(basename $1)
-	cl = config --show-origin --includes -l
-	c-a = commit -v --amend
 [core]
 	autocrlf = input
 [log]
