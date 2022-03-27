@@ -17,8 +17,6 @@ bind-key -r j select-pane -D
 bind-key -r h select-pane -L
 bind-key -r l select-pane -R
 bind-key b last-window
-bind-key N switch-client -n
-bind-key P switch-client -p
 bind-key x kill-pane
 bind-key -n Enter {
     if-shell "true" {
