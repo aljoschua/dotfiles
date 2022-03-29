@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 unset SXHKD_SHELL DCONF_PROFILE
 unset JOURNAL_STREAM IM_CONFIG_PHASE MANAGERPID INVOCATION_ID # systemd environment

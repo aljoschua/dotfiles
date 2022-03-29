@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 local shell_words expanded_first_shell_word full_path
 shell_words=(${(A)${(z)BUFFER}})
 if [ $#shell_words = 0 ]; then

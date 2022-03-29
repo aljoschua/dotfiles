@@ -1,4 +1,5 @@
 " Functions for my init.vim
+" SPDX-License-Identifier: GPL-3.0-or-later
 
 function! initvim#GitSess()
     set autowriteall autoread

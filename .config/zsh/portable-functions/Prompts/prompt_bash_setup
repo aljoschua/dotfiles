@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 prompt_bash_setup() {
     PROMPT="%B%F{green}%n@%m%f:%F{blue}%~%f%(!,#,$)%b "
     prompt_opts=(cr percent)

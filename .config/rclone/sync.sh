@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 instance=$1
 
 cd ${0%/*}

@@ -1,4 +1,5 @@
 # vim:ft=zsh
+# SPDX-License-Identifier: GPL-3.0-or-later
 start() {
     ~/.local/lib/scripts/gitbu.sh
     exec rclone sync ~/.local/share/gitbu mega:gitbu

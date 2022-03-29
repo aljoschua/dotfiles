@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 dir=~/.config/google-chrome.d
 find "$dir" -maxdepth 1 ! -path "$dir" -printf '%P\n' |

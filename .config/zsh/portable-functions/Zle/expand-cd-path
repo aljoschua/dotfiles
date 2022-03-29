@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 local shell_words
 shell_words=(${(A)${(z)BUFFER}})
 BUFFER="${shell_words[1]} ${${(@)shell_words[2,-1]}// //}"

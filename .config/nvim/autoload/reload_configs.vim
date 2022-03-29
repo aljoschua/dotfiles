@@ -1,3 +1,4 @@
+" SPDX-License-Identifier: GPL-3.0-or-later
 function! reload_configs#i3()
     if g:reload_configs
         !i3-msg reload

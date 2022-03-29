@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 prompt_env_setup () {
     PROMPT='%{%f%b%k%}$(prompt_env_make)'
     prompt_opts=(subst cr percent sp)

@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-or-later
 filename=$(realpath ~/.config/libinput-gestures/running.conf)
 zenity --notification --text "`basename "$filename"`\n`cat "$filename"`"

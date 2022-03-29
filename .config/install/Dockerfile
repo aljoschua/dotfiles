@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
 FROM linuxmintd/mint20.2-amd64
 
 ARG user=testuser
