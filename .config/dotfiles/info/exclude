@@ -82,9 +82,6 @@
 !/.local/bin/firefox-auto-profile
 !/.local/bin/firefox-profile-picker
 !/.local/bin/git-iinit
-!/.local/bin/google-chrome
-!/.local/bin/google-chrome-auto-profile
-!/.local/bin/google-chrome-profile-picker
 !/.local/bin/libinput-gestures-info
 !/.local/bin/libinput-gestures-switch
 !/.local/bin/media-status
@@ -104,7 +101,6 @@
 !/.local/share/applications/Zoom.desktop
 !/.local/share/applications/firefox.desktop
 !/.local/share/applications/gmail.desktop
-!/.local/share/applications/google-chrome.desktop
 !/.local/share/cdpath/
 !/.local/share/cdpath/**
 !/.local/share/config-links/

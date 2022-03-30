@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-# SPDX-License-Identifier: GPL-3.0-or-later
-
-exec /usr/bin/google-chrome --password-store=gnome \
-    --user-data-dir="$HOME/.config/google-chrome.d/main" "$@"

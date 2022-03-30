@@ -24,7 +24,7 @@ f
     !firefox-profile-picker
 
 c
-    !google-chrome-profile-picker
+    !google-chrome
 
 # start and stop xcompmgr before and after?
 Print

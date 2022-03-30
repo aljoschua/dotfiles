@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# SPDX-License-Identifier: GPL-3.0-or-later
-
-dir=~/.config/google-chrome.d
-find "$dir" -maxdepth 1 ! -path "$dir" -printf '%P\n' |
-    zenity --list --column=Profile --title="Google Chrome Profile Picker" --text="Choose a profile for this chrome instance" |
-    xargs -I{} google-chrome --user-data-dir="$dir/{}" --restore-session --password-store=gnome
