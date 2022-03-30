@@ -25,7 +25,6 @@
 !/etc/network/
 !/etc/network/if-up.d/
 !/etc/network/if-up.d/arpmiri
-!/etc/network/if-up.d/publish-public-ip
 
 !/etc/pam.d/
 !/etc/pam.d/systemd-user
