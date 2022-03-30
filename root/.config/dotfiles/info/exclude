@@ -26,9 +26,6 @@
 !/etc/network/if-up.d/
 !/etc/network/if-up.d/arpmiri
 
-!/etc/pam.d/
-!/etc/pam.d/systemd-user
-
 !/etc/default
 !/etc/default/acpi-support
 
