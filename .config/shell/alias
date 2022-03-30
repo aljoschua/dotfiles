@@ -13,5 +13,5 @@ alias wttr="curl wttr.in/berlin"
 alias fct="fc -lDt '%F %T'"
 
 # TU
-alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --passwd-on-stdin < ~/.local/share/secrets/tub-password"
+alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --authgroup 2 < ~/.local/share/secrets/tub-password"
 
