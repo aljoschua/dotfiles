@@ -169,7 +169,7 @@ systemd_units() {
 }
 
 dconf() {
-    dconf load / < .config/dconf/settings.dconf
+    command dconf load / < .config/dconf/settings.dconf
 }
 
 trap _exit EXIT
@@ -177,3 +177,4 @@ cmd=${1:-default}
 stacktrace=$cmd
 
 $cmd
+trap - EXIT
