@@ -9,7 +9,7 @@ USER $user
 WORKDIR /home/$user
 RUN echo "printf '1234\n1234\n' | sudo -S chown -R $user:$user ~" >> .bashrc
 RUN echo "alias i=.config/install/install.sh" >> .bashrc
-RUN echo "alias ri='wget -Of git.io/JqcSG;sh f" >> .bashrc
+RUN echo "alias ri='wget -Of git.io/JqcSG;sh f'" >> .bashrc
 
 # cd ~/.config/install
 # docker build -t testinstall .
