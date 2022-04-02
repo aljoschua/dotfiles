@@ -25,13 +25,12 @@ _main() {
 
 default() {
     _require dotfiles secrets root graphical systemd_units tub
-    [ -e f ] && rm f
     apt-mark showmanual > current.lst
     diff current.lst .config/install/aptmanual.lst > apt.diff || true
     rm current.lst
     echo "TODO:"
-    echo "View ~/apt.diff to find programs which weren't installed"
-    echo reboot
+    echo "- View ~/apt.diff to find programs which weren't installed"
+    echo - reboot
 }
 
 dotfiles() (
