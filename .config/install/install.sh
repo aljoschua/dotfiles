@@ -1,10 +1,6 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-set -eu
-
-_exit() echo Stacktrace: $stacktrace
-
 _require() {
     local module
     for module; do
@@ -17,10 +13,11 @@ _require() {
 _install() sudo apt-get install -qy "$@"
 
 _main() {
+    set -eu
     cd
-    trap _exit EXIT
     cmd=${1:-default}
     stacktrace=$cmd
+    trap 'echo Stacktrace: $stacktrace' EXIT
     $cmd
     trap - EXIT
 }
