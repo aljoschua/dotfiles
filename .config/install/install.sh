@@ -16,8 +16,6 @@ _require() {
 
 _install() sudo apt-get install -qy "$@"
 
-_download() apt-get download -qy "$@"
-
 _main() {
     trap _exit EXIT
     cmd=${1:-default}
@@ -30,8 +28,6 @@ _main() {
 default() {
     _require dotfiles secrets root remote_access graphical systemd_units tub general
     [ -e f ] && rm f
-    sudo apt-get install -qy ./*.deb
-    rm ./*.deb
     apt-mark showmanual > current.lst
     diff current.lst .config/install/aptmanual.lst > apt.diff || true
     rm current.lst
@@ -57,7 +53,7 @@ base() {
 
 terminal() { # Terminal applications
     command -v tmux && return
-    _download tmux neovim zsh docker.io git ncdu asciinema inotify-tools
+    _install tmux neovim zsh docker.io git ncdu asciinema inotify-tools
     sudo usermod -aG docker $USER
     sudo chsh -s /usr/bin/zsh
     sudo chsh -s /usr/bin/zsh $USER
@@ -96,13 +92,13 @@ root() { # Installs root dotfiles, secrets and various other things
     }
 
 remote_access() {
-    _download openssh-server
+    _install openssh-server
 }
 
 graphical() {
     _require root wm libinput_gestures chrome bitwarden rclone
     command -v xclip && return
-    _download xclip remmina remmina-plugin-vnc kdeconnect gparted \
+    _install xclip remmina remmina-plugin-vnc kdeconnect gparted \
         ssh-askpass-gnome screenkey signal-desktop google-chrome-stable \
         spotify-client autorandr dunst
     sudo usermod -aG video $USER # Allow usage of video devices
@@ -110,12 +106,12 @@ graphical() {
 }
 
 wm() {
-    _download i3 dmenu wmctrl sxhkd zenity xdotool xcompmgr xkbset
+    _install i3 dmenu wmctrl sxhkd zenity xdotool xcompmgr xkbset
 }
 
 libinput_gestures() {
     command -v libinput-gestures-setup && return
-    _download xdotool wmctrl libinput-tools zenity
+    _install xdotool wmctrl libinput-tools zenity
     git clone hub:bulletmark/libinput-gestures tmp
     cd tmp
         git checkout $(git rev-list --tags --max-count=1)
@@ -146,7 +142,7 @@ rclone() {
 tub() {
     _require tq base
     command -v openconnect && return
-    _download krb5-user openconnect
+    _install krb5-user openconnect
 }
 
 tq() {
