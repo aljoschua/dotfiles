@@ -17,6 +17,7 @@ _require() {
 _install() sudo apt-get install -qy "$@"
 
 _main() {
+    cd
     trap _exit EXIT
     cmd=${1:-default}
     stacktrace=$cmd

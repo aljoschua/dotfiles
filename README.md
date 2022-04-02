@@ -56,6 +56,5 @@ This script is designed to install programs I use as well as install this reposi
 It does not make sense for you to run this, but you could to something similiar for yourself.
 See [.config/install](.config/install) for further information.
 ```bash
-cd
 wget -O- rb.gy/g7akux|sh
 ```
