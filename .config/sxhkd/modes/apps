@@ -35,3 +35,6 @@ s
 
 b
     !.local/lib/scripts/tmux_run.sh "bw get password " " | xcb"
+
+k
+    !kdeconnect -n W-V730-EEA --pair
