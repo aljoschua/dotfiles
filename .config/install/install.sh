@@ -24,7 +24,7 @@ _main() {
 
 
 default() {
-    _require dotfiles secrets root remote_access graphical systemd_units tub general
+    _require dotfiles secrets root graphical systemd_units tub
     [ -e f ] && rm f
     apt-mark showmanual > current.lst
     diff current.lst .config/install/aptmanual.lst > apt.diff || true
@@ -45,13 +45,13 @@ dotfiles() (
 )
 
 base() {
-    command -v wget && return
+    command -v wget && command -v git && return
     _install wget curl zip git
 }
 
 terminal() { # Terminal applications
     command -v tmux && return
-    _install tmux neovim zsh docker.io git ncdu asciinema inotify-tools
+    _install tmux neovim zsh docker.io ncdu asciinema inotify-tools
     sudo usermod -aG docker $USER
     sudo chsh -s /usr/bin/zsh
     sudo chsh -s /usr/bin/zsh $USER
@@ -59,6 +59,7 @@ terminal() { # Terminal applications
 
 secrets() (
     [ -d ~/.config/secrets ] && return
+    _require base
     export GIT_DIR=$HOME/.config/secrets GIT_WORK_TREE=$HOME
     git clone --bare https://aljoschua@github.com/aljoschua/secrets $GIT_DIR
     git checkout @ -- $GIT_DIR
@@ -67,7 +68,7 @@ secrets() (
 )
 
 root() { # Installs root dotfiles, secrets and various other things
-    _require base
+    _require base dotfiles secrets
     sudo su -c 'set -e; cd
     [ -d .config/dotfiles ] && exit
     for repo in .config/{dotfiles,secrets}; do
@@ -94,16 +95,17 @@ remote_access() {
 }
 
 graphical() {
-    _require root wm libinput_gestures chrome bitwarden rclone
     command -v xclip && return
-    _install xclip remmina remmina-plugin-vnc kdeconnect gparted \
-        ssh-askpass-gnome screenkey signal-desktop google-chrome-stable \
+    _require root wm libinput_gestures bitwarden rclone
+    _install xclip kdeconnect gparted \
+        ssh-askpass-gnome screenkey google-chrome-stable \
         spotify-client autorandr dunst
     sudo usermod -aG video $USER # Allow usage of video devices
     sudo usermod -aG plugdev $USER # Allow mounting
 }
 
 wm() {
+    command -v i3 && return
     _install i3 dmenu wmctrl sxhkd zenity xdotool xcompmgr xkbset
 }
 
@@ -121,8 +123,8 @@ libinput_gestures() {
 }
 
 bitwarden() {
-    _require base
     command -v bw && return
+    _require base
     wget -O bw.zip 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
     unzip -d ~/.local/bin bw.zip
     chmod +x ~/.local/bin/bw
@@ -130,21 +132,22 @@ bitwarden() {
 }
 
 rclone() {
-    _require base
     command -v rclone && return
+    _require base
     wget -O rclone.deb downloads.rclone.org/rclone-current-linux-amd64.deb
     sudo apt-get install -qy ./rclone.deb
     rm rclone.deb
 }
 
 tub() {
-    _require tq base
     command -v openconnect && return
-    _install krb5-user openconnect
+    _require tq base
+    _install openconnect
 }
 
 tq() {
     command -v tq && return
+    _install python3-pip
     sudo pip3 install https://github.com/plainas/tq/zipball/stable
 }
 
