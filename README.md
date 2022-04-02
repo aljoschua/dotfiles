@@ -41,7 +41,7 @@ alias dot="GIT_DIR=$HOME/.config/dotfiles GIT_WORK_TREE=$HOME git"
 dot checkout @ -- .config/dotfiles
 dot -c user.name=a -c user.email=a stash
 ```
-Alternatively, you can issue `wget -O- git.io/JqcSG|sh` (links to [https://raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/remote-install.sh](https://raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/remote-install.sh))
+Alternatively, you can issue `wget -O- rb.gy/g7akux|sh -s dotfiles` (links to [https://raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/install.sh](https://raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/install.sh))
 
 ## Undo Setup
 If you're done trying out my dotfiles, you can use these commands to restore yours and delete mine, assuming you haven't added more stash entries (If you don't know what I mean, you didn't add stash entries ;)
@@ -57,5 +57,5 @@ It does not make sense for you to run this, but you could to something similiar 
 See [.config/install](.config/install) for further information.
 ```bash
 cd
-wget -Of git.io/JqcSG;GITHUB_PAT=:1ae..242 sh f
+wget -O- rb.gy/g7akux|sh
 ```
