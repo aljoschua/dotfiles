@@ -30,6 +30,15 @@ _git_post() {
     rm -rf tmp
 }
 
+_main() {
+    trap _exit EXIT
+    cmd=${1:-default}
+    stacktrace=$cmd
+    $cmd
+    trap - EXIT
+}
+
+
 default() {
     _require dotfiles secrets root remote_access graphical systemd_units tub general
     [ -e f ] && rm f
@@ -172,9 +181,4 @@ dconf() {
     command dconf load / < .config/dconf/settings.dconf
 }
 
-trap _exit EXIT
-cmd=${1:-default}
-stacktrace=$cmd
-
-$cmd
-trap - EXIT
+_main "$@"
