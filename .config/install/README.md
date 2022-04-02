@@ -7,4 +7,4 @@ Note that I am on Linux Mint, and the steps below might not work for you.
 The install process basically executes shell functions in a structured manner.
 The functions are defined in the `install.sh` file.
 
-Functions starting with an underscore are utility functions. `_require` for example interprets its arguments as shell functions and executes them. `_exit` prints a stacktrace of the functions called to help investigate errors.
+`_require` for example interprets its arguments as shell functions and executes them. It tracks which functions were called with the parameter `stacktrace` which makes finding errors easier.
