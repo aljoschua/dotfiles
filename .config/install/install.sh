@@ -69,9 +69,9 @@ secrets() (
 
 root() { # Installs root dotfiles, secrets and various other things
     _require base dotfiles secrets
-    sudo su -c 'set -e; cd
+    sudo sh -c 'set -eu; cd
     [ -d .config/dotfiles ] && exit
-    for repo in .config/{dotfiles,secrets}; do
+    for repo in .config/dotfiles .config/secrets; do
         export GIT_DIR=$HOME/$repo GIT_WORK_TREE=/
         eval git clone --bare -b root ~$SUDO_USER/$repo $GIT_DIR
         git checkout @ -- $GIT_DIR
