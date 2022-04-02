@@ -33,15 +33,19 @@ default() {
     echo - reboot
 }
 
-dotfiles() (
-    [ -d ~/.config/dotfiles ] && return
+_clone_repo() (
+    [ -d ~/.config/$1 ] && return
     _require base
-    export GIT_DIR=$HOME/.config/dotfiles GIT_WORK_TREE=$HOME
-    git clone --bare https://aljoschua@github.com/aljoschua/dotfiles $GIT_DIR
+    export GIT_DIR=$HOME/.config/$1 GIT_WORK_TREE=$HOME
+    git clone --bare https://aljoschua$GITHUB_PAT@github.com/aljoschua/$1 $GIT_DIR
     git checkout @ -- $GIT_DIR
     git -c user.name=a -c user.email=a stash
     git checkout
 )
+
+dotfiles() _clone_repo dotfiles
+
+secrets() _clone_repo secrets
 
 base() {
     command -v wget && command -v git && return
@@ -55,16 +59,6 @@ terminal() { # Terminal applications
     sudo chsh -s /usr/bin/zsh
     sudo chsh -s /usr/bin/zsh $USER
 }
-
-secrets() (
-    [ -d ~/.config/secrets ] && return
-    _require base
-    export GIT_DIR=$HOME/.config/secrets GIT_WORK_TREE=$HOME
-    git clone --bare https://aljoschua$GITHUB_PAT@github.com/aljoschua/secrets $GIT_DIR
-    git checkout @ -- $GIT_DIR
-    git stash
-    git checkout
-)
 
 root() { # Installs root dotfiles, secrets and various other things
     _require base dotfiles secrets
