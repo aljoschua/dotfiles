@@ -18,18 +18,6 @@ _install() sudo apt-get install -qy "$@"
 
 _download() apt-get download -qy "$@"
 
-_git_pre() {
-    git clone "$1" tmp
-    cd tmp
-    # assuming latest tag is latest release
-    git checkout $(git rev-list --tags --max-count=1)
-}
-
-_git_post() {
-    cd ..
-    rm -rf tmp
-}
-
 _main() {
     trap _exit EXIT
     cmd=${1:-default}
@@ -112,11 +100,11 @@ remote_access() {
 }
 
 graphical() {
-    _require root wm libinput_gestures dunst chrome bitwarden rclone
+    _require root wm libinput_gestures chrome bitwarden rclone
     command -v xclip && return
     _download xclip remmina remmina-plugin-vnc kdeconnect gparted \
         ssh-askpass-gnome screenkey signal-desktop google-chrome-stable \
-        spotify-client autorandr
+        spotify-client autorandr dunst
     sudo usermod -aG video $USER # Allow usage of video devices
     sudo usermod -aG plugdev $USER # Allow mounting
 }
@@ -128,21 +116,14 @@ wm() {
 libinput_gestures() {
     command -v libinput-gestures-setup && return
     _download xdotool wmctrl libinput-tools zenity
-    _git_pre hub:bulletmark/libinput-gestures
+    git clone hub:bulletmark/libinput-gestures tmp
+    cd tmp
+        git checkout $(git rev-list --tags --max-count=1)
         sudo make install
-    _git_post
+        cd ..
+    rm -rf tmp
     sudo usermod -aG input $USER
     libinput-gestures-setup autostart
-}
-
-dunst() {
-    command -v dunst && return
-    _install dbus libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev \
-        libpango1.0-dev libgtk-3-dev libnotify-dev
-    _git_pre hub:dunst-project/dunst
-        make WAYLAND=0
-        sudo make WAYLAND=0 install
-    _git_post
 }
 
 bitwarden() {
