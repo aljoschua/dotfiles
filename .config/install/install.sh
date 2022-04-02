@@ -61,7 +61,7 @@ secrets() (
     [ -d ~/.config/secrets ] && return
     _require base
     export GIT_DIR=$HOME/.config/secrets GIT_WORK_TREE=$HOME
-    git clone --bare https://aljoschua@github.com/aljoschua/secrets $GIT_DIR
+    git clone --bare https://aljoschua$GITHUB_PAT@github.com/aljoschua/secrets $GIT_DIR
     git checkout @ -- $GIT_DIR
     git stash
     git checkout
