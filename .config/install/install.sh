@@ -80,18 +80,13 @@ root() { # Installs root dotfiles, secrets and various other things
     eval ln -s ~$SUDO_USER ~/.portal
     git checkout
     for key in download.spotify.com/debian/pubkey_0D811D58.gpg \
-        mega.nz/keys/MEGA_signing.key \
-        dl.google.com/linux/linux_signing_key.pub; do
-            wget -qO- $key | apt-key add -
-        done
-        apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 5E3C45D7B312C643
-        apt-get update
-        systemctl disable cups.service || true
-        '
-    }
-
-remote_access() {
-    _install openssh-server
+               dl.google.com/linux/linux_signing_key.pub; do
+        wget -qO- $key | apt-key add -
+    done
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 5E3C45D7B312C643
+    apt-get update
+    systemctl disable cups.service || true
+    '
 }
 
 graphical() {
