@@ -9,6 +9,6 @@ for repo in $(ls $projects); do
         cd $projects/$repo
         dir=$storage/${repo//\//%}
         mkdir -p $dir
-        rsync -rR $(git check-ignore $(find)) $dir
+        rsync -rR $(git check-ignore $(find)) $dir # maybe try using git clean -dxn
     )
 done
