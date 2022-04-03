@@ -71,6 +71,7 @@ nnoremap <Leader>- :cd -<CR>
 nnoremap <Leader>b :ls h<CR>:b<Space>
 nnoremap <silent> <Leader>p :set opfunc=initvim#replacewithunnamedplus<CR>g@
 nnoremap <Leader>B <Cmd>if &background == 'dark' \| set background=light \| else \| set background=dark \| endif<CR>
+nnoremap <expr> <Leader><Leader> ":nmap <" . "Leader><CR>"
 
 " Repurpose default bindings
 nnoremap S :%s//g<Left><Left>
