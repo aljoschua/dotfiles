@@ -4,13 +4,17 @@
 workspace=$(wmctrl -d | awk '$2=="*" {print $1}')
 
 first_pid=$(wmctrl -pxl |
-    awk -v ws=$workspace '$2==ws &&
-        $4=="Navigator.Firefox" {print $3; exit}')
+    awk -v ws=$workspace '
+        $2 == ws && tolower($4) == "navigator.firefox" {
+            print $3
+            exit
+        }
+    '
+)
 if [ -z "$first_pid" ]; then
     exec firefox -P main "$@"
 fi
-
-profile=$(sed -E '/-P/!{Q5}; s/.*-P\x00([^\x00]+).*/\1/' /proc/$first_pid/cmdline)
+profile=$(sed -E '/WS_NAME/!{Q5}; s/.*WS_NAME=([^\x00]+).*/\1/'  /proc/$first_pid/environ)
 if [ "$?" = 5 ]; then
     profile=main
 fi
