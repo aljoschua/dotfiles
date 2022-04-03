@@ -1,7 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # TODO: Play sound always on speaker
+
+set -eu
 
 sound=$HOME/.local/share/misc/samsung_s8_tone.mp3
 

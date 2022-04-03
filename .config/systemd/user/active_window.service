@@ -3,5 +3,5 @@ Description=Save apt-mark showmanual
 
 [Service]
 Type=simple
-ExecStart=/bin/bash -c "echo $(cat ~/.cache/ws/$(wmctrl -d | awk '/\*/{print $NF}')) $(iwgetid -r) $(xdotool getwindowfocus getwindowname) >> .local/share/active_window/$(date +%%F).log"
+ExecStart=/usr/bin/env bash -c "echo $(cat ~/.cache/ws/$(wmctrl -d | awk '/\*/{print $NF}')) $(iwgetid -r) $(xdotool getwindowfocus getwindowname) >> .local/share/active_window/$(date +%%F).log"
 

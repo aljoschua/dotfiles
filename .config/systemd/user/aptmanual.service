@@ -3,4 +3,4 @@ Description=Save apt-mark showmanual
 
 [Service]
 Type=simple
-ExecStart=/bin/bash -c "apt-mark showmanual > .config/install/aptmanual.lst"
+ExecStart=/usr/bin/env bash -c "apt-mark showmanual > .config/install/aptmanual.lst"

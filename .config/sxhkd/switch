@@ -1,5 +1,7 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
 # SPDX-License-Identifier: GPL-3.0-or-later
+
+set -eu
 
 cd $(dirname "$0")
 ln -fs "modes/$1" sxhkdrc
