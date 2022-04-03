@@ -54,6 +54,7 @@ base() {
 
 terminal() { # Terminal applications
     command -v tmux && return
+    _require tq
     _install tmux neovim zsh docker.io ncdu asciinema inotify-tools
     sudo usermod -aG docker $USER
     sudo chsh -s /usr/bin/zsh
@@ -140,10 +141,12 @@ tq() {
 }
 
 systemd_units() {
+    _require dotfiles
     systemctl --user daemon-reload
 }
 
 dconf() {
+    _require dotfiles
     command dconf load / < .config/dconf/settings.dconf
 }
 
