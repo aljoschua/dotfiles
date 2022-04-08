@@ -45,7 +45,10 @@ _clone_repo() (
 
 dotfiles() _clone_repo dotfiles
 
-secrets() _clone_repo secrets
+secrets() {
+    _require dotfiles
+    _clone_repo secrets
+}
 
 base() {
     command -v wget && command -v git && return
