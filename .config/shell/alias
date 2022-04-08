@@ -11,6 +11,7 @@ alias xcb="{xclip -selection clipboard \$([ -t 0 ] && echo -- -o)}"
 alias dotex="vi ~/.config/dotfiles/info/exclude"
 alias wttr="curl wttr.in/berlin"
 alias fct="fc -lDt '%F %T'"
+alias dc=docker-compose
 
 # TU
 alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --authgroup 2 < ~/.local/share/secrets/tub-password"

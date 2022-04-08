@@ -146,6 +146,7 @@ dnsmasq-base
 doc-base
 docbook-xml
 docker
+docker-compose
 docker.io
 dosfstools
 dpkg
