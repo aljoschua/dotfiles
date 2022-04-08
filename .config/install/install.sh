@@ -54,12 +54,25 @@ base() {
 
 terminal() { # Terminal applications
     command -v tmux && return
-    _require tq
+    _require tq st
     _install tmux neovim zsh docker.io ncdu asciinema inotify-tools
     sudo usermod -aG docker $USER
     sudo chsh -s /usr/bin/zsh
     sudo chsh -s /usr/bin/zsh $USER
 }
+
+st() {
+    [ -x .local/bin/st ] && return
+    _require dotfiles
+    git clone sl:st
+    cd st
+        git co 0.8.4
+        wget -O- https://st.suckless.org/patches/invert/st-invert-0.8.4.diff | patch
+        make PREFIX=$HOME/.local install
+        cd ..
+    rm -rf st
+}
+
 
 root() { # Installs root dotfiles, secrets and various other things
     _require base dotfiles secrets
