@@ -16,6 +16,6 @@ RUN echo "printf '1234\n1234\n' | sudo -Sp '' true" >> .bashrc
 RUN echo "alias i='/install/install.sh'" >> .bashrc
 RUN echo "alias ri='wget -O- rb.gy/g7akux|sh'" >> .bashrc
 
-# cd ~/.config/install
+# cd ~/.config/install/test
 # docker-compose build --build-arg github_pat=...
 # docker-compose run --rm test

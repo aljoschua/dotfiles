@@ -4,4 +4,4 @@ services:
   test:
     stdin_open: true
     build: .
-    volumes: [.:/install]
+    volumes: [..:/install]
