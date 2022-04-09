@@ -68,11 +68,11 @@ terminal() { # Terminal applications
 
 st() {
     [ -x .local/bin/st ] && return
-    _require dotfiles
-    git clone sl:st
+    _require base
+    git clone https://git.suckless.org/st
     cd st
-        git co 0.8.4
-        wget -O- https://st.suckless.org/patches/invert/st-invert-0.8.4.diff | patch
+        git checkout 0.8.4
+        wget -O- st.suckless.org/patches/invert/st-invert-0.8.4.diff | patch
         make PREFIX=$HOME/.local install
         cd ..
     rm -rf st
