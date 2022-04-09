@@ -12,7 +12,7 @@ _main() {
 }
 
 default() {
-    _require apt_update dotfiles secrets root graphical systemd_units tub
+    _require apt_update dotfiles secrets terminal root graphical systemd_units tub
     apt-mark showmanual > current.lst
     diff current.lst .config/install/aptmanual.lst > apt.diff || true
     rm current.lst
@@ -107,10 +107,10 @@ root() { # Installs root dotfiles, secrets and various other things
 
 graphical() {
     command -v xclip && return
-    _require root wm libinput_gestures bitwarden rclone
+    _require root wm libinput_gestures bitwarden rclone dconf
     _install xclip kdeconnect gparted \
         ssh-askpass-gnome screenkey google-chrome-stable \
-        spotify-client autorandr dunst
+        spotify-client autorandr dunst firefox
     sudo usermod -aG video $USER # Allow usage of video devices
     sudo usermod -aG plugdev $USER # Allow mounting
 }
