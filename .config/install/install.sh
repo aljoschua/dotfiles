@@ -24,7 +24,7 @@ _main() {
 
 
 default() {
-    _require dotfiles secrets root graphical systemd_units tub
+    _require apt_update dotfiles secrets root graphical systemd_units tub
     apt-mark showmanual > current.lst
     diff current.lst .config/install/aptmanual.lst > apt.diff || true
     rm current.lst
@@ -32,6 +32,8 @@ default() {
     echo "- View ~/apt.diff to find programs which weren't installed"
     echo - reboot
 }
+
+apt_update() sudo apt-get update
 
 _clone_repo() (
     [ -d ~/.config/$1 ] && return
