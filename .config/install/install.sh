@@ -1,17 +1,6 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-_require() {
-    local module
-    for module; do
-        stacktrace="$stacktrace $module"
-        $module
-        stacktrace=${stacktrace% $module}
-    done
-}
-
-_install() sudo apt-get install -qy "$@"
-
 _main() {
     set -eu
     cd
@@ -21,7 +10,6 @@ _main() {
     $cmd
     trap - EXIT
 }
-
 
 default() {
     _require apt_update dotfiles secrets root graphical systemd_units tub
@@ -33,7 +21,18 @@ default() {
     echo - reboot
 }
 
+_require() {
+    local module
+    for module; do
+        stacktrace="$stacktrace $module"
+        $module
+        stacktrace=${stacktrace% $module}
+    done
+}
+
 apt_update() sudo apt-get update
+
+dotfiles() _clone_repo dotfiles
 
 _clone_repo() (
     [ -d ~/.config/$1 ] && return
@@ -45,16 +44,16 @@ _clone_repo() (
     git checkout
 )
 
-dotfiles() _clone_repo dotfiles
+base() {
+    command -v wget && command -v git && return
+    _install wget curl zip git
+}
+
+_install() sudo apt-get install -qy "$@"
 
 secrets() {
     _require dotfiles
     _clone_repo secrets
-}
-
-base() {
-    command -v wget && command -v git && return
-    _install wget curl zip git
 }
 
 terminal() { # Terminal applications
@@ -64,6 +63,12 @@ terminal() { # Terminal applications
     sudo usermod -aG docker $USER
     sudo chsh -s /usr/bin/zsh
     sudo chsh -s /usr/bin/zsh $USER
+}
+
+tq() {
+    command -v tq && return
+    _install python3-pip
+    sudo pip3 install https://github.com/plainas/tq/zipball/stable
 }
 
 st() {
@@ -77,7 +82,6 @@ st() {
         cd ..
     rm -rf st
 }
-
 
 root() { # Installs root dotfiles, secrets and various other things
     _require base dotfiles secrets
@@ -146,16 +150,9 @@ rclone() {
     rm rclone.deb
 }
 
-tub() {
-    command -v openconnect && return
-    _require tq base
-    _install openconnect
-}
-
-tq() {
-    command -v tq && return
-    _install python3-pip
-    sudo pip3 install https://github.com/plainas/tq/zipball/stable
+dconf() {
+    _require dotfiles
+    command dconf load / < .config/dconf/settings.dconf
 }
 
 systemd_units() {
@@ -163,9 +160,10 @@ systemd_units() {
     systemctl --user daemon-reload
 }
 
-dconf() {
-    _require dotfiles
-    command dconf load / < .config/dconf/settings.dconf
+tub() {
+    command -v openconnect && return
+    _require tq base
+    _install openconnect
 }
 
 _main "$@"
