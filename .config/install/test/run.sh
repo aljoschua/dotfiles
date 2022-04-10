@@ -2,5 +2,5 @@
 
 set -eu
 
-cd ${0%/*}
-docker-compose run --rm test
+cd ${0%/*}/..
+docker run -itv $PWD:/install --rm test_install

@@ -1,7 +1,0 @@
-version: "3"
-
-services:
-  test:
-    stdin_open: true
-    build: .
-    volumes: [..:/install]
