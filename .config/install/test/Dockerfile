@@ -12,6 +12,9 @@ USER $user
 ENV USER $user
 WORKDIR /home/$user
 
+COPY mockup_bin mockup_bin
+ENV PATH /home/$user/mockup_bin:$PATH
+
 RUN echo "printf '1234\n1234\n' | sudo -Sp '' true" >> .bashrc
 RUN echo "alias i='/install/install.sh'" >> .bashrc
 RUN echo "alias ri='wget -O- rb.gy/g7akux|sh -s'" >> .bashrc

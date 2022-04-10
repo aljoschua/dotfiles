@@ -1,0 +1,2 @@
+#!/bin/sh
+echo Name: $0, Args: "$@"
