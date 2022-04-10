@@ -9,9 +9,10 @@ a volume and `-i` to `docker run`.
 
 ## How to test
 ```bash
-cd ~/.config/install/test
-docker-compose build --build-arg github_pat={...}
-docker-compose run --rm test
+path/to/run.sh
+# For example:
+test/run.sh
 ```
 
+Before running the test, you need to supply a build argument for the docker image. This avoids the prompt for the github personal access token (So you can clone private repositories). Use `docker-compose build --build-arg github_pat={...}` for that.
 The `docker-compose build` command only needs to be rerun if there are changes to the `Dockerfile`.
