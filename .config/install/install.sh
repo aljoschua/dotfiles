@@ -74,6 +74,7 @@ tq() {
 st() {
     [ -x .local/bin/st ] && return
     _require base
+    _install libfontconfig1-dev libfreetype6-dev libx11-dev libxft-dev
     git clone https://git.suckless.org/st
     cd st
         git checkout 0.8.4
