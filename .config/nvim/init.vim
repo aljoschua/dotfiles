@@ -35,6 +35,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'tomlion/vim-solidity'
 
+Plug 'mikelue/vim-maven-plugin'
+
 call plug#end()
 " Options {{{1
 " File management
