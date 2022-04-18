@@ -38,7 +38,7 @@ _clone_repo() (
     [ -d ~/.config/$1 ] && return
     _require base
     export GIT_DIR=$HOME/.config/$1 GIT_WORK_TREE=$HOME
-    git clone --bare https://aljoschua$GITHUB_PAT@github.com/aljoschua/$1 $GIT_DIR
+    git clone --bare https://aljoschua${GITHUB_PAT:-}@github.com/aljoschua/$1 $GIT_DIR
     git checkout @ -- $GIT_DIR
     git -c user.name=a -c user.email=a stash
     git checkout
