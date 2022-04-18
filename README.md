@@ -31,8 +31,6 @@ What you will come to realize is that, almost all other git commands ignore untr
 You only have to be careful when using git-add recursively (As in `git add .` or `git add -A`).
 Apart from that, it can be your perfect dotfile manager too.
 
-Although this approach is very neat and minimal, I ended up with another method. By explicilty ignoring everything and then unignoring some parts of my home directory (defined in the gitignore file [.config/dotfiles/info/exclude](.config/dotfiles/info/exclude), git nags me when there are untracked files in certain directories which I intent to add at some point in the future. I think this approach is really ugly, but I have yet to find an alternative.
-
 ## Setup
 To try out my dotfiles without deleting any of yours, invoke:
 ```bash
