@@ -22,6 +22,7 @@ bind-key -r h select-pane -L
 bind-key -r l select-pane -R
 bind-key b last-window
 bind-key x kill-pane
+bind-key C choose-buffer
 bind-key -n Enter {
     if-shell "true" {
         %if "#{&&:#{==:#S,scratch},#{==:#W,zsh}}"
