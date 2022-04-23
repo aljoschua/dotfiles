@@ -1,0 +1,1 @@
+xinput set-prop 'SYNA3067:00 06CB:8265 Touchpad' 'libinput Tapping Enabled' 1
