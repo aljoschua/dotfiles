@@ -12,7 +12,7 @@ _main() {
 }
 
 default() {
-    _require apt_update dotfiles secrets terminal root graphical systemd_units tub
+    _require apt_update dotfiles secrets compile_configs terminal root graphical systemd_units tub
     apt-mark showmanual > current.lst
     diff current.lst .config/install/aptmanual.lst > apt.diff || true
     rm current.lst
@@ -54,6 +54,22 @@ _install() sudo apt-get install -qy "$@"
 secrets() {
     _require dotfiles
     _clone_repo secrets
+}
+
+compile_configs() {
+    _require dotfiles cfc
+    GIT_DIR=$HOME/.config/dotfiles git ls-files | grep .cfc | xargs -L1 cfc_strip
+}
+
+cfc() {
+    [ -x .local/bin/cfc ] && return
+    _require base
+    git clone https://gitlab.com/Nibodhika/cfc
+    mkdir -p .local/bin
+    cd cfc
+        cp cfc ~/.local/bin
+        cd ..
+    rm -rf cfc
 }
 
 terminal() { # Terminal applications
