@@ -72,7 +72,7 @@ terminal() { # Terminal applications
 }
 
 tq() {
-    command -v tq && return
+    [ -x /usr/local/bin/tq ] && return
     _install python3-pip
     sudo pip3 install https://github.com/plainas/tq/zipball/stable
 }
@@ -141,16 +141,17 @@ libinput_gestures() {
 }
 
 bitwarden() {
-    command -v bw && return
+    [ -x .local/bin/bw ] && return
     _require base
     wget -O bw.zip 'https://vault.bitwarden.com/download/?app=cli&platform=linux'
-    unzip -d ~/.local/bin bw.zip
-    chmod +x ~/.local/bin/bw
+    mkdir -p .local/bin
+    unzip -d .local/bin bw.zip
+    chmod +x .local/bin/bw
     rm bw.zip
 }
 
 rclone() {
-    command -v rclone && return
+    [ -x /usr/bin/rclone ] && return
     _require base
     wget -O rclone.deb downloads.rclone.org/rclone-current-linux-amd64.deb
     sudo apt-get install -qy ./rclone.deb
