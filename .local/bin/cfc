@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+in=$1
+out=${in%.cfc}
+mode=text
+
+{
+    while read; do
+        case $mode in
+            text)
+                if [ "$REPLY" = script_begin ]; then
+                    mode=script
+                else
+                    echo "$REPLY"
+                fi;;
+            script)
+                if [ "$REPLY" = script_end ]; then
+                    bash <<< "$buffer"
+                    unset buffer
+                    mode=text
+                else
+                    buffer+="$REPLY"$'\n'
+                fi;;
+        esac
+    done
+} < $in > $out

@@ -57,20 +57,9 @@ secrets() {
 }
 
 compile_configs() {
-    _require dotfiles cfc
+    _require dotfiles
     PATH="$HOME/.local/bin:$PATH"
-    GIT_DIR=$HOME/.config/dotfiles git ls-files | grep '\.cfc$' | xargs -L1 cfc_strip
-}
-
-cfc() {
-    [ -x .local/bin/cfc ] && return
-    _require base
-    git clone https://gitlab.com/Nibodhika/cfc
-    mkdir -p .local/bin
-    cd cfc
-        cp cfc ~/.local/bin
-        cd ..
-    rm -rf cfc
+    GIT_DIR=$HOME/.config/dotfiles git ls-files | grep '\.cfc$' | xargs -L1 cfc
 }
 
 terminal() { # Terminal applications

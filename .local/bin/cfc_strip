@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-exec cfc -i $1 -o ${1%.cfc}
