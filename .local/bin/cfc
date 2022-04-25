@@ -5,7 +5,7 @@ out=${in%.cfc}
 mode=text
 
 {
-    while read; do
+    while read -r; do
         case $mode in
             text)
                 if [ "$REPLY" = script_begin ]; then
