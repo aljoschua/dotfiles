@@ -32,4 +32,4 @@ fi
 
 export MANPAGER='nvim +Man!'
 export EDITOR=nvim VISUAL=nvim ZDOTDIR=~/.config/zsh GNUPGHOME=~/.config/gpg
-export CDPATH=~/.local/share/cdpath:~/.config:~/.local/share:~/.local/src:~/.local/lib:~/.local:~/.local/share/nvim/vim-plug:~
+export CDPATH=~/.local/share/cdpath:~/.config:~/.local/share:~/.local/src:~/.local/lib:~/.local:~
