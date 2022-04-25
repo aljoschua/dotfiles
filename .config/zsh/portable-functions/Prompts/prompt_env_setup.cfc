@@ -19,10 +19,13 @@ prompt_env_make() {
   prompt_env_segment red $(jobs) ""
   prompt_env_env green PWD ~
   prompt_env_env red SUDO_USER ""
-  prompt_env_env red USER aljoschua
-  prompt_env_env red HOST 430-G5
+script_begin
+echo "  prompt_env_env red USER $USER"
+echo "  prompt_env_env red HOST $HOSTNAME"
+script_end
   prompt_env_env green ZSH_VERSION
   echo '\n> '
 }
 
 prompt_env_setup "$@"
+
