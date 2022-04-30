@@ -67,7 +67,6 @@ terminal() { # Terminal applications
     _require tq st
     _install tmux neovim zsh docker.io ncdu asciinema inotify-tools
     sudo usermod -aG docker $USER
-    sudo chsh -s /usr/bin/zsh
     sudo chsh -s /usr/bin/zsh $USER
 }
 
