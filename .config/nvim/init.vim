@@ -25,10 +25,10 @@ noremap c "cc
 ounmap c
 
 
-" noremap [[ ?{<CR>w99[{
-" noremap ][ /}<CR>b99]}
-" noremap ]] j0[[%/{<CR>
-" noremap [] k$][%?}<CR>
+noremap [[ ?{<CR>w99[{
+noremap ][ /}<CR>b99]}
+noremap ]] j0[[%/{<CR>
+noremap [] k$][%?}<CR>
 " Plugins {{{1
 call plug#begin(stdpath('data') . '/vim-plug')
 let g:plug_window = 'topleft new'
