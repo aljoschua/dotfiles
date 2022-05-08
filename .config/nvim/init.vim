@@ -1,7 +1,3 @@
-if &t_Co > 2 || has("gui_running")
-    " Switch on highlighting the last used search pattern.
-    set hlsearch
-endif
 
 " Plugins {{{1
 call plug#begin(stdpath('data') . '/vim-plug')
