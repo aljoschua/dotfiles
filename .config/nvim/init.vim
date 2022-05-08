@@ -63,6 +63,9 @@ Plug 'tomlion/vim-solidity'
 
 Plug 'mikelue/vim-maven-plugin'
 
+Plug 'yegappan/taglist'
+nnoremap <Leader>t :TlistOpen<CR>
+
 call plug#end()
 " Options {{{1
 " File management
