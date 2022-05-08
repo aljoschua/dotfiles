@@ -1,4 +1,34 @@
+" Mappings {{{1
+let mapleader = ' '
 
+nnoremap <C-J> :cnext<CR>
+nnoremap <C-K> :cprevious<CR>
+nnoremap ZA :wqall<CR>
+nnoremap <Leader>m :make<Up><CR>
+nnoremap <Leader>o :!xdg-open <C-R><C-F>
+nnoremap <Leader>P :write !pandoc -o %:r.pdf<CR>
+nnoremap <Leader>c :cd %:h<CR>
+nnoremap <Leader>- :cd -<CR>
+nnoremap <Leader>b :ls h<CR>:b<Space>
+nnoremap <silent> <Leader>p :set opfunc=initvim#replacewithunnamedplus<CR>g@
+nnoremap <Leader>B <Cmd>if &background == 'dark' \| set background=light \| else \| set background=dark \| endif<CR>
+nnoremap <expr> <Leader><Leader> ":nmap <" . "Leader><CR>"
+
+" Repurpose default bindings
+nnoremap S :%s//g<Left><Left>
+nnoremap Y y$
+noremap p ]p
+noremap P ]P
+noremap ]p p
+noremap ]P P
+noremap c "cc
+ounmap c
+
+
+" noremap [[ ?{<CR>w99[{
+" noremap ][ /}<CR>b99]}
+" noremap ]] j0[[%/{<CR>
+" noremap [] k$][%?}<CR>
 " Plugins {{{1
 call plug#begin(stdpath('data') . '/vim-plug')
 let g:plug_window = 'topleft new'
@@ -54,38 +84,6 @@ set colorcolumn=81 cursorline
 set clipboard=unnamedplus
 set ignorecase smartcase
 set formatoptions-=o
-
-" Mappings {{{1
-let mapleader = ' '
-
-nnoremap <C-J> :cnext<CR>
-nnoremap <C-K> :cprevious<CR>
-nnoremap ZA :wqall<CR>
-nnoremap <Leader>m :make<Up><CR>
-nnoremap <Leader>o :!xdg-open <C-R><C-F>
-nnoremap <Leader>P :write !pandoc -o %:r.pdf<CR>
-nnoremap <Leader>c :cd %:h<CR>
-nnoremap <Leader>- :cd -<CR>
-nnoremap <Leader>b :ls h<CR>:b<Space>
-nnoremap <silent> <Leader>p :set opfunc=initvim#replacewithunnamedplus<CR>g@
-nnoremap <Leader>B <Cmd>if &background == 'dark' \| set background=light \| else \| set background=dark \| endif<CR>
-nnoremap <expr> <Leader><Leader> ":nmap <" . "Leader><CR>"
-
-" Repurpose default bindings
-nnoremap S :%s//g<Left><Left>
-nnoremap Y y$
-noremap p ]p
-noremap P ]P
-noremap ]p p
-noremap ]P P
-noremap c "cc
-ounmap c
-
-
-" map [[ ?{<CR>w99[{
-" map ][ /}<CR>b99]}
-" map ]] j0[[%/{<CR>
-" map [] k$][%?}<CR>
 " }}}
 
 iabbrev :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
