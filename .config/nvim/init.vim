@@ -1,8 +1,8 @@
 " Mappings {{{1
 let mapleader = ' '
 
-nnoremap <C-J> :cnext<CR>
-nnoremap <C-K> :cprevious<CR>
+nnoremap <C-J> :execute (getqflist() == [] ? 'l' : 'c') . 'next'<CR>
+nnoremap <C-K> :execute (getqflist() == [] ? 'l' : 'c') . 'previous'<CR>
 nnoremap ZA :wqall<CR>
 nnoremap <Leader>m :make<Up><CR>
 nnoremap <Leader>o :!xdg-open <C-R><C-F>
