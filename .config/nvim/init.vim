@@ -74,6 +74,12 @@ Plug 'mikelue/vim-maven-plugin'
 Plug 'yegappan/taglist'
 nnoremap <Leader>t :TlistOpen<CR>
 
+Plug 'bkad/CamelCaseMotion'
+map <M-w> <Plug>CamelCaseMotion_w
+map <M-e> <Plug>CamelCaseMotion_e
+map <M-b> <Plug>CamelCaseMotion_b
+map <M-g> <Plug>CamelCaseMotion_ge
+
 call plug#end()
 " Options {{{1
 " File management
