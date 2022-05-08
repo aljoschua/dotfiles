@@ -1,9 +1,7 @@
 " Mappings {{{1
 let mapleader = ' '
 
-nnoremap <C-J> :execute (getqflist() == [] ? 'l' : 'c') . 'next'<CR>
-nnoremap <C-K> :execute (getqflist() == [] ? 'l' : 'c') . 'previous'<CR>
-nnoremap ZA :wqall<CR>
+" Leader maps
 nnoremap <Leader>m :make<Up><CR>
 nnoremap <Leader>o :!xdg-open <C-R><C-F>
 nnoremap <Leader>P :write !pandoc -o %:r.pdf<CR>
@@ -30,7 +28,10 @@ noremap ]P P
 noremap c "cc
 ounmap c
 
-
+" Misc. maps
+nnoremap <C-J> :execute (getqflist() == [] ? 'l' : 'c') . 'next'<CR>
+nnoremap <C-K> :execute (getqflist() == [] ? 'l' : 'c') . 'previous'<CR>
+nnoremap ZA :wqall<CR>
 noremap [[ ?{<CR>w99[{
 noremap ][ /}<CR>b99]}
 noremap ]] j0[[%/{<CR>
