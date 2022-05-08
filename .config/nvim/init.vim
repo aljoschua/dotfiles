@@ -14,6 +14,12 @@ nnoremap <silent> <Leader>p :set opfunc=initvim#replacewithunnamedplus<CR>g@
 nnoremap <Leader>B <Cmd>if &background == 'dark' \| set background=light \| else \| set background=dark \| endif<CR>
 nnoremap <expr> <Leader><Leader> ":nmap <" . "Leader><CR>"
 
+" Ex mode maps
+cnoremap <M-h> <C-Left>
+cnoremap <M-l> <C-Right>
+cnoremap <M-j> <End>
+cnoremap <M-k> <Home>
+
 " Repurpose default bindings
 nnoremap S :%s//g<Left><Left>
 nnoremap Y y$
