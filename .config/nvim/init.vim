@@ -67,11 +67,11 @@ let g:list_of_normal_keys = ["h", "j", "k", "l"]
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-Plug 'tomlion/vim-solidity'
+Plug 'tomlion/vim-solidity', { 'for': 'solidity' }
 
-Plug 'mikelue/vim-maven-plugin'
+Plug 'mikelue/vim-maven-plugin', { 'for': 'java' }
 
-Plug 'yegappan/taglist'
+Plug 'yegappan/taglist', { 'on': 'TlistOpen' }
 nnoremap <Leader>t :TlistOpen<CR>
 
 Plug 'bkad/CamelCaseMotion'
