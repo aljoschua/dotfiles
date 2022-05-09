@@ -112,7 +112,7 @@ root() { # Installs root dotfiles, secrets and various other things
 }
 
 graphical() {
-    command -v xclip && return
+    command -v autorandr && return
     _require root wm libinput_gestures bitwarden rclone dconf
     _install xclip kdeconnect gparted \
         ssh-askpass-gnome screenkey google-chrome-stable \
