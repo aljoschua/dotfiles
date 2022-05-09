@@ -116,14 +116,14 @@ graphical() {
     _require root wm libinput_gestures bitwarden rclone dconf
     _install xclip kdeconnect gparted \
         ssh-askpass-gnome screenkey google-chrome-stable \
-        spotify-client autorandr dunst firefox
+        spotify-client autorandr dunst firefox ffmpeg
     sudo usermod -aG video $USER # Allow usage of video devices
     sudo usermod -aG plugdev $USER # Allow mounting
 }
 
 wm() {
     command -v i3 && return
-    _install i3 dmenu wmctrl sxhkd zenity xdotool xcompmgr xkbset
+    _install i3 dmenu wmctrl sxhkd zenity xdotool xcompmgr xkbset xosd-bin
 }
 
 libinput_gestures() {
