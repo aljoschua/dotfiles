@@ -80,6 +80,7 @@ map <M-e> <Plug>CamelCaseMotion_e
 map <M-b> <Plug>CamelCaseMotion_b
 map <M-g> <Plug>CamelCaseMotion_ge
 
+Plug 'hashivim/vim-terraform'
 call plug#end()
 " Options {{{1
 " File management
