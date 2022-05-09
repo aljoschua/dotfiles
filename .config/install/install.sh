@@ -58,7 +58,7 @@ secrets() {
 
 compile_configs() {
     _require dotfiles
-    PATH="$HOME/.local/bin:$PATH"
+    PATH="$HOME/.local/mybin:$PATH"
     GIT_DIR=$HOME/.config/dotfiles git ls-files | grep '\.cfc$' | xargs -L1 cfc
 }
 
