@@ -1,6 +1,7 @@
 Host *
     Include config.d/*.conf
     IdentityFile ~/.ssh/430-G5
+    Compression yes
 
 Host * !*.*
     ControlMaster auto
