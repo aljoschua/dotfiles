@@ -2,6 +2,4 @@
 Description=Save apt-mark showmanual
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/env bash -c "echo $(cat ~/.cache/ws/$(wmctrl -d | awk '/\*/{print $NF}')) $(iwgetid -r) $(xdotool getwindowfocus getwindowname) >> .local/share/active_window/$(date +%%F).log"
-
+ExecStart=/usr/bin/env bash -c "sqlite3 ~/.local/share/active_window/active_window.db \"INSERT INTO datapoint(workspace, ssid, timestamp, idletime, windowname) VALUES ('$(cat < ~/.cache/ws/$(wmctrl -d | awk '/\*/{print $NF}'))', '$(iwgetid -r)', datetime('now'), '$(xprintidle)', '$(xdotool getwindowfocus getwindowname)');\""
