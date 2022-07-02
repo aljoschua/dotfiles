@@ -1838,6 +1838,7 @@ speech-dispatcher
 speech-dispatcher-audio-plugins
 speech-dispatcher-espeak-ng
 spotify-client
+sqlite3
 squashfs-tools
 ssh-askpass-gnome
 ssl-cert
@@ -1964,6 +1965,7 @@ xorg
 xorg-docs-core
 xosd-bin
 xplayer-thumbnailer
+xprintidle
 xreader
 xreader-common
 xreader-dbg
