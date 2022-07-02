@@ -1,1 +1,1 @@
-nnoremap <buffer> // /^<Space>\+
+nnoremap <buffer> // /^<Space>\+\C
