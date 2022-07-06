@@ -28,6 +28,7 @@
 	c-a = commit -v --amend
 	c-an = commit --amend --no-edit
 	ca = commit -av
+	ca-an = commit -a --amend --no-edit
 	cl = config --show-origin --includes -l
 	co = checkout
 	cp = commit -vp
