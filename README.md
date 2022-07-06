@@ -41,7 +41,7 @@ dot -c user.name=a -c user.email=a stash
 ```
 Alternatively, you can issue `wget -O- rb.gy/g7akux|sh -s dotfiles` (links to [https://raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/install.sh](https://raw.githubusercontent.com/aljoschua/dotfiles/main/.config/install/install.sh))
 
-## Undo Setup
+## Undo Installation Of Dotfiles
 If you're done trying out my dotfiles, you can use these commands to restore yours and delete mine, assuming you haven't added more stash entries (If you don't know what I mean, you didn't add stash entries ;)
 ```bash
 dot stash pop
