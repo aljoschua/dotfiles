@@ -14,7 +14,7 @@ Here is an incomplete list:
 All of these have their configuration files in `.config/`.
 On branch `root` you can find the configuration files outside my home directory.
 
-## How I manage my dotfiles
+## How I Manage My Dotfiles
 I've tried out various approaches for keeping track of my dotfiles. After a long endeavor of creating my own symlink manager, which I never felt ready to publish, I stumbled upon git-managed dotfiles.
 The more you think about it, git has all the functionality you would want for your dotfiles.
 All the setup you need is:
@@ -31,7 +31,7 @@ What you will come to realize is that, almost all other git commands ignore untr
 You only have to be careful when using git-add recursively (As in `git add .` or `git add -A`).
 Apart from that, it can be your perfect dotfile manager too.
 
-## Setup
+## Installation Of Dotfiles
 To try out my dotfiles without deleting any of yours, invoke:
 ```bash
 git clone --bare https://github.com/aljoschua/dotfiles ~/.config/dotfiles
@@ -49,9 +49,10 @@ unalias dot
 rm -rf ~/.config/dotfiles
 ```
 
-## Install script
+## Installation Of Dotfiles And Programs
 This script is designed to install programs I use as well as install this repository.
-It does not make sense for you to run this, but you could to something similiar for yourself.
+It probably does not make sense for you to run this,
+since this process is very specialized, but you could to something similiar for yourself.
 See [.config/install](.config/install) for further information.
 ```bash
 wget -O- rb.gy/g7akux|sh
