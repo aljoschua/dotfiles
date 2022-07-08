@@ -2,13 +2,13 @@
 These are my configuration files for varous programs, amongst other files I like to keep track of.
 Here is an incomplete list:
 
-- neovim
-- zsh
-- ssh
-- sxhkd
-- i3
-- [libinput-gestures](https://github.com/bulletmark/libinput-gestures)
-- dconf
+- [neovim](.config/nvim)
+- [zsh](.config/zsh)
+- [ssh](.config/ssh)
+- [sxhkd](.config/sxhkd)
+- [i3](.config/i3)
+- [libinput-gestures](.config/libinput-gestures)
+- [dconf](.config/dconf)
 - Scripts for managing workspaces
 
 All of these have their configuration files in `.config/`.
