@@ -1,1 +1,68 @@
-../../shell/alias
+alias rm="gio trash"
+alias soundrestart="pulseaudio -k && sudo alsa force-reload" #Doesn't occur anymore, right?
+alias alert='notify-send -u critical -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias .n="vi ~/.config/notes"
+alias dot="GIT_DIR=~/.config/dotfiles GIT_WORK_TREE=~ git"
+alias d.="dot ap ."
+alias dots="GIT_DIR=~/.config/secrets GIT_WORK_TREE=~ git"
+alias tm="tmux new-session -EAs"
+alias .d="vi ~/.local/share/diary/\$(date +%F)"
+alias xcb="{xclip -selection clipboard \$([ -t 0 ] && echo -- -o)}"
+alias dotex="vi ~/.config/dotfiles/info/exclude"
+alias wttr="curl wttr.in/berlin"
+alias fct="fc -lDt '%F %T'"
+alias dc=docker-compose
+alias dotdoc="cd ~ ~/.config/dotdoc"
+
+# TU
+alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --authgroup 2 < ~/.local/share/secrets/tub-password"
+
+
+alias -g XCB='$(xclip -selection clipboard -out)'
+
+
+alias ls='ls --color=auto'
+alias ll='ls --color=auto -alFh'
+alias la='ls --color=auto -A'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
+alias f="find"
+alias g=git
+alias tb="nc termbin.com 9999"
+alias cp="cp -i"
+alias mv="mv -i"
+alias df="df -h" du="du -h" free="free -h"
+alias es="env | sort"
+
+alias aguu="sudo apt-get update -y && sudo apt-get upgrade -y"
+alias agi="sudo apt-get -y install"
+alias agr="sudo apt-get -y remove"
+alias agp="sudo apt-get -y purge --autoremove"
+alias agar="sudo apt-get -y autoremove"
+alias agac="sudo apt-get -y autoclean"
+alias acs="apt-cache show"
+alias acse="apt-cache search"
+
+alias sc="sudo systemctl"
+alias scr="sudo systemctl restart"
+alias scs="systemctl status"
+alias scdr="sudo systemctl daemon-reload"
+
+alias scu="systemctl --user"
+alias scus="systemctl --user status"
+alias scur="systemctl --user restart"
+alias scudr="systemctl --user daemon-reload"
+alias jcu="journalctl --user -b  -xfu"
+
+alias ..="\\cd .." ...="\\cd ../.." ....="\\cd ../../.."
+alias cd="cd -P"
+alias -- -="cd -"
+
+alias mcal="ncal -bw3"
+
+alias hoy="echo hoy"
+
+alias codegolf='echo "g(i,x,t,o){return((3&x&(i*((3&i>>16?\"BY}6YB6%\":\"Qj}6jQ6%\")[t%8]+51)>>o))<<4);};main(i,n,s){for(i=0;;i++)putchar(g(i,1,n=i>>14,12)+g(i,s=i>>17,n^i>>13,10)+g(i,s/3,n+((i>>11)%3),10)+g(i,s/5,8+n-((i>>10)%3),9));}"|gcc -xc -&&./a.out|aplay'
+
