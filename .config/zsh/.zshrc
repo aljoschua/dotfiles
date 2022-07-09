@@ -1,6 +1,6 @@
 
 dir=$ZDOTDIR
-for file in $dir/*; do
+for file in $dir/zshrc.d/*; do
     source "$file"
 done
 
