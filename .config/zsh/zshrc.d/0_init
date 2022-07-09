@@ -3,3 +3,15 @@ trap 'command rm -rf $TMPDIR' EXIT
 autoload run-help
 autoload run-help-git
 chpwd() { if [ "$autols" != "" ]; then ls --color=force -A; fi }
+
+[ -r "$WS_HOME/source.zsh" ] && source "$WS_HOME/source.zsh"
+
+compdef _rc rc
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+compdef _d d
+
+autoload -Uz promptinit && promptinit
+prompt env
+
+stty $(printf '%s undef ' stop start rprnt werase discard kill lnext)
