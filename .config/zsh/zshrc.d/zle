@@ -1,15 +1,9 @@
+for widget in $ZDOTDIR/functions/Zle/*; do
+    zle -N $widget
+done
+
 bindkey -v
-zle -N prepend-sudo
 
-zle -N edit-command
-
-zle -N expand-cmd-path-correctly
-
-zle -N expand-cd-path
-
-zle -N foreground
-
-zle -N prompt-rc-file
 bindkey '^[r' prompt-rc-file
 
 bindkey -v '^[s' prepend-sudo
