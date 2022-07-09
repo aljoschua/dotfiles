@@ -1,3 +1,4 @@
 # Zsh configuration
 
-My current zsh config is very messy. I ported it back then from bash where I already used a multiple file approach, but zsh's fpath can be used to make this even more efficient by only loading code (functions) you need when you need it. My plan is to have everything in autoloaded functions, but this will have to wait.
+This is my Z shell config. I make heavy use of autoloaded functions.
+I split my .zshrc into multiple files and occasionally edit them with [rc](functions/Userfunctions/rc).
