@@ -1,3 +1,11 @@
+fpath+=($ZDOTDIR/functions/*/)
+autoload $ZDOTDIR/functions/*/*
+
+# compinit is somehow not working..
+compdef _rc rc
+compdef _d d
+compdef _func func
+
 export TMPDIR=$(mktemp -d $USER-XXXXXX -p /tmp)
 trap 'command rm -rf $TMPDIR' EXIT
 autoload run-help
@@ -7,10 +15,7 @@ autols=1
 
 [ -r "$WS_HOME/source.zsh" ] && source "$WS_HOME/source.zsh"
 
-compdef _rc rc
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-
-compdef _d d
 
 autoload -Uz promptinit && promptinit
 prompt env

@@ -1,9 +1,3 @@
-
-dir=$ZDOTDIR
-
-fpath+=($dir/functions/*/)
-autoload -z $dir/functions/*/*
-
-for file in $dir/zshrc.d/*; do
+for file in $ZDOTDIR/zshrc.d/*; do
     source "$file"
 done
