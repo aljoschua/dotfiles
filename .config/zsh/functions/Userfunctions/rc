@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 local dir=$ZDOTDIR
 if [ "$1" ]; then
-    local filename=$dir/$1
+    local filename=$dir/zshrc.d/$1
 else
     local filename=$dir/.zshrc
 fi
@@ -9,9 +9,5 @@ fi
 ${EDITOR:-vim} $filename
 
 [ -f "$filename" ] && source $filename
-
-local comp=$dir/completion comp_p=$dir/completion.portable
-[ "$filename" != $comp_p ] && [ -e $comp_p ] && source $comp_p
-[ "$filename" != $comp ] && [ -e $comp ] && source $comp
 
 return 0
