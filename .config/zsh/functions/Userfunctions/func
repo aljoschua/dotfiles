@@ -1,0 +1,8 @@
+(
+    set -eu
+
+    ${EDITOR:-vim} $ZDOTDIR/functions/*/$1
+
+    unfunction $1
+    autoload -z $1
+)

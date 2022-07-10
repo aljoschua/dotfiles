@@ -1,0 +1,4 @@
+#compdef func
+for dir in $HOME/.config/zsh/functions/*; do
+    _path_files -W $dir
+done
