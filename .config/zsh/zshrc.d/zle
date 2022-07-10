@@ -1,5 +1,5 @@
 for widget in $ZDOTDIR/functions/Zle/*; do
-    zle -N $widget
+    zle -N ${widget##*/}
 done
 
 bindkey -v
