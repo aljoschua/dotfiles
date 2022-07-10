@@ -1,8 +1,14 @@
 (
     set -eu
 
-    ${EDITOR:-vim} $ZDOTDIR/functions/*/$1
+    matches=($ZDOTDIR/functions/*/$1)
+    filename=$matches[1]
 
-    unfunction $1
-    autoload -z $1
+    ${EDITOR:-vim} $filename
+
+    dirname=${filename%/*}
+    zcompile $dirname $dirname/*
+
+    unfunction $filename
+    autoload $filename
 )
