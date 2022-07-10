@@ -1,0 +1,9 @@
+fpath+=($ZDOTDIR/functions/*/)
+autoload $ZDOTDIR/functions/*/*
+
+# compinit is somehow not working..
+compdef _rc rc
+compdef _d d
+compdef _func func
+
+autoload run-help run-help-git

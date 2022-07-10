@@ -1,15 +1,5 @@
-fpath+=($ZDOTDIR/functions/*/)
-autoload $ZDOTDIR/functions/*/*
-
-# compinit is somehow not working..
-compdef _rc rc
-compdef _d d
-compdef _func func
-
 export TMPDIR=$(mktemp -d $USER-XXXXXX -p /tmp)
 trap 'command rm -rf $TMPDIR' EXIT
-autoload run-help
-autoload run-help-git
 chpwd() { if [ "$autols" != "" ]; then ls --color=force -A; fi }
 autols=1
 
