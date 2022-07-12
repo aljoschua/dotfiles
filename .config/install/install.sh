@@ -64,10 +64,9 @@ compile_configs() {
 
 terminal() { # Terminal applications
     command -v tmux && return
-    _require tq st
-    _install tmux neovim zsh docker.io ncdu asciinema inotify-tools
+    _require tq st zsh
+    _install tmux neovim docker.io ncdu asciinema inotify-tools
     sudo usermod -aG docker $USER
-    sudo chsh -s /usr/bin/zsh $USER
 }
 
 tq() {
@@ -87,6 +86,18 @@ st() {
         make PREFIX=$HOME/.local install
         cd ..
     rm -rf st
+}
+
+zsh() {
+    [ -d .local/share/zsh/zsh-syntax-highlighting ] && return
+    _require dotfiles
+    _install zsh
+    sudo chsh -s /usr/bin/zsh $USER
+    mkdir -p ~/.local/share/zsh
+    (
+        cd ~/.local/share/zsh
+        git clone hub:zsh-users/zsh-syntax-highlighting
+    )
 }
 
 root() { # Installs root dotfiles, secrets and various other things

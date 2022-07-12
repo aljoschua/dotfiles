@@ -19,3 +19,5 @@ bindkey -v '^N' down-history
 
 bindkey -v '^W' backward-kill-word
 bindkey -v '^?' backward-delete-char
+
+source ~/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
