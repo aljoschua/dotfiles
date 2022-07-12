@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+echo PATH is $PATH
+
+echo $1 can be found here:
+IFS=:
+for path in $PATH; do
+    if [ -e $path/$1 ]; then
+        echo -n $path/$1 exists ""
+        if [ -x $path/$1 -a -f $path/$1 ]; then
+            echo and is an executable file
+        else
+            echo but isn\'t an executable file
+        fi
+    fi
+done
