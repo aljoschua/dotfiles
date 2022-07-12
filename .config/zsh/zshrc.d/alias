@@ -9,6 +9,7 @@ alias mcal="ncal -bw3"
 alias wttr="curl wttr.in/berlin"
 alias tm="tmux new-session -EAs"
 alias rm="gio trash"
+alias lynx="lynx -cfg ~/.config/lynx/config -session ~/.config/lynx/session -cookie_file ~/.config/lynx/cookies -cookie_save_file ~/.config/lynx/cookies"
 
 alias dot="GIT_DIR=~/.config/dotfiles GIT_WORK_TREE=~ git"
 alias dots="GIT_DIR=~/.config/secrets GIT_WORK_TREE=~ git"
