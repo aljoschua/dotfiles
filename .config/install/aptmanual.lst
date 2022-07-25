@@ -40,6 +40,7 @@ base-files
 base-passwd
 bash
 bash-completion
+bats
 bc
 biber
 bind9-dnsutils
