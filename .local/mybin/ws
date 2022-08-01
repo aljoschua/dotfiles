@@ -43,7 +43,10 @@ launch_tmux() {
 }
 
 setup_tmux() {
-    :
+    if [ -r .config/ws/$WS_NAME.tmux ]; then
+        tmux new-window -t $WS_NAME:10 tmux source-file ~/.config/ws/$WS_NAME.tmux
+        echo ran
+    fi
 }
 
 launch_browser() {
