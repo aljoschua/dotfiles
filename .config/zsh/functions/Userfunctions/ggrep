@@ -1,0 +1,4 @@
+{
+  git ls-files # tracked files
+  git ls-files -o --exclude-standard # untracked files
+} | xargs grep --color=force "$@"
