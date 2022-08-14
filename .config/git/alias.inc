@@ -17,9 +17,7 @@
     lf = log --format=fuller --date=iso8601 --show-signature --parents --left-right
     lg = !git lo --graph
     lo = log --oneline
-    ls = !git lf --author 'Aljoscha Frey' --grep
     rc = rm --cached
     rf = checkout HEAD --
     s = status -sbu --show-stash
-    t = tag -as
     sw = switch
