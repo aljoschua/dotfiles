@@ -1,6 +1,6 @@
 Host *
     Include config.d/*.conf
-    IdentityFile ~/.ssh/430-G5
+    IdentityFile ~/.ssh/keys/430-G5
     Compression yes
 
 Host * !*.*
