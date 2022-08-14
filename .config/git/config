@@ -1,13 +1,10 @@
 [user]
 	name = Aljoscha Frey
-	#email = apswjf@gmail.com # If there is no default, you'll be asked for every repo you clone
 	useConfigOnly = true
 [core]
 	autocrlf = input
 [log]
 	date = short
-[format]
-  #pretty = format:%C(auto,yellow)%h %C(auto,reset)%>(10,trunc)%ad%C(auto,magenta)%G?%C(auto,green)%<(7,mtrunc)%aN%C(auto,reset)%s%C(auto,yellow)% gD% D
 [rebase]
 	autostash = true
 [pull]
