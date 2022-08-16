@@ -1,0 +1,5 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+autols= cd $(git rev-parse --show-toplevel)
+if [ $# != 0 ]; then
+    cd "$@"
+fi
