@@ -9,6 +9,8 @@
 	autostash = true
 [pull]
 	rebase = true
+[push]
+	default = current
 [stash]
 	showPatch = true
 [include]
