@@ -57,3 +57,9 @@ function! initvim#replacewithunnamedplus(type, ...)
     endif
     silent execute 'normal `[' . l:mode . '`]"pc' . "\<C-R>+\<Esc>"
 endfunction
+
+function! initvim#removemergemarkers()
+    g/^<<<<<<</d
+    g/^=======$/d
+    g/^>>>>>>>/d
+endfunction

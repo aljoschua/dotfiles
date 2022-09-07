@@ -114,6 +114,7 @@ command! Trailspace :%s/ \+$//
 
 command! -nargs=+ -complete=file Badd call initvim#badd(<f-args>)
 command! -nargs=0 Presentation call initvim#present()
+command! -nargs=0 RmMergeMarkers call initvim#removemergemarkers()
 
 " Autocommands {{{1
 let g:reload_configs = 1
