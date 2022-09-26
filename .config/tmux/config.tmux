@@ -9,6 +9,8 @@ set-option -g base-index 1
 set-option -g visual-bell on
 set-option -g set-titles on
 set-option -g set-titles-string "Tmux - #S:#I:#W - \"#T\" #{session_alerts}"
+set-option -g history-limit 20000
+
 
 # Keybindings
 bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
