@@ -81,6 +81,8 @@ map <M-b> <Plug>CamelCaseMotion_b
 map <M-g> <Plug>CamelCaseMotion_ge
 
 Plug 'hashivim/vim-terraform'
+
+Plug 'neoclide/coc.nvim', { 'for': 'java', 'do': ':CocInstall coc-java' }
 call plug#end()
 " Options {{{1
 " File management
