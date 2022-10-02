@@ -82,6 +82,7 @@ map <M-g> <Plug>CamelCaseMotion_ge
 Plug 'hashivim/vim-terraform'
 
 Plug 'neoclide/coc.nvim', { 'for': 'java', 'do': ':CocInstall coc-java' }
+" TODO: Install recent nodejs
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 nnoremap <Leader>b <Cmd>call fzf#run(
