@@ -7,7 +7,6 @@ nnoremap <Leader>o :!xdg-open <C-R><C-F>
 nnoremap <Leader>P :write !pandoc -o %:r.pdf<CR>
 nnoremap <Leader>c :cd %:h<CR>
 nnoremap <Leader>- :cd -<CR>
-nnoremap <Leader>b :ls h<CR>:b<Space>
 nnoremap <silent> <Leader>p :set opfunc=initvim#replacewithunnamedplus<CR>g@
 nnoremap <Leader>B <Cmd>if &background == 'dark' \| set background=light \| else \| set background=dark \| endif<CR>
 nnoremap <expr> <Leader><Leader> ":nmap <" . "Leader><CR>"
@@ -83,6 +82,12 @@ map <M-g> <Plug>CamelCaseMotion_ge
 Plug 'hashivim/vim-terraform'
 
 Plug 'neoclide/coc.nvim', { 'for': 'java', 'do': ':CocInstall coc-java' }
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+nnoremap <Leader>b <Cmd>call fzf#run(
+    \ {'source': map(getbufinfo(), {_, val -> val.name}),
+    \ 'sink': 'buffer'})<CR>
+nnoremap <Leader>n <Cmd>FZF!<CR>
 call plug#end()
 " Options {{{1
 " File management

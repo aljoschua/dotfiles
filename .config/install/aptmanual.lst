@@ -290,6 +290,7 @@ ftp
 fuse
 fwupd
 fwupd-signed
+fzf
 gamemode
 gawk
 gcc
