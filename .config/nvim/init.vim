@@ -97,10 +97,12 @@ set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,eol:↲,conceal
 highlight SpecialKey ctermfg=red
 
 " Misc.
-set colorcolumn=81 cursorline
+set colorcolumn=+3 cursorline
 set clipboard=unnamedplus
 set ignorecase smartcase
 set formatoptions-=o
+set confirm
+set fixendofline
 " }}}
 
 iabbrev :vim-clean: vim:nu&:rnu&:list&:cc&:noru:ls=0:
