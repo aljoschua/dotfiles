@@ -69,12 +69,15 @@ map <M-g> <Plug>CamelCaseMotion_ge
 
 Plug 'hashivim/vim-terraform'
 
-Plug 'neoclide/coc.nvim', { 'for': 'java', 'do': ':CocInstall coc-java' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " TODO: Install recent nodejs
+let g:coc_global_extensions = ['coc-java']
+let g:coc_disable_startup_warning = 1
+nnoremap gd <Plug>(coc-definition)
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 nnoremap <Leader>b <Cmd>call fzf#run(
-    \ {'source': map(getbufinfo(), {_, val -> val.name}),
+    \ {'source': map(getbufinfo(), {_, val -> fnamemodify(val.name, ':~:.')}),
     \ 'sink': 'buffer'})<CR>
 nnoremap <Leader>n <Cmd>FZF!<CR>
 call plug#end()
