@@ -46,12 +46,6 @@ if $SUDO_ASKPASS == ""
     let $SUDO_ASKPASS = '/usr/bin/ssh-askpass'
 endif
 
-Plug  'vim-syntastic/syntastic'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 Plug  'tpope/vim-fugitive'
 
 Plug 'tpope/vim-commentary'
@@ -63,12 +57,6 @@ let g:hardtime_default_on = 1
 let g:hardtime_ignore_quickfix = 1
 let g:hardtime_maxcount = 3
 let g:list_of_normal_keys = ["h", "j", "k", "l"]
-
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-Plug 'tomlion/vim-solidity', { 'for': 'solidity' }
-
-Plug 'mikelue/vim-maven-plugin', { 'for': 'java' }
 
 Plug 'yegappan/taglist', { 'on': 'TlistOpen' }
 nnoremap <Leader>t :TlistOpen<CR>
