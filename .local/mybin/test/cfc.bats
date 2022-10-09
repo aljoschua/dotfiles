@@ -1,76 +1,78 @@
 #!/usr/bin/env bats
 
-setup() {
-    cd $BATS_TMPDIR
+teardown() {
+    unset input
 }
 
-@test "does not change empty file" {
-    echo > file.cfc
+execute_cfc() {
+    cfc <<< "$input"
+}
 
-    run cfc file.cfc
+@test "does not change empty input" {
+    input=""
+
+    run execute_cfc
 
     [ $status = 0 ]
-    [ "$(cat file)" = "" ]
+    [ -z "$output" ]
 }
 
 @test "does print simple text" {
-    echo "hello" > file.cfc
+    input=hello
 
-    run cfc file.cfc
+    run execute_cfc
 
     [ $status = 0 ]
-    [ "$(cat file)" = hello ]
+    [ "$output" = hello ]
 }
 
 @test "executes simple script" {
-    echo -e "script_begin\necho hello\nscript_end" > file.cfc
+    input=$(echo -e "script_begin\necho hello\nscript_end")
 
-    run cfc file.cfc
+    run execute_cfc
 
     [ $status = 0 ]
-    [ "$(cat file)" = hello ]
+    [ "$output" = hello ]
 }
 
 @test "executes script with preceeding text" {
-    echo -e "hello1\nscript_begin\necho hello2\nscript_end" > file.cfc
+    input=$(echo -e "hello1\nscript_begin\necho hello2\nscript_end")
 
-    run cfc file.cfc
+    run execute_cfc
 
     [ $status = 0 ]
-    [ "$(cat file)" = hello1$'\n'hello2 ]
+    [ "$output" = hello1$'\n'hello2 ]
 }
 
 @test "executes script with succeeding text" {
-    echo -e "script_begin\necho hello1\nscript_end\nhello2" > file.cfc
+    input=$(echo -e "script_begin\necho hello1\nscript_end\nhello2")
 
-    run cfc file.cfc
+    run execute_cfc
 
     [ $status = 0 ]
-    [ "$(cat file)" = hello1$'\n'hello2 ]
+    [ "$output" = hello1$'\n'hello2 ]
 }
 
 @test "executes two scripts" {
-    echo -e "script_begin\necho hello1\nscript_end\nscript_begin\necho hello2\nscript_end" > file.cfc
+    input=$(echo -e "script_begin\necho hello1\nscript_end\nscript_begin\necho hello2\nscript_end")
 
-    run cfc file.cfc
+    run execute_cfc
 
     [ $status = 0 ]
-    cat file
-    [ "$(cat file)" = hello1$'\n'hello2 ]
+    [ "$output" = hello1$'\n'hello2 ]
 }
 
 @test "fails with invalid script" {
-    echo -e "script_begin\ninvalid_command\nscript_end" > file.cfc
+    input=$(echo -e "script_begin\ninvalid_command\nscript_end")
 
-    run cfc file.cfc
+    run execute_cfc
 
     [ $status != 0 ]
 }
 
 @test "doesn't fail with empty script" {
-    echo -e "script_begin\nscript_end" > file.cfc
+    input=$(echo -e "script_begin\nscript_end")
 
-    run cfc file.cfc
-
+    run execute_cfc
     [ $status = 0 ]
 }

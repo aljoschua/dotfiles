@@ -5,17 +5,16 @@ set -e
 cmd=cat
 declare -A switch=([bash]=cat [cat]=bash)
 
-{
-    while read -r; do
-        if [ "$REPLY" = script_begin -a $cmd = cat -o\
-            "$REPLY" = script_end -a $cmd = bash ]; then
+while read -r; do
+    if [ "$REPLY" = script_begin -a $cmd = cat -o\
+        "$REPLY" = script_end -a $cmd = bash ]; then
             [ -v buffer ] && $cmd <<< "${buffer%$'\n'}"
             unset buffer
             cmd=${switch[$cmd]}
         else
             buffer+="$REPLY"$'\n'
-        fi
-    done
-    [ -v buffer ] && $cmd <<< "${buffer%$'\n'}"
-} < $1 > ${1%.cfc}
+    fi
+done
+[ -v buffer ] && $cmd <<< "${buffer%$'\n'}"
+
 true
