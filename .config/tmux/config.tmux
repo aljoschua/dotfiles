@@ -14,6 +14,7 @@ set-option -g history-limit 20000
 
 # Keybindings
 bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+bind-key -T copy-mode-vi o send-keys -X copy-pipe-and-cancel 'xargs xdg-open'
 bind-key -T copy-mode-vi p {
     send-keys -X copy-selection-and-cancel
     paste-buffer
