@@ -24,6 +24,7 @@ alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --authgroup 2 < ~/.
 
 alias f=find g=git dc=docker-compose e=nvim
 alias es="env | sort"
+alias dr="docker run -it --rm"
 
 alias ls='ls --color=auto'
 alias ll='ls -alFh'
