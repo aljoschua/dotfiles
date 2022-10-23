@@ -8,7 +8,7 @@ fail() {
 
 check_args() {
     [ $# != 1 ] && fail "ws requires exactly one argument"
-    possible_names="travel dsi thesis uni dotfiles main"
+    possible_names="travel dsi thesis uni sys main"
     for name in $possible_names; do
         [ $name = "$1" ] && local match=
     done
