@@ -10,6 +10,7 @@ nnoremap <Leader>- :cd -<CR>
 nnoremap <silent> <Leader>p :set opfunc=initvim#replacewithunnamedplus<CR>g@
 nnoremap <Leader>B <Cmd>if &background == 'dark' \| set background=light \| else \| set background=dark \| endif<CR>
 nnoremap <expr> <Leader><Leader> ":nmap <" . "Leader><CR>"
+nnoremap <Leader>j <Cmd>%!jq .<CR>
 
 " Ex mode maps
 cnoremap <M-h> <C-Left>
