@@ -1,14 +1,14 @@
-(
-    set -eu
 
-    matches=($ZDOTDIR/functions/*/$1)
-    filename=$matches[1]
+setopt local_options err_exit no_unset
 
-    ${EDITOR:-vim} $filename
+matches=($ZDOTDIR/functions/*/$1)
+pathname=$matches[1]
 
-    dirname=${filename%/*}
-    zcompile $dirname $dirname/*
+${EDITOR:-e} $pathname
 
-    unfunction $filename
-    autoload $filename
-)
+dirname=${pathname%/*}
+zcompile $dirname $dirname/*
+
+filename=${pathname##*/}
+unfunction $filename
+autoload $filename
