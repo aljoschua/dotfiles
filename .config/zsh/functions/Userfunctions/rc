@@ -6,7 +6,7 @@ else
     local filename=$dir/.zshrc
 fi
 
-${EDITOR:-vim} $filename
+${EDITOR:-e} $filename
 
 [ -f "$filename" ] && source $filename
 

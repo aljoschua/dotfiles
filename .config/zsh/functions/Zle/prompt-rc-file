@@ -1,4 +1,4 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-BUFFER='vim $(realpath ~/.local/share/config-links/)'
+BUFFER='e $(realpath ~/.local/share/config-links/)'
 CURSOR=$(($#BUFFER-1))
 zle complete-word
