@@ -15,9 +15,9 @@ alias dot="GIT_DIR=~/.config/dotfiles GIT_WORK_TREE=~ git"
 alias dots="GIT_DIR=~/.config/secrets GIT_WORK_TREE=~ git"
 alias d.="dot ap ."
 alias dotdoc="cd ~ ~/.config/dotdoc"
-alias dotex="vi ~/.config/dotfiles/info/exclude"
-alias .d="vi ~/.local/share/diary/\$(date +%F)"
-alias .n="vi ~/.config/notes"
+alias dotex="e ~/.config/dotfiles/info/exclude"
+alias .d="e ~/.local/share/diary/\$(date +%F)"
+alias .n="e ~/.config/notes"
 
 # TU
 alias vpn="sudo openconnect vpn.tu-berlin.de -u aljoschafrey --authgroup 2 < ~/.local/share/secrets/tub-password"
