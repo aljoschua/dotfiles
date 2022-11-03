@@ -8,17 +8,11 @@ Return
 r
     !.local/lib/scripts/tmux_run.sh
 
-R
-    !echo -n | dmenu -p "$" | exec sh
-
 i
     !.local/lib/scripts/tmux_run.sh "i3-msg "
 
 {super +,} d
     !i3-dmenu-desktop
-
-{_,shift +} m
-    !remmina -c ~/.local/share/remmina/{1580655803090,1592859553306}.remmina
 
 f
     !firefox-profile-picker
@@ -29,9 +23,6 @@ c
 # start and stop xcompmgr before and after?
 Print
     !gnome-screenshot -Bi
-
-s
-    !xdg-open "https://scholar.google.com/scholar?q=$(xclip -selection clipboard -o | sed 's/ /%20/g')"
 
 b
     !.local/lib/scripts/tmux_run.sh "bws get password " " | xcb"
