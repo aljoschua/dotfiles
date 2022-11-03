@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+session_file=~/.cache/bw_session
+touch $session_file
+
+bw() {
+    command bw --session "$(read -r < $session_file; echo $REPLY)" "$@"
+}
+
+passwd() {
+    password=$(ssh-askpass "No valid bw session found. Please enter Bitwarden vault password") || exit 0
+}
+
+if ! bw unlock --check 2>&1 >/dev/null; then
+    passwd
+    until command bw unlock --raw > $session_file <<< "$password"; do
+        passwd
+    done
+fi
+
+
+bw "$@"

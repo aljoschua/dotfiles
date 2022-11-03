@@ -34,7 +34,7 @@ s
     !xdg-open "https://scholar.google.com/scholar?q=$(xclip -selection clipboard -o | sed 's/ /%20/g')"
 
 b
-    !.local/lib/scripts/tmux_run.sh "bw get password " " | xcb"
+    !.local/lib/scripts/tmux_run.sh "bws get password " " | xcb"
 
 k
     !kdeconnect -n W-V730-EEA --pair

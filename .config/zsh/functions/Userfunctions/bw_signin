@@ -1,2 +1,0 @@
-[ "$(export -p BW_SESSION)" ] && return
-export BW_SESSION=$(bw --raw unlock)
