@@ -20,9 +20,8 @@ f
 c
     !google-chrome
 
-# start and stop xcompmgr before and after?
 Print
-    !gnome-screenshot -Bi
+    .config/sxhkd/switch screenshot
 
 b
     !.local/lib/scripts/tmux_run.sh "bws get password " " | xcb"

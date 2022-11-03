@@ -1,0 +1,16 @@
+#modeinfo: Screenshot mode: toggle [f]reeze | switch [t]arget (area, window, screen) | switch [d]elay | [Return] trigger screenshot
+
+Escape
+    !
+
+f
+    #augeas- {true,false}
+
+t
+    #augeas {area,window,screen)
+
+d
+    #augeas {0,1,5}
+
+Return
+    !.local/lib/scripts/take-screenshot.sh
