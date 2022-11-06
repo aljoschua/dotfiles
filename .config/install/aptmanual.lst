@@ -523,6 +523,7 @@ java-common
 jfsutils
 jq
 kbd
+kde-spectacle
 kdeconnect
 kerneloops
 keyboard-configuration
@@ -1525,6 +1526,7 @@ lvm2
 lynx
 lz4
 m4
+maim
 make
 makedev
 man-db
@@ -1824,6 +1826,7 @@ samba-common-bin
 samba-libs
 sane-utils
 sbsigntool
+scrot
 seahorse
 secureboot-db
 sed
