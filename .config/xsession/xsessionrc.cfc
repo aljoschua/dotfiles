@@ -7,6 +7,7 @@ echo "    xinput set-prop '$name' 'libinput Tapping Enabled' 1"
 script_end
 
     systemd-inhibit --what=handle-power-key sleep infinity &
+    xss-lock ~/.local/lib/scripts/lock-screen.sh
 
     systemctl --user --no-block start graphical.target
 } &
