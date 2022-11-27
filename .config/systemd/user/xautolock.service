@@ -1,0 +1,8 @@
+[Unit]
+Description=xautolock
+
+[Service]
+ExecStart=/usr/bin/env xautolock -time 10 -locker %h/.local/lib/scripts/lock-screen.sh
+
+[Install]
+WantedBy=graphical.target
