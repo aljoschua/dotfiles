@@ -1,0 +1,5 @@
+if [ -t 0 ]; then
+    curl --no-progress-meter --header 'Content-type: application/json;' --header 'Accept: application/json;' "$@" | jq .
+else
+    curl --no-progress-meter --header 'Content-type: application/json;' --header 'Accept: application/json;' --data @- "$@" | jq .
+fi
